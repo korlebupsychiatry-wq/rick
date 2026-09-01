@@ -1,0 +1,9 @@
+# Local backups
+*.bak.html
+*.orig
+*.old
+
+# OS cruft
+.DS_Store
+Thumbs.db
+desktop.ini
