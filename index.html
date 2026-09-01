@@ -36,7 +36,20 @@ html{scroll-behavior:smooth;scroll-padding-top:96px}
 .bounce{animation:b 2s infinite}@keyframes b{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
 .floating{animation:f 7s ease-in-out infinite}@keyframes f{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 .float-slow{animation:f 9s ease-in-out 1.2s infinite}
-.hero-blend{opacity:.88;filter:saturate(.55) brightness(.95) contrast(1.02);-webkit-mask-image:radial-gradient(ellipse 74% 74% at 50% 44%,#000 50%,transparent 100%);mask-image:radial-gradient(ellipse 74% 74% at 50% 44%,#000 50%,transparent 100%)}
+.slider{overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 60px -25px rgba(0,0,0,.65);background:#0a0f1e}
+.slider-track{display:flex;height:100%;transition:transform .8s cubic-bezier(.23,1,.32,1);will-change:transform}
+.slider-slide{flex:0 0 100%;height:100%}
+.slider-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.slider-nav{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;background:rgba(10,15,30,.55);border:1px solid rgba(255,255,255,.15);color:#fff;backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .3s,border-color .3s;z-index:5;font-size:.85rem}
+.slider-nav:hover{background:rgba(96,165,250,.35);border-color:rgba(96,165,250,.6)}
+.slider-prev{left:14px}.slider-next{right:14px}
+.slider-dots{position:absolute;bottom:14px;left:0;right:0;display:flex;justify-content:center;gap:7px;z-index:5}
+.slider-dot{width:8px;height:8px;border-radius:99px;background:rgba(255,255,255,.35);border:0;padding:0;cursor:pointer;transition:all .3s}
+.slider-dot:hover{background:rgba(255,255,255,.6)}
+.slider-dot.active{width:22px;background:#60a5fa}
+.slider-pause{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;background:rgba(10,15,30,.55);border:1px solid rgba(255,255,255,.15);color:#fff;backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;z-index:5;font-size:.8rem}
+.slider-pause:hover{background:rgba(96,165,250,.35);border-color:rgba(96,165,250,.6)}
+.slider-pause.is-paused{background:rgba(52,211,153,.3);border-color:rgba(52,211,153,.6)}
 .gitem{overflow:hidden;cursor:zoom-in;position:relative}
 .gitem img{transition:transform .6s cubic-bezier(.23,1,.32,1)}
 .gitem:hover img{transform:scale(1.04)}
@@ -162,8 +175,26 @@ body.cursor-on #cursorGlow{opacity:1}
       </div>
     </div>
     <div class="flex justify-center">
-      <div class="floating relative">
-        <img src="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/11908054/ILi8cLobDUzRFuQQ.?Expires=1789427758&Signature=Iwx3eTf-NEgkCk1Fao9NtLlI6cmDVgMcvkrcA1sMhPjyCl1YgEx7t1VL0RVggBtDUcK3Ff4ji9w1OGo9Acldk3mNyWHidaZtJDcY7qmygmTg7koWMnucw-NMWv4xEgjLRya16aAhYd2JLKOgV40FP3tRIeBdzKLGKLN198Uxorc3ch1~42ye28DjaknRY0zkTiglXZ31Ty--bsUYu0vyuN55goeDH9t6we8VyOBN-HsvAlHxGSAu9FHEtf~P~y2~uCR5yna-QuoACou2f3ne1pGBVk5qiKUnNS6D3eFIInd9dZi72B8pjlf03YWfV3RBlWp5exa~tblHiP0jFn7H-A__&Key-Pair-Id=K3USGZIKWMDCSX" alt="Dr. Rick Wolthusen in Ghana" class="hero-blend w-72 sm:w-80 xl:w-96 rounded-[2rem] object-cover" decoding="async">
+      <div class="floating relative w-80 sm:w-96 xl:w-[26rem]">
+        <div class="slider relative w-full aspect-[4/3]">
+          <div class="slider-track">
+            <div class="slider-slide"><img src="images/slide-1.jpg" alt="Dr. Rick Wolthusen — photo 1" decoding="async"></div>
+            <div class="slider-slide"><img src="images/slide-2.jpg" alt="Dr. Rick Wolthusen — photo 2" decoding="async"></div>
+            <div class="slider-slide"><img src="images/slide-3.jpg" alt="Dr. Rick Wolthusen — photo 3" decoding="async"></div>
+            <div class="slider-slide"><img src="images/slide-4.jpg" alt="Dr. Rick Wolthusen — photo 4" decoding="async"></div>
+            <div class="slider-slide"><img src="images/slide-5.jpg" alt="Dr. Rick Wolthusen — photo 5" decoding="async"></div>
+          </div>
+          <button class="slider-nav slider-prev" onclick="sGo(sIdx - 1)" aria-label="Previous slide"><i class="fa-solid fa-chevron-left"></i></button>
+          <button class="slider-nav slider-next" onclick="sGo(sIdx + 1)" aria-label="Next slide"><i class="fa-solid fa-chevron-right"></i></button>
+          <div class="slider-dots">
+            <button class="slider-dot active" onclick="sGo(0)" aria-label="Go to slide 1"></button>
+            <button class="slider-dot" onclick="sGo(1)" aria-label="Go to slide 2"></button>
+            <button class="slider-dot" onclick="sGo(2)" aria-label="Go to slide 3"></button>
+            <button class="slider-dot" onclick="sGo(3)" aria-label="Go to slide 4"></button>
+            <button class="slider-dot" onclick="sGo(4)" aria-label="Go to slide 5"></button>
+          </div>
+          <button class="slider-pause" onclick="sTogglePause()" aria-label="Pause slideshow"><i id="sliderPauseIcon" class="fa-solid fa-pause"></i></button>
+        </div>
         <div class="absolute -left-6 top-8 hidden md:flex items-center gap-2.5 px-4 py-3 rounded-2xl glass bg-slate-900/70 float-slow shadow-xl">
           <i class="fa-solid fa-graduation-cap text-blue-400"></i>
           <div class="text-xs"><div class="font-semibold text-white">Harvard Medical School</div><div class="text-slate-400">Instructor in Psychiatry</div></div>
@@ -723,6 +754,62 @@ body.cursor-on #cursorGlow{opacity:1}
       if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     });
   });
+
+  // Hero slider: auto-advance, pause + spontaneous restart after 3s
+  const sTrack = document.querySelector('.slider-track');
+  const sSlides = document.querySelectorAll('.slider-slide');
+  const sDots = document.querySelectorAll('.slider-dot');
+  const sPauseBtn = document.querySelector('.slider-pause');
+  const sPauseIcon = document.getElementById('sliderPauseIcon');
+  const sSlider = document.querySelector('.slider');
+  let sIdx = 0, sTimer = null, sResumeTimer = null, sPaused = false, sTouchX = null;
+  const sAutoOk = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function sGo(i) {
+    sIdx = ((i % sSlides.length) + sSlides.length) % sSlides.length;
+    sTrack.style.transform = 'translateX(' + (-sIdx * 100) + '%)';
+    sDots.forEach((d, k) => d.classList.toggle('active', k === sIdx));
+    if (!sPaused && sAutoOk) sAuto();
+  }
+  function sAuto() { clearInterval(sTimer); sTimer = setInterval(() => sGo(sIdx + 1), 4500); }
+  function sResume() {
+    if (!sPaused) return;
+    sPaused = false; clearTimeout(sResumeTimer);
+    sPauseIcon.className = 'fa-solid fa-pause';
+    sPauseBtn.classList.remove('is-paused');
+    sPauseBtn.setAttribute('aria-label', 'Pause slideshow');
+    if (sAutoOk) sAuto();
+  }
+  function sPause() {
+    if (sPaused) return;
+    sPaused = true; clearInterval(sTimer); clearTimeout(sResumeTimer);
+    sPauseIcon.className = 'fa-solid fa-play ml-0.5';
+    sPauseBtn.classList.add('is-paused');
+    sPauseBtn.setAttribute('aria-label', 'Play slideshow');
+    sResumeTimer = setTimeout(sResume, 3000);
+  }
+  function sTogglePause() { sPaused ? sResume() : sPause(); }
+  if (sSlider) {
+    sSlider.addEventListener('mouseenter', () => {
+      if (!sPaused) {
+        sPaused = true; clearInterval(sTimer); clearTimeout(sResumeTimer);
+        sPauseIcon.className = 'fa-solid fa-play ml-0.5';
+        sPauseBtn.classList.add('is-paused');
+        sPauseBtn.setAttribute('aria-label', 'Play slideshow');
+      }
+    });
+    sSlider.addEventListener('mouseleave', () => {
+      if (sPaused) { clearTimeout(sResumeTimer); sResumeTimer = setTimeout(sResume, 3000); }
+    });
+    sSlider.addEventListener('pointerdown', (e) => { sTouchX = e.clientX; });
+    sSlider.addEventListener('pointerup', (e) => {
+      if (sTouchX === null) return;
+      const dx = e.clientX - sTouchX;
+      if (Math.abs(dx) > 48) sGo(sIdx + (dx < 0 ? 1 : -1));
+      sTouchX = null;
+    });
+    if (sAutoOk) sAuto();
+  }
 
   // Cursor glow (soft spotlight that follows the pointer)
   if (window.matchMedia('(hover:hover) and (pointer:fine)').matches) {

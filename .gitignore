@@ -3,6 +3,9 @@
 *.orig
 *.old
 
+# Original photo source files (resized copies live in /images)
+rick*.jpg
+
 # OS cruft
 .DS_Store
 Thumbs.db
