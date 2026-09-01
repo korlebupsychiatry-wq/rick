@@ -27,41 +27,30 @@ html{scroll-behavior:smooth;scroll-padding-top:96px}
 .glass{background:rgba(255,255,255,.07);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1)}
 .sh{font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.05;font-weight:700;letter-spacing:-.03em}
 .card{transition:all .45s cubic-bezier(.23,1,.32,1);position:relative;overflow:hidden}
-.card::before{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.09) 50%,transparent 60%);transform:translateX(-130%);transition:transform .9s ease;pointer-events:none}
-.card:hover::before{transform:translateX(130%)}
-.card:hover{transform:translateY(-8px);box-shadow:0 25px 50px -12px rgba(0,0,0,.5),0 0 0 1px rgba(96,165,250,.35)}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -16px rgba(0,0,0,.45),0 0 0 1px rgba(96,165,250,.25)}
 .nav-scrolled{background:rgba(10,15,30,.93);backdrop-filter:blur(20px);box-shadow:0 8px 30px rgba(0,0,0,.3)}
 .hero-bg{background:linear-gradient(135deg,#0a0f1e 0%,#101a33 55%,#0d2440 100%)}
 .grid-bg{background-image:linear-gradient(rgba(148,163,184,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.06) 1px,transparent 1px);background-size:60px 60px}
-.aurora{position:absolute;border-radius:50%;filter:blur(100px);opacity:.45;pointer-events:none;animation:drift 20s ease-in-out infinite alternate}
-@keyframes drift{0%{transform:translate(0,0) scale(1)}100%{transform:translate(50px,-40px) scale(1.2)}}
 .reveal{opacity:0;transform:translateY(32px);transition:opacity .8s ease,transform .8s cubic-bezier(.23,1,.32,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 .bounce{animation:b 2s infinite}@keyframes b{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
 .floating{animation:f 7s ease-in-out infinite}@keyframes f{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 .float-slow{animation:f 9s ease-in-out 1.2s infinite}
-.ring-grad{background:conic-gradient(from 180deg,#60a5fa,#34d399,#fbbf24,#60a5fa);padding:4px;border-radius:2rem;position:relative}
+.hero-blend{opacity:.88;filter:saturate(.55) brightness(.95) contrast(1.02);-webkit-mask-image:radial-gradient(ellipse 74% 74% at 50% 44%,#000 50%,transparent 100%);mask-image:radial-gradient(ellipse 74% 74% at 50% 44%,#000 50%,transparent 100%)}
 .gitem{overflow:hidden;cursor:zoom-in;position:relative}
 .gitem img{transition:transform .6s cubic-bezier(.23,1,.32,1)}
-.gitem:hover img{transform:scale(1.07)}
-.gitem::after{content:'\f00e';font-family:'Font Awesome 6 Free';font-weight:900;position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#fff;background:rgba(10,15,30,.35);opacity:0;transition:opacity .4s}
-.gitem:hover::after{opacity:1}
+.gitem:hover img{transform:scale(1.04)}
 .aline{height:3px;width:64px;background:linear-gradient(to right,#60a5fa,transparent);border-radius:99px}
-.grad-text{background:linear-gradient(90deg,#60a5fa,#34d399);-webkit-background-clip:text;background-clip:text;color:transparent}
 .nav-link{position:relative;transition:color .3s}
 .nav-link::after{content:'';position:absolute;left:0;bottom:-6px;height:2px;width:0;background:linear-gradient(90deg,#60a5fa,#34d399);border-radius:99px;transition:width .35s cubic-bezier(.23,1,.32,1)}
 .nav-link:hover::after,.nav-link.active::after{width:100%}
 .nav-link.active{color:#60a5fa}
 .icon-chip{width:76px;height:76px;border-radius:1.4rem;display:flex;align-items:center;justify-content:center;font-size:1.9rem;color:#93c5fd;background:linear-gradient(135deg,rgba(96,165,250,.18),rgba(52,211,153,.14));border:1px solid rgba(96,165,250,.35);position:relative;transition:all .5s cubic-bezier(.23,1,.32,1)}
-.card:hover .icon-chip{transform:rotate(-8deg) scale(1.12);color:#fff;border-color:rgba(96,165,250,.8);box-shadow:0 0 40px rgba(96,165,250,.45),0 0 80px rgba(52,211,153,.25);background:linear-gradient(135deg,rgba(96,165,250,.4),rgba(52,211,153,.35))}
-.icon-chip i{transition:transform .5s cubic-bezier(.23,1,.32,1)}
-.card:hover .icon-chip i{transform:rotate(8deg) scale(1.15)}
-.marquee{overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.marquee-track{display:flex;width:max-content;animation:scroll 32s linear infinite}
-.marquee:hover .marquee-track{animation-play-state:paused}
-@keyframes scroll{to{transform:translateX(-50%)}}
-.play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:78px;height:78px;border-radius:50%;background:linear-gradient(135deg,#60a5fa,#34d399);display:flex;align-items:center;justify-content:center;color:#0a0f1e;font-size:1.45rem;box-shadow:0 0 0 0 rgba(96,165,250,.6);animation:pulse-ring 2.2s infinite;transition:transform .4s}
-@keyframes pulse-ring{0%{box-shadow:0 0 0 0 rgba(96,165,250,.55)}70%{box-shadow:0 0 0 24px rgba(96,165,250,0)}100%{box-shadow:0 0 0 0 rgba(96,165,250,0)}}
+.card:hover .icon-chip{color:#fff;border-color:rgba(96,165,250,.55);box-shadow:0 0 24px rgba(96,165,250,.25);background:linear-gradient(135deg,rgba(96,165,250,.28),rgba(52,211,153,.22))}
+.icon-chip i{transition:transform .4s cubic-bezier(.23,1,.32,1)}
+.card:hover .icon-chip i{transform:scale(1.06)}
+.play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#60a5fa,#34d399);display:flex;align-items:center;justify-content:center;color:#0a0f1e;font-size:1.4rem;box-shadow:0 0 0 0 rgba(96,165,250,.35);animation:pulse-ring 2.6s infinite;transition:transform .4s}
+@keyframes pulse-ring{0%{box-shadow:0 0 0 0 rgba(96,165,250,.35)}70%{box-shadow:0 0 0 16px rgba(96,165,250,0)}100%{box-shadow:0 0 0 0 rgba(96,165,250,0)}}
 .video-thumb{transition:transform .4s cubic-bezier(.23,1,.32,1)}
 .video-thumb:hover .play-btn{transform:translate(-50%,-50%) scale(1.15)}
 .pub{cursor:pointer}
@@ -69,7 +58,7 @@ html{scroll-behavior:smooth;scroll-padding-top:96px}
 .pub-cover::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.28),transparent 55%)}
 .pub-abbr{font-weight:800;font-size:1.2rem;letter-spacing:.02em;position:relative;z-index:1}
 .pub-cover i{font-size:1.15rem;opacity:.9;position:relative;z-index:1}
-.pub:hover .pub-cover{transform:scale(1.07) rotate(-4deg)}
+.pub:hover .pub-cover{transform:scale(1.04)}
 .c-emerald{background:linear-gradient(135deg,#059669,#34d399)}
 .c-blue{background:linear-gradient(135deg,#2563eb,#60a5fa)}
 .c-indigo{background:linear-gradient(135deg,#4f46e5,#818cf8)}
@@ -83,20 +72,18 @@ html{scroll-behavior:smooth;scroll-padding-top:96px}
 .pub-open .pub-summary{max-height:400px;opacity:1}
 .pub-chevron{transition:transform .4s cubic-bezier(.23,1,.32,1);color:#64748b}
 .pub-open .pub-chevron{transform:rotate(180deg);color:#60a5fa}
-.pub-open-link{display:inline-flex;align-items:center;gap:.5rem;margin-top:.9rem;padding:.6rem 1.1rem;border-radius:99px;font-size:.85rem;font-weight:600;color:#0a0f1e;background:linear-gradient(135deg,#60a5fa,#34d399);transition:box-shadow .3s,transform .3s}
-.pub-open-link:hover{box-shadow:0 8px 28px -6px rgba(96,165,250,.7);transform:translateY(-2px)}
+.pub-open-link{display:inline-flex;align-items:center;gap:.5rem;margin-top:.9rem;padding:.6rem 1.1rem;border-radius:99px;font-size:.85rem;font-weight:600;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);transition:background .3s,border-color .3s}
+.pub-open-link:hover{background:rgba(255,255,255,.2);border-color:rgba(96,165,250,.6)}
 .num-pop{animation:pop .6s cubic-bezier(.23,1,.32,1)}
-@keyframes pop{0%{transform:scale(1)}45%{transform:scale(1.3)}100%{transform:scale(1)}}
+@keyframes pop{0%{transform:scale(1)}45%{transform:scale(1.1)}100%{transform:scale(1)}}
 .reveal.visible .inf-pop{animation:pop .9s .4s cubic-bezier(.23,1,.32,1) both}
 .d1{transition-delay:.05s}.d2{transition-delay:.12s}.d3{transition-delay:.19s}.d4{transition-delay:.26s}.d5{transition-delay:.33s}.d6{transition-delay:.4s}
-#cursorGlow{position:fixed;top:0;left:0;width:560px;height:560px;border-radius:50%;pointer-events:none;z-index:4;background:radial-gradient(circle,rgba(96,165,250,.10),rgba(52,211,153,.05) 40%,transparent 65%);transform:translate(-50%,-50%);opacity:0;transition:opacity .5s}
+#cursorGlow{position:fixed;top:0;left:0;width:240px;height:240px;border-radius:50%;pointer-events:none;z-index:4;background:radial-gradient(circle,rgba(96,165,250,.06),transparent 65%);transform:translate(-50%,-50%);opacity:0;transition:opacity .5s}
 body.cursor-on #cursorGlow{opacity:1}
-.btn-grad{background:linear-gradient(135deg,#60a5fa,#34d399)}
-.shimmer{position:relative;overflow:hidden}
-.shimmer::after{content:'';position:absolute;top:0;left:-150%;width:60%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);transition:left .6s}
-.shimmer:hover::after{left:150%}
+.btn-grad{background:#fff;color:#0f172a;box-shadow:0 10px 30px -12px rgba(0,0,0,.35)}
+.btn-grad:hover{background:#eff6ff}
 .social-btn{transition:all .35s cubic-bezier(.23,1,.32,1)}
-.social-btn:hover{transform:translateY(-4px) scale(1.18);text-shadow:0 0 18px currentColor}
+.social-btn:hover{transform:translateY(-2px) scale(1.06)}
 :focus-visible{outline:2px solid #60a5fa;outline-offset:3px;border-radius:10px}
 @media(max-width:640px){.pub-cover{width:70px;min-width:70px;height:70px}.pub-abbr{font-size:.95rem}}
 </style>
@@ -133,7 +120,7 @@ body.cursor-on #cursorGlow{opacity:1}
       <a href="#contact" class="nav-link hover:text-blue-400">Contact</a>
     </div>
     <div class="flex items-center gap-3">
-      <button onclick="showModal()" class="magnetic hidden sm:block px-6 py-2.5 text-sm font-semibold rounded-3xl btn-grad text-slate-950 shimmer shadow-lg shadow-blue-500/25 active:scale-95 transition-all">Get in touch</button>
+      <button onclick="showModal()" class="hidden sm:block px-6 py-2.5 text-sm font-semibold rounded-3xl btn-grad active:scale-95 transition-all">Get in touch</button>
       <button onclick="toggleMenu()" class="lg:hidden w-11 h-11 rounded-xl glass flex items-center justify-center"><i class="fa-solid fa-bars"></i></button>
     </div>
   </div>
@@ -145,33 +132,38 @@ body.cursor-on #cursorGlow{opacity:1}
     <a href="#testimonials" onclick="toggleMenu()" class="block hover:text-blue-400">Testimonials</a>
     <a href="#gallery" onclick="toggleMenu()" class="block hover:text-blue-400">Gallery</a>
     <a href="#contact" onclick="toggleMenu()" class="block hover:text-blue-400">Contact</a>
-    <button onclick="toggleMenu();showModal()" class="w-full px-6 py-3 rounded-2xl btn-grad text-slate-950 font-semibold">Get in touch</button>
+    <button onclick="toggleMenu();showModal()" class="w-full px-6 py-3 rounded-2xl btn-grad font-semibold">Get in touch</button>
   </div>
 </nav>
 
 <!-- HERO -->
-<section id="home" class="min-h-screen flex items-center pt-24 relative hero-bg grid-bg overflow-hidden">
-  <div class="aurora w-[34rem] h-[34rem] bg-blue-500 -top-32 -left-32"></div>
-  <div class="aurora w-[30rem] h-[30rem] bg-emerald-500 top-1/3 -right-40" style="animation-delay:-6s"></div>
-  <div class="aurora w-[24rem] h-[24rem] bg-amber-500 -bottom-24 left-1/4" style="animation-delay:-12s"></div>
-  <div class="max-w-screen-2xl mx-auto px-6 py-12 grid lg:grid-cols-2 gap-14 items-center w-full relative">
+<section id="home" class="min-h-screen flex items-center pt-24 relative hero-bg overflow-hidden">
+  <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-[0.14] z-0" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
+    <defs>
+      <linearGradient id="curveGrad" x1="0" y1="0" x2="1440" y2="0" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#60a5fa"></stop><stop offset="0.5" stop-color="#34d399"></stop><stop offset="1" stop-color="#60a5fa"></stop>
+      </linearGradient>
+    </defs>
+    <path d="M0,560 C340,430 700,700 1080,560 C1240,500 1360,420 1440,380" stroke="url(#curveGrad)" stroke-width="1.5"></path>
+  </svg>
+  <div class="max-w-screen-2xl mx-auto px-6 py-12 grid lg:grid-cols-2 gap-14 items-center w-full relative z-10">
     <div>
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-3xl bg-white/10 border border-white/10 mb-8 backdrop-blur">
         <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
         <span class="text-xs sm:text-sm font-medium tracking-wider">McLEAN HOSPITAL • HARVARD MEDICAL SCHOOL</span>
       </div>
-      <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tighter leading-[0.95] serif mb-6">Rick Peter Fritz<br><span class="grad-text">Wolthusen</span></h1>
+      <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tighter leading-[0.95] serif mb-6">Rick Peter Fritz<br><span class="text-blue-400">Wolthusen</span></h1>
       <p class="max-w-md text-xl md:text-2xl text-slate-300 font-light mb-4">Psychiatrist. Physician-Scientist.<br>Global Mental Health Leader.</p>
       <p class="max-w-lg text-slate-400 mb-10">Bridging world-class clinical psychiatry with community-driven brain health innovation — from Boston to Accra, and beyond.</p>
       <div class="flex flex-wrap gap-4">
-        <a href="#about" class="magnetic group px-8 py-4 rounded-3xl btn-grad text-slate-950 font-semibold flex items-center gap-3 shimmer shadow-xl shadow-blue-500/25 active:scale-95 transition-all">Explore my work <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i></a>
-        <a href="https://www.linkedin.com/in/rick-wolthusen-md-mpp-33101359/" target="_blank" rel="noopener" class="magnetic px-7 py-4 rounded-3xl border border-white/30 hover:bg-white/5 font-medium flex items-center gap-3 transition-all group"><i class="fa-brands fa-linkedin text-xl text-blue-400 group-hover:scale-125 group-hover:text-blue-300 transition-transform"></i>LinkedIn</a>
-        <a href="https://web.facebook.com/rick.wolthusen" target="_blank" rel="noopener" class="magnetic px-7 py-4 rounded-3xl border border-white/30 hover:bg-white/5 font-medium flex items-center gap-3 transition-all group"><i class="fa-brands fa-facebook text-xl text-blue-500 group-hover:scale-125 group-hover:text-blue-400 transition-transform"></i>Facebook</a>
+        <a href="#about" class="group px-8 py-4 rounded-3xl bg-white text-slate-950 font-semibold flex items-center gap-3 hover:bg-blue-50 shadow-lg shadow-black/20 active:scale-95 transition-all">Explore my work <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i></a>
+        <a href="https://www.linkedin.com/in/rick-wolthusen-md-mpp-33101359/" target="_blank" rel="noopener" class="px-7 py-4 rounded-3xl border border-white/30 hover:bg-white/5 font-medium flex items-center gap-3 transition-all group"><i class="fa-brands fa-linkedin text-xl text-blue-400 group-hover:text-blue-300 transition-transform"></i>LinkedIn</a>
+        <a href="https://web.facebook.com/rick.wolthusen" target="_blank" rel="noopener" class="px-7 py-4 rounded-3xl border border-white/30 hover:bg-white/5 font-medium flex items-center gap-3 transition-all group"><i class="fa-brands fa-facebook text-xl text-blue-500 group-hover:text-blue-400 transition-transform"></i>Facebook</a>
       </div>
     </div>
     <div class="flex justify-center">
-      <div class="ring-grad floating shadow-2xl relative">
-        <img src="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/11908054/ILi8cLobDUzRFuQQ.?Expires=1789427758&Signature=Iwx3eTf-NEgkCk1Fao9NtLlI6cmDVgMcvkrcA1sMhPjyCl1YgEx7t1VL0RVggBtDUcK3Ff4ji9w1OGo9Acldk3mNyWHidaZtJDcY7qmygmTg7koWMnucw-NMWv4xEgjLRya16aAhYd2JLKOgV40FP3tRIeBdzKLGKLN198Uxorc3ch1~42ye28DjaknRY0zkTiglXZ31Ty--bsUYu0vyuN55goeDH9t6we8VyOBN-HsvAlHxGSAu9FHEtf~P~y2~uCR5yna-QuoACou2f3ne1pGBVk5qiKUnNS6D3eFIInd9dZi72B8pjlf03YWfV3RBlWp5exa~tblHiP0jFn7H-A__&Key-Pair-Id=K3USGZIKWMDCSX" alt="Dr. Rick Wolthusen in Ghana" class="w-72 sm:w-80 xl:w-96 rounded-[1.8rem] object-cover" decoding="async">
+      <div class="floating relative">
+        <img src="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/11908054/ILi8cLobDUzRFuQQ.?Expires=1789427758&Signature=Iwx3eTf-NEgkCk1Fao9NtLlI6cmDVgMcvkrcA1sMhPjyCl1YgEx7t1VL0RVggBtDUcK3Ff4ji9w1OGo9Acldk3mNyWHidaZtJDcY7qmygmTg7koWMnucw-NMWv4xEgjLRya16aAhYd2JLKOgV40FP3tRIeBdzKLGKLN198Uxorc3ch1~42ye28DjaknRY0zkTiglXZ31Ty--bsUYu0vyuN55goeDH9t6we8VyOBN-HsvAlHxGSAu9FHEtf~P~y2~uCR5yna-QuoACou2f3ne1pGBVk5qiKUnNS6D3eFIInd9dZi72B8pjlf03YWfV3RBlWp5exa~tblHiP0jFn7H-A__&Key-Pair-Id=K3USGZIKWMDCSX" alt="Dr. Rick Wolthusen in Ghana" class="hero-blend w-72 sm:w-80 xl:w-96 rounded-[2rem] object-cover" decoding="async">
         <div class="absolute -left-6 top-8 hidden md:flex items-center gap-2.5 px-4 py-3 rounded-2xl glass bg-slate-900/70 float-slow shadow-xl">
           <i class="fa-solid fa-graduation-cap text-blue-400"></i>
           <div class="text-xs"><div class="font-semibold text-white">Harvard Medical School</div><div class="text-slate-400">Instructor in Psychiatry</div></div>
@@ -189,49 +181,27 @@ body.cursor-on #cursorGlow{opacity:1}
   </div>
 </section>
 
-<!-- MARQUEE -->
-<div class="marquee border-y border-white/10 bg-white/[0.02] py-4">
-  <div class="marquee-track text-sm uppercase tracking-[3px] text-slate-500 font-medium">
-    <span class="flex items-center gap-3 mx-6"><i class="fa-solid fa-asterisk text-blue-400 text-[10px]"></i>McLean Hospital</span>
-    <span class="flex items-center gap-3 mx-6"><i class="fa-solid fa-asterisk text-emerald-400 text-[10px]"></i>Harvard Medical School</span>
-    <span class="flex items-center gap-3 mx-6"><i class="fa-solid fa-asterisk text-amber-400 text-[10px]"></i>Duke University</span>
-    <span class="flex items-center gap-3 mx-6"><i class="fa-solid fa-asterisk text-blue-400 text-[10px]"></i>Harvard Kennedy School</span>
-    <span class="flex items-center gap-3 mx-6"><i class="fa-solid fa-asterisk text-emerald-400 text-[10px]"></i>On The Move e.V.</span>
-    <span class="flex items-center gap-3 mx-6"><i class="fa-solid fa-asterisk text-amber-400 text-[10px]"></i>University of Ghana</span>
-    <span class="flex items-center gap-3 mx-6"><i class="fa-solid fa-asterisk text-blue-400 text-[10px]"></i>ENIGMA Consortium</span>
-    <span class="flex items-center gap-3 mx-6"><i class="fa-solid fa-asterisk text-emerald-400 text-[10px]"></i>TEDx Speaker</span>
-    <span class="flex items-center gap-3 mx-6"><i class="fa-solid fa-asterisk text-blue-400 text-[10px]"></i>McLean Hospital</span>
-    <span class="flex items-center gap-3 mx-6"><i class="fa-solid fa-asterisk text-emerald-400 text-[10px]"></i>Harvard Medical School</span>
-    <span class="flex items-center gap-3 mx-6"><i class="fa-solid fa-asterisk text-amber-400 text-[10px]"></i>Duke University</span>
-    <span class="flex items-center gap-3 mx-6"><i class="fa-solid fa-asterisk text-blue-400 text-[10px]"></i>Harvard Kennedy School</span>
-    <span class="flex items-center gap-3 mx-6"><i class="fa-solid fa-asterisk text-emerald-400 text-[10px]"></i>On The Move e.V.</span>
-    <span class="flex items-center gap-3 mx-6"><i class="fa-solid fa-asterisk text-amber-400 text-[10px]"></i>University of Ghana</span>
-    <span class="flex items-center gap-3 mx-6"><i class="fa-solid fa-asterisk text-blue-400 text-[10px]"></i>ENIGMA Consortium</span>
-    <span class="flex items-center gap-3 mx-6"><i class="fa-solid fa-asterisk text-emerald-400 text-[10px]"></i>TEDx Speaker</span>
-  </div>
-</div>
-
 <!-- STATS -->
 <div class="max-w-screen-2xl mx-auto px-6 py-16 reveal">
   <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 rounded-3xl overflow-hidden">
     <div class="bg-slate-900 p-8 group hover:bg-slate-800/70 transition-colors duration-300">
       <i class="fa-solid fa-user-doctor text-2xl text-blue-400/70 mb-3 block group-hover:text-blue-300 group-hover:scale-110 transition-all duration-300"></i>
-      <div class="text-5xl md:text-6xl font-semibold tracking-tighter text-blue-400 group-hover:drop-shadow-[0_0_20px_rgba(96,165,250,.8)] transition-all duration-300" data-count="10">0</div>
+      <div class="text-5xl md:text-6xl font-semibold tracking-tighter text-blue-400" data-count="10">0</div>
       <div class="text-sm text-slate-400 mt-1">Years+ Clinical & Research Practice</div>
     </div>
     <div class="bg-slate-900 p-8 group hover:bg-slate-800/70 transition-colors duration-300">
       <i class="fa-solid fa-globe text-2xl text-emerald-400/70 mb-3 block group-hover:text-emerald-300 group-hover:scale-110 transition-all duration-300"></i>
-      <div class="text-5xl md:text-6xl font-semibold tracking-tighter text-emerald-400 group-hover:drop-shadow-[0_0_20px_rgba(52,211,153,.8)] transition-all duration-300" data-count="4">0</div>
+      <div class="text-5xl md:text-6xl font-semibold tracking-tighter text-emerald-400" data-count="4">0</div>
       <div class="text-sm text-slate-400 mt-1">Countries of Active Impact</div>
     </div>
     <div class="bg-slate-900 p-8 group hover:bg-slate-800/70 transition-colors duration-300">
       <i class="fa-solid fa-file-lines text-2xl text-amber-400/70 mb-3 block group-hover:text-amber-300 group-hover:scale-110 transition-all duration-300"></i>
-      <div class="text-5xl md:text-6xl font-semibold tracking-tighter text-amber-400 group-hover:drop-shadow-[0_0_20px_rgba(251,191,36,.8)] transition-all duration-300" data-count="20">0</div>
+      <div class="text-5xl md:text-6xl font-semibold tracking-tighter text-amber-400" data-count="20">0</div>
       <div class="text-sm text-slate-400 mt-1">Peer-Reviewed Publications+</div>
     </div>
     <div class="bg-slate-900 p-8 group hover:bg-slate-800/70 transition-colors duration-300">
       <i class="fa-solid fa-heart text-2xl text-rose-400/70 mb-3 block group-hover:text-rose-300 group-hover:scale-110 transition-all duration-300"></i>
-      <div class="text-5xl md:text-6xl font-semibold tracking-tighter text-rose-400 group-hover:drop-shadow-[0_0_20px_rgba(251,113,133,.8)] transition-all duration-300 inf-pop">∞</div>
+      <div class="text-5xl md:text-6xl font-semibold tracking-tighter text-rose-400 inf-pop">∞</div>
       <div class="text-sm text-slate-400 mt-1">Lives Touched</div>
     </div>
   </div>
@@ -278,37 +248,37 @@ body.cursor-on #cursorGlow{opacity:1}
     <h2 class="sh serif">What I offer.</h2><div class="aline mt-5"></div>
   </div>
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-    <div class="card glass p-8 rounded-3xl reveal d1 tilt">
+    <div class="card glass p-8 rounded-3xl reveal d1">
       <div class="icon-chip"><i class="fa-solid fa-brain"></i></div>
       <h3 class="font-semibold text-2xl my-3">Clinical Psychiatry</h3>
       <p class="text-slate-300">Expert inpatient care for psychotic disorders, schizophrenia, bipolar disorder, and complex psychiatric presentations at McLean Hospital.</p>
       <div class="text-xs text-slate-500 mt-4 tracking-wide">Inpatient Care · Psychosis</div>
     </div>
-    <div class="card glass p-8 rounded-3xl reveal d2 tilt">
+    <div class="card glass p-8 rounded-3xl reveal d2">
       <div class="icon-chip"><i class="fa-solid fa-globe"></i></div>
       <h3 class="font-semibold text-2xl my-3">Global Mental Health</h3>
       <p class="text-slate-300">Designing sustainable, culturally adapted mental health interventions in low-resource settings across Ghana, Kenya, and beyond.</p>
       <div class="text-xs text-slate-500 mt-4 tracking-wide">Ghana · Kenya · Systems</div>
     </div>
-    <div class="card glass p-8 rounded-3xl reveal d3 tilt">
+    <div class="card glass p-8 rounded-3xl reveal d3">
       <div class="icon-chip"><i class="fa-solid fa-users-gear"></i></div>
       <h3 class="font-semibold text-2xl my-3">Task-Shifting & Training</h3>
       <p class="text-slate-300">Building capacity through community health worker training, task-shifting models, and train-the-trainer programs that scale care.</p>
       <div class="text-xs text-slate-500 mt-4 tracking-wide">Training · Community Workers</div>
     </div>
-    <div class="card glass p-8 rounded-3xl reveal d4 tilt">
+    <div class="card glass p-8 rounded-3xl reveal d4">
       <div class="icon-chip"><i class="fa-solid fa-scale-balanced"></i></div>
       <h3 class="font-semibold text-2xl my-3">Policy & Advocacy</h3>
       <p class="text-slate-300">Advising local and national governments on community mental health legislation, informed by an MPP and hands-on field experience.</p>
       <div class="text-xs text-slate-500 mt-4 tracking-wide">Governments · Legislation</div>
     </div>
-    <div class="card glass p-8 rounded-3xl reveal d5 tilt">
+    <div class="card glass p-8 rounded-3xl reveal d5">
       <div class="icon-chip"><i class="fa-solid fa-microscope"></i></div>
       <h3 class="font-semibold text-2xl my-3">Research & Publications</h3>
       <p class="text-slate-300">Physician-scientist bridging neuroimaging, genetics, and implementation science — including ENIGMA consortium collaborations.</p>
       <div class="text-xs text-slate-500 mt-4 tracking-wide">ENIGMA · Neuroimaging</div>
     </div>
-    <div class="card glass p-8 rounded-3xl reveal d6 tilt">
+    <div class="card glass p-8 rounded-3xl reveal d6">
       <div class="icon-chip"><i class="fa-solid fa-chalkboard-user"></i></div>
       <h3 class="font-semibold text-2xl my-3">Speaking & Teaching</h3>
       <p class="text-slate-300">TEDx speaker, Harvard Medical School instructor, and CPD facilitator — demystifying psychiatry and deconstructing stigma worldwide.</p>
@@ -325,7 +295,7 @@ body.cursor-on #cursorGlow{opacity:1}
     <p class="text-slate-400 mt-4 text-sm">Videos play right here on the page — just press play.</p>
   </div>
   <div class="grid md:grid-cols-2 gap-8">
-    <div class="glass rounded-3xl p-5 reveal card tilt">
+    <div class="glass rounded-3xl p-5 reveal card">
       <button onclick="openVideo('BmqVsCx2qVQ')" class="video-thumb relative w-full aspect-video rounded-2xl overflow-hidden block bg-gradient-to-br from-blue-900 to-slate-900 group" aria-label="Play TED Talk video">
         <img src="https://i.ytimg.com/vi/BmqVsCx2qVQ/hqdefault.jpg" alt="Rick Wolthusen TED Talk" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" onerror="this.style.display='none'">
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20"></div>
@@ -334,7 +304,7 @@ body.cursor-on #cursorGlow{opacity:1}
       </button>
       <div class="p-4"><h3 class="font-semibold text-xl mb-1">TED Talk</h3><p class="text-slate-400 text-sm">Rethinking mental health, stigma, and the power of community.</p></div>
     </div>
-    <div class="glass rounded-3xl p-5 reveal card tilt">
+    <div class="glass rounded-3xl p-5 reveal card">
       <button onclick="openVideo('r2hazwEEQdI')" class="video-thumb relative w-full aspect-video rounded-2xl overflow-hidden block bg-gradient-to-br from-emerald-900 to-slate-900 group" aria-label="Play Global-Local Paradigm video">
         <img src="https://i.ytimg.com/vi/r2hazwEEQdI/hqdefault.jpg" alt="Global-Local Paradigm in Mental Health — Task-Shifting" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" onerror="this.style.display='none'">
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20"></div>
@@ -456,8 +426,8 @@ body.cursor-on #cursorGlow{opacity:1}
 
   </div>
   <div class="mt-8 reveal">
-    <a href="https://scholar.google.com/scholar?q=%22Wolthusen+RPF%22+OR+%22Rick+Wolthusen%22" target="_blank" rel="noopener" class="magnetic inline-flex items-center gap-3 px-8 py-4 rounded-3xl border border-white/30 hover:bg-white/5 font-medium transition-all group">
-      <i class="fa-solid fa-graduation-cap text-blue-400 group-hover:scale-125 transition-transform"></i> View full publication record on Google Scholar
+    <a href="https://scholar.google.com/scholar?q=%22Wolthusen+RPF%22+OR+%22Rick+Wolthusen%22" target="_blank" rel="noopener" class="inline-flex items-center gap-3 px-8 py-4 rounded-3xl border border-white/30 hover:bg-white/5 font-medium transition-all group">
+      <i class="fa-solid fa-graduation-cap text-blue-400 group-hover:text-blue-300 transition-colors"></i> View full publication record on Google Scholar
     </a>
   </div>
 </section>
@@ -469,19 +439,19 @@ body.cursor-on #cursorGlow{opacity:1}
     <h2 class="sh serif">Voices from the field.</h2><div class="aline mt-5"></div>
   </div>
   <div class="grid md:grid-cols-3 gap-6">
-    <div class="card glass p-8 rounded-3xl reveal d1 tilt">
+    <div class="card glass p-8 rounded-3xl reveal d1">
       <i class="fa-solid fa-quote-left text-3xl text-blue-400"></i>
       <div class="flex gap-1 text-amber-400 text-sm mt-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
       <p class="text-slate-300 italic my-5">"Rick brings a rare combination of clinical brilliance and genuine humility. His work with our trainees in Accra has transformed how we think about community mental health."</p>
       <div class="flex items-center gap-3"><div class="w-11 h-11 rounded-full bg-blue-500/20 flex items-center justify-center"><i class="fa-solid fa-user-doctor text-blue-400"></i></div><div><div class="font-semibold text-sm">Academic Partner</div><div class="text-xs text-slate-400">University of Ghana, Accra</div></div></div>
     </div>
-    <div class="card glass p-8 rounded-3xl reveal d2 tilt">
+    <div class="card glass p-8 rounded-3xl reveal d2">
       <i class="fa-solid fa-quote-left text-3xl text-emerald-400"></i>
       <div class="flex gap-1 text-amber-400 text-sm mt-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
       <p class="text-slate-300 italic my-5">"Through On The Move, Dr. Wolthusen has empowered hundreds of community members to talk openly about brain health — the stigma is finally beginning to lift."</p>
       <div class="flex items-center gap-3"><div class="w-11 h-11 rounded-full bg-emerald-500/20 flex items-center justify-center"><i class="fa-solid fa-hands-holding-child text-emerald-400"></i></div><div><div class="font-semibold text-sm">Community Health Advocate</div><div class="text-xs text-slate-400">On The Move e.V., Ghana</div></div></div>
     </div>
-    <div class="card glass p-8 rounded-3xl reveal d3 tilt">
+    <div class="card glass p-8 rounded-3xl reveal d3">
       <i class="fa-solid fa-quote-left text-3xl text-amber-400"></i>
       <div class="flex gap-1 text-amber-400 text-sm mt-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
       <p class="text-slate-300 italic my-5">"An exceptional physician-scientist whose global-local paradigm is reshaping how the next generation of psychiatrists thinks about equitable mental health care."</p>
@@ -518,19 +488,17 @@ body.cursor-on #cursorGlow{opacity:1}
 
 <!-- CONTACT -->
 <section id="contact" class="max-w-screen-2xl mx-auto px-6 py-24 border-t border-white/10">
-  <div class="glass rounded-3xl p-10 md:p-20 text-center reveal relative overflow-hidden">
-    <div class="aurora w-80 h-80 bg-blue-500 -top-20 -right-20" style="opacity:.25"></div>
-    <div class="aurora w-80 h-80 bg-emerald-500 -bottom-24 -left-16" style="opacity:.2;animation-delay:-8s"></div>
-    <div class="max-w-lg mx-auto relative">
+  <div class="glass rounded-3xl p-10 md:p-20 text-center reveal">
+    <div class="max-w-lg mx-auto">
       <h2 class="serif text-4xl md:text-5xl tracking-tighter mb-4">Let's collaborate.</h2>
       <p class="text-slate-300 mb-8">Whether you're interested in clinical consultation, research collaboration, speaking engagements, or global mental health initiatives — the door is open.</p>
       <div class="flex flex-wrap justify-center gap-4">
-        <button onclick="showModal()" class="magnetic px-10 py-4 rounded-3xl btn-grad text-slate-950 font-semibold text-lg shimmer shadow-xl shadow-blue-500/25 active:scale-95 transition-all">
+        <button onclick="showModal()" class="px-10 py-4 rounded-3xl btn-grad font-semibold text-lg active:scale-95 transition-all">
           Schedule a conversation
         </button>
         <a href="https://www.linkedin.com/in/rick-wolthusen-md-mpp-33101359/" target="_blank" rel="noopener"
-           class="magnetic px-8 py-4 rounded-3xl border border-white/30 hover:bg-white/5 font-medium flex items-center gap-3 transition-all group">
-          <i class="fa-brands fa-linkedin text-xl text-blue-400 group-hover:scale-125 transition-transform"></i> Connect on LinkedIn
+           class="px-8 py-4 rounded-3xl border border-white/30 hover:bg-white/5 font-medium flex items-center gap-3 transition-all group">
+          <i class="fa-brands fa-linkedin text-xl text-blue-400 group-hover:text-blue-300 transition-colors"></i> Connect on LinkedIn
         </a>
       </div>
     </div>
@@ -756,30 +724,8 @@ body.cursor-on #cursorGlow{opacity:1}
     });
   });
 
-  // 3D tilt on cards
+  // Cursor glow (soft spotlight that follows the pointer)
   if (window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
-    document.querySelectorAll('.tilt').forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const r = card.getBoundingClientRect();
-        const x = (e.clientX - r.left) / r.width - 0.5;
-        const y = (e.clientY - r.top) / r.height - 0.5;
-        card.style.transform = 'perspective(900px) rotateY(' + (x * 7) + 'deg) rotateX(' + (-y * 7) + 'deg) translateY(-4px)';
-      });
-      card.addEventListener('mouseleave', () => { card.style.transform = ''; });
-    });
-
-    // Magnetic buttons
-    document.querySelectorAll('.magnetic').forEach(btn => {
-      btn.addEventListener('mousemove', (e) => {
-        const r = btn.getBoundingClientRect();
-        const x = (e.clientX - r.left - r.width / 2) * 0.25;
-        const y = (e.clientY - r.top - r.height / 2) * 0.25;
-        btn.style.transform = 'translate(' + x + 'px,' + y + 'px)';
-      });
-      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
-    });
-
-    // Cursor glow (soft spotlight that follows the pointer)
     const glow = document.getElementById('cursorGlow');
     document.body.classList.add('cursor-on');
     let gx = window.innerWidth / 2, gy = window.innerHeight / 2, tx = gx, ty = gy;
