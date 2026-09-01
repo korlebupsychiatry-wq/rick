@@ -36,18 +36,17 @@ html{scroll-behavior:smooth;scroll-padding-top:96px}
 .bounce{animation:b 2s infinite}@keyframes b{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
 .floating{animation:f 7s ease-in-out infinite}@keyframes f{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 .float-slow{animation:f 9s ease-in-out 1.2s infinite}
-.slider{overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 60px -25px rgba(0,0,0,.65);background:#0a0f1e}
+.slider{overflow:hidden;background:#0a0f1e}
 .slider-track{display:flex;height:100%;transition:transform .8s cubic-bezier(.23,1,.32,1);will-change:transform}
 .slider-slide{flex:0 0 100%;height:100%}
 .slider-slide img{width:100%;height:100%;object-fit:cover;display:block}
-.slider-nav{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;background:rgba(10,15,30,.55);border:1px solid rgba(255,255,255,.15);color:#fff;backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .3s,border-color .3s;z-index:5;font-size:.85rem}
+.slider-nav{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;background:rgba(10,15,30,.55);border:1px solid rgba(255,255,255,.15);color:#fff;backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .3s,border-color .3s;z-index:20;font-size:.85rem}
 .slider-nav:hover{background:rgba(96,165,250,.35);border-color:rgba(96,165,250,.6)}
-.slider-prev{left:14px}.slider-next{right:14px}
-.slider-dots{position:absolute;bottom:14px;left:0;right:0;display:flex;justify-content:center;gap:7px;z-index:5}
+.slider-dots{position:absolute;display:flex;justify-content:center;gap:7px;z-index:20}
 .slider-dot{width:8px;height:8px;border-radius:99px;background:rgba(255,255,255,.35);border:0;padding:0;cursor:pointer;transition:all .3s}
 .slider-dot:hover{background:rgba(255,255,255,.6)}
 .slider-dot.active{width:22px;background:#60a5fa}
-.slider-pause{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;background:rgba(10,15,30,.55);border:1px solid rgba(255,255,255,.15);color:#fff;backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;z-index:5;font-size:.8rem}
+.slider-pause{position:absolute;width:38px;height:38px;border-radius:50%;background:rgba(10,15,30,.55);border:1px solid rgba(255,255,255,.15);color:#fff;backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;z-index:20;font-size:.8rem}
 .slider-pause:hover{background:rgba(96,165,250,.35);border-color:rgba(96,165,250,.6)}
 .slider-pause.is-paused{background:rgba(52,211,153,.3);border-color:rgba(52,211,153,.6)}
 .gitem{overflow:hidden;cursor:zoom-in;position:relative}
@@ -151,7 +150,21 @@ body.cursor-on #cursorGlow{opacity:1}
 
 <!-- HERO -->
 <section id="home" class="min-h-screen flex items-center pt-24 relative hero-bg overflow-hidden">
-  <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-[0.14] z-0" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
+  <!-- Background photo slider -->
+  <div class="slider absolute inset-0 z-0">
+    <div class="slider-track h-full">
+      <div class="slider-slide"><img src="images/slide-1.jpg" alt="Dr. Rick Wolthusen — photo 1" decoding="async"></div>
+      <div class="slider-slide"><img src="images/slide-2.jpg" alt="Dr. Rick Wolthusen — photo 2" decoding="async"></div>
+      <div class="slider-slide"><img src="images/slide-3.jpg" alt="Dr. Rick Wolthusen — photo 3" decoding="async"></div>
+      <div class="slider-slide"><img src="images/slide-4.jpg" alt="Dr. Rick Wolthusen — photo 4" decoding="async"></div>
+      <div class="slider-slide"><img src="images/slide-5.jpg" alt="Dr. Rick Wolthusen — photo 5" decoding="async"></div>
+    </div>
+  </div>
+  <!-- Thin film for legibility -->
+  <div class="absolute inset-0 z-[1] bg-gradient-to-r from-[#0a0f1e]/90 via-[#0a0f1e]/55 to-[#0a0f1e]/25"></div>
+  <div class="absolute inset-x-0 bottom-0 h-40 z-[1] bg-gradient-to-t from-[#0a0f1e] to-transparent"></div>
+  <!-- Single background curve -->
+  <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-[0.12] z-[2]" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
     <defs>
       <linearGradient id="curveGrad" x1="0" y1="0" x2="1440" y2="0" gradientUnits="userSpaceOnUse">
         <stop stop-color="#60a5fa"></stop><stop offset="0.5" stop-color="#34d399"></stop><stop offset="1" stop-color="#60a5fa"></stop>
@@ -159,52 +172,45 @@ body.cursor-on #cursorGlow{opacity:1}
     </defs>
     <path d="M0,560 C340,430 700,700 1080,560 C1240,500 1360,420 1440,380" stroke="url(#curveGrad)" stroke-width="1.5"></path>
   </svg>
+  <!-- Inscription on the left -->
   <div class="max-w-screen-2xl mx-auto px-6 py-12 w-full relative z-10">
-    <div class="max-w-3xl mx-auto text-center">
+    <div class="max-w-3xl">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-3xl bg-white/10 border border-white/10 mb-8 backdrop-blur">
         <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
         <span class="text-xs sm:text-sm font-medium tracking-wider">McLEAN HOSPITAL • HARVARD MEDICAL SCHOOL</span>
       </div>
       <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tighter leading-[0.95] serif mb-6">Rick Peter Fritz<br><span class="text-blue-400">Wolthusen</span></h1>
-      <p class="text-xl md:text-2xl text-slate-300 font-light mb-4">Psychiatrist. Physician-Scientist.<br>Global Mental Health Leader.</p>
-      <p class="max-w-2xl mx-auto text-slate-400 mb-10">Bridging world-class clinical psychiatry with community-driven brain health innovation — from Boston to Accra, and beyond.</p>
-      <div class="flex flex-wrap justify-center gap-4">
+      <p class="max-w-md text-xl md:text-2xl text-slate-300 font-light mb-4">Psychiatrist. Physician-Scientist.<br>Global Mental Health Leader.</p>
+      <p class="max-w-lg text-slate-400 mb-10">Bridging world-class clinical psychiatry with community-driven brain health innovation — from Boston to Accra, and beyond.</p>
+      <div class="flex flex-wrap gap-4">
         <a href="#about" class="group px-8 py-4 rounded-3xl bg-white text-slate-950 font-semibold flex items-center gap-3 hover:bg-blue-50 shadow-lg shadow-black/20 active:scale-95 transition-all">Explore my work <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i></a>
         <a href="https://www.linkedin.com/in/rick-wolthusen-md-mpp-33101359/" target="_blank" rel="noopener" class="px-7 py-4 rounded-3xl border border-white/30 hover:bg-white/5 font-medium flex items-center gap-3 transition-all group"><i class="fa-brands fa-linkedin text-xl text-blue-400 group-hover:text-blue-300 transition-transform"></i>LinkedIn</a>
         <a href="https://web.facebook.com/rick.wolthusen" target="_blank" rel="noopener" class="px-7 py-4 rounded-3xl border border-white/30 hover:bg-white/5 font-medium flex items-center gap-3 transition-all group"><i class="fa-brands fa-facebook text-xl text-blue-500 group-hover:text-blue-400 transition-transform"></i>Facebook</a>
       </div>
     </div>
-    <div class="floating relative mt-12 max-w-5xl mx-auto">
-      <div class="slider relative w-full aspect-video">
-          <div class="slider-track">
-            <div class="slider-slide"><img src="images/slide-1.jpg" alt="Dr. Rick Wolthusen — photo 1" decoding="async"></div>
-            <div class="slider-slide"><img src="images/slide-2.jpg" alt="Dr. Rick Wolthusen — photo 2" decoding="async"></div>
-            <div class="slider-slide"><img src="images/slide-3.jpg" alt="Dr. Rick Wolthusen — photo 3" decoding="async"></div>
-            <div class="slider-slide"><img src="images/slide-4.jpg" alt="Dr. Rick Wolthusen — photo 4" decoding="async"></div>
-            <div class="slider-slide"><img src="images/slide-5.jpg" alt="Dr. Rick Wolthusen — photo 5" decoding="async"></div>
-          </div>
-          <button class="slider-nav slider-prev" onclick="sGo(sIdx - 1)" aria-label="Previous slide"><i class="fa-solid fa-chevron-left"></i></button>
-          <button class="slider-nav slider-next" onclick="sGo(sIdx + 1)" aria-label="Next slide"><i class="fa-solid fa-chevron-right"></i></button>
-          <div class="slider-dots">
-            <button class="slider-dot active" onclick="sGo(0)" aria-label="Go to slide 1"></button>
-            <button class="slider-dot" onclick="sGo(1)" aria-label="Go to slide 2"></button>
-            <button class="slider-dot" onclick="sGo(2)" aria-label="Go to slide 3"></button>
-            <button class="slider-dot" onclick="sGo(3)" aria-label="Go to slide 4"></button>
-            <button class="slider-dot" onclick="sGo(4)" aria-label="Go to slide 5"></button>
-          </div>
-          <button class="slider-pause" onclick="sTogglePause()" aria-label="Pause slideshow"><i id="sliderPauseIcon" class="fa-solid fa-pause"></i></button>
-        </div>
-        <div class="absolute -left-6 top-8 hidden md:flex items-center gap-2.5 px-4 py-3 rounded-2xl glass bg-slate-900/70 float-slow shadow-xl">
-          <i class="fa-solid fa-graduation-cap text-blue-400"></i>
-          <div class="text-xs"><div class="font-semibold text-white">Harvard Medical School</div><div class="text-slate-400">Instructor in Psychiatry</div></div>
-        </div>
-        <div class="absolute -right-4 bottom-10 hidden md:flex items-center gap-2.5 px-4 py-3 rounded-2xl glass bg-slate-900/70 float-slow shadow-xl" style="animation-delay:-4s">
-          <i class="fa-solid fa-globe text-emerald-400"></i>
-          <div class="text-xs"><div class="font-semibold text-white">On The Move e.V.</div><div class="text-slate-400">Co-Founder & Director</div></div>
-        </div>
-    </div>
   </div>
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center z-10">
+  <!-- Slider controls -->
+  <button class="slider-nav slider-prev left-5" onclick="sGo(sIdx - 1)" aria-label="Previous slide"><i class="fa-solid fa-chevron-left"></i></button>
+  <button class="slider-nav slider-next right-5" onclick="sGo(sIdx + 1)" aria-label="Next slide"><i class="fa-solid fa-chevron-right"></i></button>
+  <div class="slider-dots bottom-6 left-6">
+    <button class="slider-dot active" onclick="sGo(0)" aria-label="Go to slide 1"></button>
+    <button class="slider-dot" onclick="sGo(1)" aria-label="Go to slide 2"></button>
+    <button class="slider-dot" onclick="sGo(2)" aria-label="Go to slide 3"></button>
+    <button class="slider-dot" onclick="sGo(3)" aria-label="Go to slide 4"></button>
+    <button class="slider-dot" onclick="sGo(4)" aria-label="Go to slide 5"></button>
+  </div>
+  <button class="slider-pause bottom-6 right-6" onclick="sTogglePause()" aria-label="Pause slideshow"><i id="sliderPauseIcon" class="fa-solid fa-pause"></i></button>
+  <!-- Floating chips -->
+  <div class="absolute top-24 right-6 hidden md:flex items-center gap-2.5 px-4 py-3 rounded-2xl glass bg-slate-900/70 float-slow shadow-xl z-20">
+    <i class="fa-solid fa-graduation-cap text-blue-400"></i>
+    <div class="text-xs"><div class="font-semibold text-white">Harvard Medical School</div><div class="text-slate-400">Instructor in Psychiatry</div></div>
+  </div>
+  <div class="absolute bottom-24 right-6 hidden md:flex items-center gap-2.5 px-4 py-3 rounded-2xl glass bg-slate-900/70 float-slow shadow-xl z-20" style="animation-delay:-4s">
+    <i class="fa-solid fa-globe text-emerald-400"></i>
+    <div class="text-xs"><div class="font-semibold text-white">On The Move e.V.</div><div class="text-slate-400">Co-Founder & Director</div></div>
+  </div>
+  <!-- Scroll cue -->
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center z-20">
     <div class="text-xs tracking-[3px] font-medium mb-3 text-slate-400">SCROLL TO BEGIN</div>
     <div class="bounce text-blue-400"><i class="fa-solid fa-chevron-down text-xl"></i></div>
   </div>
