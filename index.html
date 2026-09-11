@@ -853,11 +853,14 @@ body.cursor-on #cursorGlow{opacity:1}
       if (!entry.isIntersecting) return;
       const el = entry.target;
       const target = parseInt(el.getAttribute('data-count'), 10);
-      const duration = 1300;
-      const t0 = performance.now();
+      const duration = 1400;
       const ease = t => 1 - Math.pow(1 - t, 4); // ease-out quart
+      let start = null;
+      el.textContent = '0';
       const tick = (now) => {
-        const p = Math.min(1, (now - t0) / duration);
+        // start the clock on the first animation frame so the first paint is exactly 0
+        if (start === null) start = now;
+        const p = Math.max(0, Math.min(1, (now - start) / duration));
         el.textContent = Math.round(target * ease(p)).toLocaleString();
         if (p < 1) { requestAnimationFrame(tick); }
         else {
