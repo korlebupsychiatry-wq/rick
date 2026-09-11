@@ -156,10 +156,18 @@ body.cursor-on #cursorGlow{opacity:1}
     <div class="slider-track h-full">
       <div class="slider-slide active"><img src="images/hero-1.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 1" fetchpriority="high" decoding="async"></div>
       <div class="slider-slide"><img src="images/hero-2.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 2" decoding="async"></div>
-      <div class="slider-slide"><img src="images/hero-3.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 3" decoding="async"></div>
-      <div class="slider-slide"><img src="images/hero-4.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 4" decoding="async"></div>
-      <div class="slider-slide"><img src="images/hero-5.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 5" decoding="async"></div>
-      <div class="slider-slide"><img src="images/hero-6.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 6" decoding="async"></div>
+      <div class="slider-slide"><img src="images/hero-3.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 3" loading="lazy" decoding="async"></div>
+      <div class="slider-slide"><img src="images/hero-4.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 4" loading="lazy" decoding="async"></div>
+      <div class="slider-slide"><img src="images/hero-5.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 5" loading="lazy" decoding="async"></div>
+      <div class="slider-slide"><img src="images/hero-6.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 6" loading="lazy" decoding="async"></div>
+      <div class="slider-slide"><img src="images/hero-7.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 7" loading="lazy" decoding="async"></div>
+      <div class="slider-slide"><img src="images/hero-8.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 8" loading="lazy" decoding="async"></div>
+      <div class="slider-slide"><img src="images/hero-9.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 9" loading="lazy" decoding="async"></div>
+      <div class="slider-slide"><img src="images/hero-10.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 10" loading="lazy" decoding="async"></div>
+      <div class="slider-slide"><img src="images/hero-11.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 11" loading="lazy" decoding="async"></div>
+      <div class="slider-slide"><img src="images/hero-12.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 12" loading="lazy" decoding="async"></div>
+      <div class="slider-slide"><img src="images/hero-13.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 13" loading="lazy" decoding="async"></div>
+      <div class="slider-slide"><img src="images/hero-14.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 14" loading="lazy" decoding="async"></div>
     </div>
   </div>
   <!-- Thin film for legibility -->
@@ -201,17 +209,25 @@ body.cursor-on #cursorGlow{opacity:1}
     <button class="slider-dot" onclick="sGo(3)" aria-label="Go to slide 4"></button>
     <button class="slider-dot" onclick="sGo(4)" aria-label="Go to slide 5"></button>
     <button class="slider-dot" onclick="sGo(5)" aria-label="Go to slide 6"></button>
+    <button class="slider-dot" onclick="sGo(6)" aria-label="Go to slide 7"></button>
+    <button class="slider-dot" onclick="sGo(7)" aria-label="Go to slide 8"></button>
+    <button class="slider-dot" onclick="sGo(8)" aria-label="Go to slide 9"></button>
+    <button class="slider-dot" onclick="sGo(9)" aria-label="Go to slide 10"></button>
+    <button class="slider-dot" onclick="sGo(10)" aria-label="Go to slide 11"></button>
+    <button class="slider-dot" onclick="sGo(11)" aria-label="Go to slide 12"></button>
+    <button class="slider-dot" onclick="sGo(12)" aria-label="Go to slide 13"></button>
+    <button class="slider-dot" onclick="sGo(13)" aria-label="Go to slide 14"></button>
   </div>
   <button class="slider-pause bottom-6 right-6" onclick="sTogglePause()" aria-label="Pause slideshow"><i id="sliderPauseIcon" class="fa-solid fa-pause"></i></button>
   <!-- Floating chips -->
-  <div class="absolute top-24 right-6 hidden md:flex items-center gap-2.5 px-4 py-3 rounded-2xl glass bg-slate-900/70 float-slow shadow-xl z-20">
+  <a href="#about" class="absolute top-24 right-6 hidden md:flex items-center gap-2.5 px-4 py-3 rounded-2xl glass bg-slate-900/70 float-slow shadow-xl z-20 hover:border-blue-400/60 transition-colors" aria-label="About Dr. Wolthusen's Harvard appointment">
     <i class="fa-solid fa-graduation-cap text-blue-400"></i>
     <div class="text-xs"><div class="font-semibold text-white">Harvard Medical School</div><div class="text-slate-400">Instructor in Psychiatry</div></div>
-  </div>
-  <div class="absolute bottom-24 right-6 hidden md:flex items-center gap-2.5 px-4 py-3 rounded-2xl glass bg-slate-900/70 float-slow shadow-xl z-20" style="animation-delay:-4s">
+  </a>
+  <a href="#gallery" class="absolute bottom-24 right-6 hidden md:flex items-center gap-2.5 px-4 py-3 rounded-2xl glass bg-slate-900/70 float-slow shadow-xl z-20 hover:border-emerald-400/60 transition-colors" style="animation-delay:-4s" aria-label="See community mental health work">
     <i class="fa-solid fa-globe text-emerald-400"></i>
-    <div class="text-xs"><div class="font-semibold text-white">On The Move e.V.</div><div class="text-slate-400">Co-Founder & Director</div></div>
-  </div>
+    <div class="text-xs"><div class="font-semibold text-white">On The Move e.V.</div><div class="text-slate-400">Co-Founder &amp; Director</div></div>
+  </a>
   <!-- Scroll cue -->
   <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center z-20">
     <div class="text-xs tracking-[3px] font-medium mb-3 text-slate-400">SCROLL TO BEGIN</div>
@@ -222,26 +238,26 @@ body.cursor-on #cursorGlow{opacity:1}
 <!-- STATS -->
 <div class="max-w-screen-2xl mx-auto px-6 py-16 reveal">
   <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 rounded-3xl overflow-hidden">
-    <div class="bg-slate-900 p-8 group hover:bg-slate-800/70 transition-colors duration-300">
+    <a href="#about" title="Read the full profile" class="bg-slate-900 p-8 group hover:bg-slate-800/70 transition-colors duration-300 block cursor-pointer">
       <i class="fa-solid fa-user-doctor text-2xl text-blue-400/70 mb-3 block group-hover:text-blue-300 group-hover:scale-110 transition-all duration-300"></i>
       <div class="text-5xl md:text-6xl font-semibold tracking-tighter text-blue-400" data-count="10">0</div>
-      <div class="text-sm text-slate-400 mt-1">Years+ Clinical & Research Practice</div>
-    </div>
-    <div class="bg-slate-900 p-8 group hover:bg-slate-800/70 transition-colors duration-300">
+      <div class="text-sm text-slate-400 mt-1">Years+ Clinical &amp; Research Practice</div>
+    </a>
+    <a href="#gallery" title="See work across countries" class="bg-slate-900 p-8 group hover:bg-slate-800/70 transition-colors duration-300 block cursor-pointer">
       <i class="fa-solid fa-globe text-2xl text-emerald-400/70 mb-3 block group-hover:text-emerald-300 group-hover:scale-110 transition-all duration-300"></i>
       <div class="text-5xl md:text-6xl font-semibold tracking-tighter text-emerald-400" data-count="8">0</div>
       <div class="text-sm text-slate-400 mt-1">Countries of Active Partnership</div>
-    </div>
-    <div class="bg-slate-900 p-8 group hover:bg-slate-800/70 transition-colors duration-300">
+    </a>
+    <a href="#publications" title="Browse selected publications" class="bg-slate-900 p-8 group hover:bg-slate-800/70 transition-colors duration-300 block cursor-pointer">
       <i class="fa-solid fa-file-lines text-2xl text-amber-400/70 mb-3 block group-hover:text-amber-300 group-hover:scale-110 transition-all duration-300"></i>
       <div class="text-5xl md:text-6xl font-semibold tracking-tighter text-amber-400" data-count="30">0</div>
       <div class="text-sm text-slate-400 mt-1">Peer-Reviewed Publications+</div>
-    </div>
-    <div class="bg-slate-900 p-8 group hover:bg-slate-800/70 transition-colors duration-300">
+    </a>
+    <a href="#media" title="Watch talks and videos" class="bg-slate-900 p-8 group hover:bg-slate-800/70 transition-colors duration-300 block cursor-pointer">
       <i class="fa-solid fa-people-group text-2xl text-rose-400/70 mb-3 block group-hover:text-rose-300 group-hover:scale-110 transition-all duration-300"></i>
       <div class="text-5xl md:text-6xl font-semibold tracking-tighter text-rose-400 inf-pop" data-count="60000">0</div>
       <div class="text-sm text-slate-400 mt-1">Community Members Reached</div>
-    </div>
+    </a>
   </div>
 </div>
 
@@ -267,14 +283,41 @@ body.cursor-on #cursorGlow{opacity:1}
         <p><strong class="text-white">Dr. Rick Wolthusen</strong> is a psychiatrist in the Division of Psychotic Disorders at <strong class="text-white">McLean Hospital</strong> and an Instructor in Psychiatry at <strong class="text-white">Harvard Medical School</strong>. His clinical work focuses on people living with psychosis, bipolar disorder, and catatonia — including complex, recurrent forms of catatonia that may require longer-term management.</p>
         <p>His research grows directly out of clinical practice. He has published on catatonia across a range of settings, including low-resource environments and different linguistic and cultural contexts, and serves on the <strong class="text-white">Medical Advisory Board of the Catatonia Foundation</strong>. He is also Head of Training and Education for the Chester M. Pierce Division of Global Psychiatry at <strong class="text-white">Massachusetts General Hospital</strong>.</p>
         <p>A central theme of his work is strengthening the connection between specialist psychiatric care and the communities in which patients live — partnering with patients, families, community health workers, and religious and community leaders to improve recognition of severe mental illness, reduce stigma, and support sustained engagement with care. This work spans <strong class="text-white">Ghana, Kenya, Rwanda, Ecuador, South Africa, Australia, and New Zealand</strong>.</p>
+        <p>A growing part of his work is bringing lessons from global mental health back to the United States: adapting community- and culturally informed approaches to inpatient psychiatry, and training clinicians, chaplains, and other members of care teams to better recognise severe mental illness, suicide risk, and the cultural contexts that shape psychiatric care.</p>
       </div>
       <div class="flex flex-wrap gap-3 mt-8">
-        <span class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-default">Catatonia</span>
-        <span class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-default">Severe Mental Illness</span>
-        <span class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-default">Psychosis &amp; Bipolar Disorder</span>
-        <span class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-default">Global Mental Health</span>
-        <span class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-default">Community Partnership</span>
-        <span class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-default">Medical Education</span>
+        <a href="#publications" class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-pointer">Catatonia</a>
+        <a href="#services" class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-pointer">Severe Mental Illness</a>
+        <a href="#services" class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-pointer">Psychosis &amp; Bipolar Disorder</a>
+        <a href="#gallery" class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-pointer">Global Mental Health</a>
+        <a href="#contact" class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-pointer">Community Partnership</a>
+        <a href="#media" class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-pointer">Medical Education</a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-8">
+        <div class="flex items-start gap-3 p-4 rounded-2xl bg-white/5 border border-white/10">
+          <i class="fa-solid fa-certificate text-blue-400 mt-0.5"></i>
+          <div class="text-sm"><div class="font-semibold text-white">Board Certified</div><div class="text-slate-400">American Board of Psychiatry &amp; Neurology</div></div>
+        </div>
+        <div class="flex items-start gap-3 p-4 rounded-2xl bg-white/5 border border-white/10">
+          <i class="fa-solid fa-id-card text-emerald-400 mt-0.5"></i>
+          <div class="text-sm"><div class="font-semibold text-white">Licensed Physician</div><div class="text-slate-400">Massachusetts, USA &amp; Germany</div></div>
+        </div>
+        <div class="flex items-start gap-3 p-4 rounded-2xl bg-white/5 border border-white/10">
+          <i class="fa-solid fa-users text-amber-400 mt-0.5"></i>
+          <div class="text-sm"><div class="font-semibold text-white">American Psychiatric Association</div><div class="text-slate-400">Council Representative, Massachusetts Psychiatric Society</div></div>
+        </div>
+        <div class="flex items-start gap-3 p-4 rounded-2xl bg-white/5 border border-white/10">
+          <i class="fa-solid fa-earth-americas text-teal-400 mt-0.5"></i>
+          <div class="text-sm"><div class="font-semibold text-white">World Psychiatric Association</div><div class="text-slate-400">Council of International Psychiatry &amp; Global Health</div></div>
+        </div>
+        <div class="flex items-start gap-3 p-4 rounded-2xl bg-white/5 border border-white/10">
+          <i class="fa-solid fa-heart-pulse text-rose-400 mt-0.5"></i>
+          <div class="text-sm"><div class="font-semibold text-white">Catatonia Foundation</div><div class="text-slate-400">Medical Advisory Board</div></div>
+        </div>
+        <div class="flex items-start gap-3 p-4 rounded-2xl bg-white/5 border border-white/10">
+          <i class="fa-solid fa-magnifying-glass-chart text-purple-400 mt-0.5"></i>
+          <div class="text-sm"><div class="font-semibold text-white">Peer Reviewer</div><div class="text-slate-400">JAMA Psychiatry · Global Mental Health</div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -287,42 +330,42 @@ body.cursor-on #cursorGlow{opacity:1}
     <h2 class="sh serif">What I do.</h2><div class="aline mt-5"></div>
   </div>
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-    <div class="card glass p-8 rounded-3xl reveal d1">
+    <a href="#about" aria-label="Clinical Psychiatry — read the full profile" class="card glass p-8 rounded-3xl reveal d1 block group">
       <div class="icon-chip"><i class="fa-solid fa-brain"></i></div>
       <h3 class="font-semibold text-2xl my-3">Clinical Psychiatry</h3>
       <p class="text-slate-300">Inpatient care in the Division of Psychotic Disorders at McLean Hospital, for people living with psychosis, bipolar disorder, and complex neuropsychiatric conditions.</p>
-      <div class="text-xs text-slate-500 mt-4 tracking-wide">McLean Hospital · Inpatient Care</div>
-    </div>
-    <div class="card glass p-8 rounded-3xl reveal d2">
+      <div class="text-xs text-slate-500 mt-4 tracking-wide flex items-center justify-between"><span>McLean Hospital · Inpatient Care</span><i class="fa-solid fa-arrow-right text-blue-400/70 group-hover:translate-x-1 transition-transform"></i></div>
+    </a>
+    <a href="#publications" aria-label="Catatonia — see related publications" class="card glass p-8 rounded-3xl reveal d2 block group">
       <div class="icon-chip"><i class="fa-solid fa-heart-pulse"></i></div>
       <h3 class="font-semibold text-2xl my-3">Catatonia</h3>
       <p class="text-slate-300">Improving the recognition, conceptualisation, and treatment of catatonia — including recurrent and persistent forms that may need longer-term management.</p>
-      <div class="text-xs text-slate-500 mt-4 tracking-wide">Catatonia Foundation · Consultation</div>
-    </div>
-    <div class="card glass p-8 rounded-3xl reveal d3">
+      <div class="text-xs text-slate-500 mt-4 tracking-wide flex items-center justify-between"><span>Catatonia Foundation · Consultation</span><i class="fa-solid fa-arrow-right text-blue-400/70 group-hover:translate-x-1 transition-transform"></i></div>
+    </a>
+    <a href="#gallery" aria-label="Global Mental Health — see work across countries" class="card glass p-8 rounded-3xl reveal d3 block group">
       <div class="icon-chip"><i class="fa-solid fa-globe"></i></div>
       <h3 class="font-semibold text-2xl my-3">Global Mental Health</h3>
       <p class="text-slate-300">Developing global mental health curricula and training partnerships — as Head of Training and Education in the Chester M. Pierce Division of Global Psychiatry.</p>
-      <div class="text-xs text-slate-500 mt-4 tracking-wide">Mass General · Ghana · Kenya</div>
-    </div>
-    <div class="card glass p-8 rounded-3xl reveal d4">
+      <div class="text-xs text-slate-500 mt-4 tracking-wide flex items-center justify-between"><span>Mass General · Ghana · Kenya</span><i class="fa-solid fa-arrow-right text-blue-400/70 group-hover:translate-x-1 transition-transform"></i></div>
+    </a>
+    <a href="#media" aria-label="Teaching and Supervision — watch talks and lectures" class="card glass p-8 rounded-3xl reveal d4 block group">
       <div class="icon-chip"><i class="fa-solid fa-chalkboard-user"></i></div>
-      <h3 class="font-semibold text-2xl my-3">Teaching & Supervision</h3>
-      <p class="text-slate-300">Supervising residents and medical students and teaching clinical reasoning around psychosis, catatonia, clozapine, ECT, and other complex presentations.</p>
-      <div class="text-xs text-slate-500 mt-4 tracking-wide">Residents · Curricula · Case Conferences</div>
-    </div>
-    <div class="card glass p-8 rounded-3xl reveal d5">
+      <h3 class="font-semibold text-2xl my-3">Teaching &amp; Supervision</h3>
+      <p class="text-slate-300">Teaching residents, medical students, clinicians, and care teams — including chaplains — to recognise and respond to psychosis, catatonia, severe mental illness, and suicide risk.</p>
+      <div class="text-xs text-slate-500 mt-4 tracking-wide flex items-center justify-between"><span>Residents · Curricula · Case Conferences</span><i class="fa-solid fa-arrow-right text-blue-400/70 group-hover:translate-x-1 transition-transform"></i></div>
+    </a>
+    <a href="#publications" aria-label="Clinical Research — browse publications" class="card glass p-8 rounded-3xl reveal d5 block group">
       <div class="icon-chip"><i class="fa-solid fa-microscope"></i></div>
       <h3 class="font-semibold text-2xl my-3">Clinical Research</h3>
       <p class="text-slate-300">Scholarship that grows directly from clinical questions — publishing on catatonia and severe mental illness across cultural, linguistic, and low-resource settings.</p>
-      <div class="text-xs text-slate-500 mt-4 tracking-wide">Catatonia · Outcomes · Publications</div>
-    </div>
-    <div class="card glass p-8 rounded-3xl reveal d6">
+      <div class="text-xs text-slate-500 mt-4 tracking-wide flex items-center justify-between"><span>Catatonia · Outcomes · Publications</span><i class="fa-solid fa-arrow-right text-blue-400/70 group-hover:translate-x-1 transition-transform"></i></div>
+    </a>
+    <a href="#contact" aria-label="Policy and Community Partnership — get in touch" class="card glass p-8 rounded-3xl reveal d6 block group">
       <div class="icon-chip"><i class="fa-solid fa-people-group"></i></div>
-      <h3 class="font-semibold text-2xl my-3">Policy & Community Partnership</h3>
+      <h3 class="font-semibold text-2xl my-3">Policy &amp; Community Partnership</h3>
       <p class="text-slate-300">Working with governments, community health workers, and religious and community leaders to strengthen pathways to care and reduce stigma.</p>
-      <div class="text-xs text-slate-500 mt-4 tracking-wide">Policy · Community · Anti-Stigma</div>
-    </div>
+      <div class="text-xs text-slate-500 mt-4 tracking-wide flex items-center justify-between"><span>Policy · Community · Anti-Stigma</span><i class="fa-solid fa-arrow-right text-blue-400/70 group-hover:translate-x-1 transition-transform"></i></div>
+    </a>
   </div>
 </section>
 
@@ -331,7 +374,7 @@ body.cursor-on #cursorGlow{opacity:1}
   <div class="max-w-2xl mb-12 reveal">
     <div class="uppercase tracking-[4px] text-xs font-semibold text-blue-400 mb-3">CHAPTER III — TALKS & MEDIA</div>
     <h2 class="sh serif">Ideas worth sharing.</h2><div class="aline mt-5"></div>
-    <p class="text-slate-400 mt-4 text-sm">Videos play right here on the page — just press play.</p>
+    <p class="text-slate-400 mt-4 text-sm">Videos play right here on the page — just press play. If your network blocks the player, each card also has a direct YouTube link.</p>
   </div>
   <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
     <div class="glass rounded-3xl p-5 reveal card">
@@ -341,7 +384,7 @@ body.cursor-on #cursorGlow{opacity:1}
         <span class="play-btn"><i class="fa-solid fa-play ml-0.5"></i></span>
         <span class="absolute bottom-3 left-4 px-3 py-1 rounded-full glass text-[11px] font-semibold tracking-wider text-white">TEDx TALK</span>
       </button>
-      <div class="p-4"><h3 class="font-semibold text-xl mb-1">TED Talk</h3><p class="text-slate-400 text-sm">Rethinking mental health, stigma, and the power of community.</p></div>
+      <div class="p-4"><h3 class="font-semibold text-xl mb-1">TED Talk</h3><p class="text-slate-400 text-sm">Rethinking mental health, stigma, and the power of community.</p><a href="https://www.youtube.com/watch?v=BmqVsCx2qVQ" target="_blank" rel="noopener" class="mt-2 inline-flex items-center gap-2 text-xs text-slate-400 hover:text-red-400 transition-colors"><i class="fa-brands fa-youtube"></i> Open on YouTube</a></div>
     </div>
     <div class="glass rounded-3xl p-5 reveal card">
       <button onclick="openVideo('r2hazwEEQdI')" class="video-thumb relative w-full aspect-video rounded-2xl overflow-hidden block bg-gradient-to-br from-emerald-900 to-slate-900 group" aria-label="Play Global-Local Paradigm video">
@@ -350,7 +393,7 @@ body.cursor-on #cursorGlow{opacity:1}
         <span class="play-btn"><i class="fa-solid fa-play ml-0.5"></i></span>
         <span class="absolute bottom-3 left-4 px-3 py-1 rounded-full glass text-[11px] font-semibold tracking-wider text-white">KEYNOTE</span>
       </button>
-      <div class="p-4"><h3 class="font-semibold text-xl mb-1">Global-Local Paradigm in Mental Health</h3><p class="text-slate-400 text-sm">Task-shifting: bringing lessons from afar to our doorsteps.</p></div>
+      <div class="p-4"><h3 class="font-semibold text-xl mb-1">Global-Local Paradigm in Mental Health</h3><p class="text-slate-400 text-sm">Task-shifting: bringing lessons from afar to our doorsteps.</p><a href="https://www.youtube.com/watch?v=r2hazwEEQdI" target="_blank" rel="noopener" class="mt-2 inline-flex items-center gap-2 text-xs text-slate-400 hover:text-red-400 transition-colors"><i class="fa-brands fa-youtube"></i> Open on YouTube</a></div>
     </div>
     <div class="glass rounded-3xl p-5 reveal card">
       <button onclick="openVideo('xqVDRxsiW5s')" class="video-thumb relative w-full aspect-video rounded-2xl overflow-hidden block bg-gradient-to-br from-indigo-900 to-slate-900 group" aria-label="Play featured video">
@@ -359,7 +402,7 @@ body.cursor-on #cursorGlow{opacity:1}
         <span class="play-btn"><i class="fa-solid fa-play ml-0.5"></i></span>
         <span class="absolute bottom-3 left-4 px-3 py-1 rounded-full glass text-[11px] font-semibold tracking-wider text-white">VIDEO</span>
       </button>
-      <div class="p-4"><h3 class="font-semibold text-xl mb-1">Featured Video</h3><p class="text-slate-400 text-sm">A recent video — press play to watch it here on the page.</p></div>
+      <div class="p-4"><h3 class="font-semibold text-xl mb-1">Featured Video</h3><p class="text-slate-400 text-sm">A recent video — press play to watch it here on the page.</p><a href="https://www.youtube.com/watch?v=xqVDRxsiW5s" target="_blank" rel="noopener" class="mt-2 inline-flex items-center gap-2 text-xs text-slate-400 hover:text-red-400 transition-colors"><i class="fa-brands fa-youtube"></i> Open on YouTube</a></div>
     </div>
   </div>
   <div class="mt-10 reveal">
@@ -555,22 +598,31 @@ body.cursor-on #cursorGlow{opacity:1}
   </div>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
     <div class="gitem rounded-3xl glass reveal lg:col-span-2 lg:row-span-2" onclick="openLB(this)">
-      <img src="images/gallery-1.jpg" alt="International collaboration — team gathering" class="w-full h-full object-cover rounded-3xl" loading="lazy" decoding="async">
+      <img src="images/gallery-1.jpg" alt="Dr. Rick Wolthusen — international collaboration and community mental health work" class="w-full h-full object-cover rounded-3xl" loading="lazy" decoding="async">
     </div>
     <div class="gitem rounded-3xl glass reveal" onclick="openLB(this)">
-      <img src="images/gallery-2.jpg" alt="Dr. Wolthusen in Ghana" class="w-full h-64 object-cover rounded-3xl" loading="lazy" decoding="async">
+      <img src="images/gallery-2.jpg" alt="Clinical practice and inpatient psychiatry" class="w-full h-64 object-cover rounded-3xl" loading="lazy" decoding="async">
     </div>
     <div class="gitem rounded-3xl glass reveal" onclick="openLB(this)">
-      <img src="images/gallery-3.jpg" alt="Community mental health work in Ghana" class="w-full h-64 object-cover rounded-3xl" loading="lazy" decoding="async">
+      <img src="images/gallery-3.jpg" alt="Teaching and case conferences with trainees" class="w-full h-64 object-cover rounded-3xl" loading="lazy" decoding="async">
     </div>
     <div class="gitem rounded-3xl glass reveal" onclick="openLB(this)">
-      <img src="images/gallery-4.jpg" alt="With colleagues and collaborators" class="w-full h-64 object-cover rounded-3xl" loading="lazy" decoding="async">
+      <img src="images/gallery-4.jpg" alt="Global mental health partnership in West Africa" class="w-full h-64 object-cover rounded-3xl" loading="lazy" decoding="async">
     </div>
     <div class="gitem rounded-3xl glass reveal" onclick="openLB(this)">
-      <img src="images/gallery-5.jpg" alt="Moments from teaching and clinical practice" class="w-full h-64 object-cover rounded-3xl" loading="lazy" decoding="async">
+      <img src="images/gallery-5.jpg" alt="With colleagues and collaborators" class="w-full h-64 object-cover rounded-3xl" loading="lazy" decoding="async">
     </div>
     <div class="gitem rounded-3xl glass reveal" onclick="openLB(this)">
-      <img src="images/gallery-6.jpg" alt="Partnerships and community mental health work" class="w-full h-64 object-cover rounded-3xl" loading="lazy" decoding="async">
+      <img src="images/gallery-6.jpg" alt="Community mental health work and outreach" class="w-full h-64 object-cover rounded-3xl" loading="lazy" decoding="async">
+    </div>
+    <div class="gitem rounded-3xl glass reveal" onclick="openLB(this)">
+      <img src="images/gallery-7.jpg" alt="Moments from teaching and clinical practice" class="w-full h-64 object-cover rounded-3xl" loading="lazy" decoding="async">
+    </div>
+    <div class="gitem rounded-3xl glass reveal" onclick="openLB(this)">
+      <img src="images/gallery-8.jpg" alt="Partnerships across three continents" class="w-full h-64 object-cover rounded-3xl" loading="lazy" decoding="async">
+    </div>
+    <div class="gitem rounded-3xl glass reveal" onclick="openLB(this)">
+      <img src="images/gallery-9.jpg" alt="Convenings, lectures, and community engagement" class="w-full h-64 object-cover rounded-3xl" loading="lazy" decoding="async">
     </div>
   </div>
   <p class="text-sm text-slate-500 mt-6">More moments on <a href="https://web.facebook.com/rick.wolthusen" target="_blank" rel="noopener" class="text-blue-400 hover:underline">Facebook</a>.</p>
@@ -619,7 +671,11 @@ body.cursor-on #cursorGlow{opacity:1}
 <div id="videoModal" onclick="closeVideo()" class="hidden fixed inset-0 bg-black/90 backdrop-blur-sm z-[999] items-center justify-center p-4">
   <div onclick="event.stopPropagation()" class="w-full max-w-4xl relative">
     <div class="aspect-video rounded-2xl overflow-hidden bg-black shadow-2xl ring-1 ring-white/10">
-      <iframe id="vidFrame" class="w-full h-full border-0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Video player"></iframe>
+      <iframe id="vidFrame" class="w-full h-full border-0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="origin-when-cross-origin" title="Video player"></iframe>
+    </div>
+    <div class="mt-3 flex flex-wrap items-center justify-between gap-3">
+      <span id="vidNote" class="text-sm text-slate-400"></span>
+      <a id="vidFallback" href="#" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 rounded-2xl border border-white/20 hover:bg-white/5 hover:border-red-400/60 transition-all text-sm"><i class="fa-brands fa-youtube text-red-400"></i> Watch on YouTube</a>
     </div>
     <button onclick="closeVideo()" class="absolute -top-12 right-0 text-3xl text-white/70 hover:text-white transition-colors" aria-label="Close video">&times;</button>
   </div>
@@ -711,16 +767,37 @@ body.cursor-on #cursorGlow{opacity:1}
     lb.classList.remove('flex'); lb.classList.add('hidden');
   }
 
-  // In-app video player
+  // In-app video player (standard YouTube embed + graceful fallback)
+  let vidTimer = null;
   function openVideo(id) {
-    document.getElementById('vidFrame').src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1';
+    const frame = document.getElementById('vidFrame');
+    const note = document.getElementById('vidNote');
+    const fb = document.getElementById('vidFallback');
+    const watchUrl = 'https://www.youtube.com/watch?v=' + id;
+    fb.href = watchUrl;
+    frame.dataset.id = id;
+    note.textContent = 'Loading video…';
+    note.className = 'text-sm text-slate-400';
+    let loaded = false;
+    frame.onload = () => { loaded = true; note.textContent = ''; };
+    clearTimeout(vidTimer);
+    vidTimer = setTimeout(() => {
+      if (!loaded) {
+        note.innerHTML = 'Playback is unavailable in this browser. <a href="' + watchUrl + '" target="_blank" rel="noopener" class="text-blue-400 underline">Open it on YouTube</a>.';
+        note.className = 'text-sm text-amber-300';
+      }
+    }, 4500);
+    frame.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
     const m = document.getElementById('videoModal');
     m.classList.remove('hidden'); m.classList.add('flex');
   }
   function closeVideo() {
+    clearTimeout(vidTimer);
     const m = document.getElementById('videoModal');
     m.classList.remove('flex'); m.classList.add('hidden');
-    document.getElementById('vidFrame').src = '';
+    const frame = document.getElementById('vidFrame');
+    frame.onload = null;
+    frame.src = '';
   }
 
   // Publications: click = summary, click again = open paper
