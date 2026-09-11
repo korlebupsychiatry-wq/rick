@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dr. Rick Wolthusen, MD, MPP — Psychiatrist · Physician-Scientist · Global Mental Health Leader</title>
-<meta name="description" content="Dr. Rick Peter Fritz Wolthusen, MD, MPP — Staff Psychiatrist at McLean Hospital, Instructor at Harvard Medical School, Co-Founder of On The Move e.V., advancing brain health across Ghana, Kenya, Germany, and the USA.">
-<meta name="keywords" content="Rick Wolthusen, psychiatrist, McLean Hospital, Harvard Medical School, global mental health, On The Move, Ghana, task-shifting, schizophrenia, ENIGMA">
+<title>Dr. Rick Wolthusen, MD, MPP — Psychiatrist · Clinician-Educator · Global Mental Health Researcher</title>
+<meta name="description" content="Dr. Rick Peter Fritz Wolthusen, MD, MPP — psychiatrist in the Division of Psychotic Disorders at McLean Hospital, Instructor in Psychiatry at Harvard Medical School, and Head of Training and Education in the Chester M. Pierce Division of Global Psychiatry at Massachusetts General Hospital. Focused on catatonia, severe mental illness, and global mental health.">
+<meta name="keywords" content="Rick Wolthusen, psychiatrist, McLean Hospital, Harvard Medical School, Massachusetts General Hospital, catatonia, severe mental illness, psychosis, global mental health, On The Move, Ghana, Kenya">
 <meta name="theme-color" content="#0a0f1e">
-<meta property="og:title" content="Dr. Rick Wolthusen, MD, MPP — Psychiatrist & Global Mental Health Leader">
-<meta property="og:description" content="Bridging world-class psychiatry with community mental health innovation across three continents.">
+<meta property="og:title" content="Dr. Rick Wolthusen, MD, MPP — Psychiatrist & Global Mental Health Researcher">
+<meta property="og:description" content="Improving the care of people with severe mental illness — through clinical practice, research, teaching, and community partnership across Boston, Ghana, Kenya, and beyond.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2360a5fa'/%3E%3Cstop offset='1' stop-color='%2334d399'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='26' font-weight='bold' text-anchor='middle' fill='%230a0f1e'%3ERW%3C/text%3E%3C/svg%3E">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Physician","name":"Dr. Rick Peter Fritz Wolthusen","honorificSuffix":"MD, MPP","jobTitle":"Staff Psychiatrist & Physician-Scientist","worksFor":[{"@type":"Hospital","name":"McLean Hospital"},{"@type":"CollegeOrUniversity","name":"Harvard Medical School"}],"sameAs":["https://www.linkedin.com/in/rick-wolthusen-md-mpp-33101359/","https://web.facebook.com/rick.wolthusen"]}
+{"@context":"https://schema.org","@type":"Physician","name":"Dr. Rick Peter Fritz Wolthusen","honorificSuffix":"MD, MPP","jobTitle":"Psychiatrist, Clinician-Educator & Global Mental Health Researcher","medicalSpecialty":"Psychiatric","worksFor":[{"@type":"Hospital","name":"McLean Hospital"},{"@type":"Hospital","name":"Massachusetts General Hospital"},{"@type":"CollegeOrUniversity","name":"Harvard Medical School"}],"sameAs":["https://www.linkedin.com/in/rick-wolthusen-md-mpp-33101359/","https://web.facebook.com/rick.wolthusen"]}
 </script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap');
@@ -37,8 +37,9 @@ html{scroll-behavior:smooth;scroll-padding-top:96px}
 .floating{animation:f 7s ease-in-out infinite}@keyframes f{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 .float-slow{animation:f 9s ease-in-out 1.2s infinite}
 .slider{overflow:hidden;background:#0a0f1e}
-.slider-track{display:flex;height:100%;transition:transform .8s cubic-bezier(.23,1,.32,1);will-change:transform}
-.slider-slide{flex:0 0 100%;height:100%}
+.slider-track{position:absolute;inset:0}
+.slider-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.15s ease-in-out;pointer-events:none}
+.slider-slide.active{opacity:1}
 .slider-slide img{width:100%;height:100%;object-fit:cover;display:block}
 .slider-nav{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;background:rgba(10,15,30,.55);border:1px solid rgba(255,255,255,.15);color:#fff;backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .3s,border-color .3s;z-index:20;font-size:.85rem}
 .slider-nav:hover{background:rgba(96,165,250,.35);border-color:rgba(96,165,250,.6)}
@@ -124,10 +125,10 @@ body.cursor-on #cursorGlow{opacity:1}
     </a>
     <div class="hidden lg:flex items-center gap-7 text-sm font-medium">
       <a href="#about" class="nav-link hover:text-blue-400">About</a>
-      <a href="#services" class="nav-link hover:text-blue-400">Services</a>
+      <a href="#services" class="nav-link hover:text-blue-400">Focus</a>
       <a href="#media" class="nav-link hover:text-blue-400">Talks & Media</a>
       <a href="#publications" class="nav-link hover:text-blue-400">Publications</a>
-      <a href="#testimonials" class="nav-link hover:text-blue-400">Testimonials</a>
+      <a href="#recognition" class="nav-link hover:text-blue-400">Recognition</a>
       <a href="#gallery" class="nav-link hover:text-blue-400">Gallery</a>
       <a href="#contact" class="nav-link hover:text-blue-400">Contact</a>
     </div>
@@ -138,10 +139,10 @@ body.cursor-on #cursorGlow{opacity:1}
   </div>
   <div id="mmenu" class="hidden lg:hidden mx-4 mb-4 rounded-2xl p-6 space-y-4 font-medium bg-slate-900/95 border border-white/10">
     <a href="#about" onclick="toggleMenu()" class="block hover:text-blue-400">About</a>
-    <a href="#services" onclick="toggleMenu()" class="block hover:text-blue-400">Services</a>
+    <a href="#services" onclick="toggleMenu()" class="block hover:text-blue-400">Focus</a>
     <a href="#media" onclick="toggleMenu()" class="block hover:text-blue-400">Talks & Media</a>
     <a href="#publications" onclick="toggleMenu()" class="block hover:text-blue-400">Publications</a>
-    <a href="#testimonials" onclick="toggleMenu()" class="block hover:text-blue-400">Testimonials</a>
+    <a href="#recognition" onclick="toggleMenu()" class="block hover:text-blue-400">Recognition</a>
     <a href="#gallery" onclick="toggleMenu()" class="block hover:text-blue-400">Gallery</a>
     <a href="#contact" onclick="toggleMenu()" class="block hover:text-blue-400">Contact</a>
     <button onclick="toggleMenu();showModal()" class="w-full px-6 py-3 rounded-2xl btn-grad font-semibold">Get in touch</button>
@@ -153,11 +154,12 @@ body.cursor-on #cursorGlow{opacity:1}
   <!-- Background photo slider -->
   <div class="slider absolute inset-0 z-0">
     <div class="slider-track h-full">
-      <div class="slider-slide"><img src="images/slide-1.jpg" alt="Dr. Rick Wolthusen — photo 1" decoding="async"></div>
-      <div class="slider-slide"><img src="images/slide-2.jpg" alt="Dr. Rick Wolthusen — photo 2" decoding="async"></div>
-      <div class="slider-slide"><img src="images/slide-3.jpg" alt="Dr. Rick Wolthusen — photo 3" decoding="async"></div>
-      <div class="slider-slide"><img src="images/slide-4.jpg" alt="Dr. Rick Wolthusen — photo 4" decoding="async"></div>
-      <div class="slider-slide"><img src="images/slide-5.jpg" alt="Dr. Rick Wolthusen — photo 5" decoding="async"></div>
+      <div class="slider-slide active"><img src="images/hero-1.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 1" fetchpriority="high" decoding="async"></div>
+      <div class="slider-slide"><img src="images/hero-2.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 2" decoding="async"></div>
+      <div class="slider-slide"><img src="images/hero-3.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 3" decoding="async"></div>
+      <div class="slider-slide"><img src="images/hero-4.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 4" decoding="async"></div>
+      <div class="slider-slide"><img src="images/hero-5.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 5" decoding="async"></div>
+      <div class="slider-slide"><img src="images/hero-6.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 6" decoding="async"></div>
     </div>
   </div>
   <!-- Thin film for legibility -->
@@ -180,8 +182,8 @@ body.cursor-on #cursorGlow{opacity:1}
         <span class="text-xs sm:text-sm font-medium tracking-wider">McLEAN HOSPITAL • HARVARD MEDICAL SCHOOL</span>
       </div>
       <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tighter leading-[0.95] serif mb-6">Rick Peter Fritz<br><span class="text-blue-400">Wolthusen</span></h1>
-      <p class="max-w-md text-xl md:text-2xl text-slate-300 font-light mb-4">Psychiatrist. Physician-Scientist.<br>Global Mental Health Leader.</p>
-      <p class="max-w-lg text-slate-400 mb-10">Bridging world-class clinical psychiatry with community-driven brain health innovation — from Boston to Accra, and beyond.</p>
+      <p class="max-w-md text-xl md:text-2xl text-slate-300 font-light mb-4">Psychiatrist. Clinician-Educator.<br>Global Mental Health Researcher.</p>
+      <p class="max-w-lg text-slate-400 mb-10">I work to improve the care of people with severe mental illness — bridging clinical practice, research, teaching, and community partnership across Boston, Ghana, Kenya, and beyond.</p>
       <div class="flex flex-wrap gap-4">
         <a href="#about" class="group px-8 py-4 rounded-3xl bg-white text-slate-950 font-semibold flex items-center gap-3 hover:bg-blue-50 shadow-lg shadow-black/20 active:scale-95 transition-all">Explore my work <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i></a>
         <a href="https://www.linkedin.com/in/rick-wolthusen-md-mpp-33101359/" target="_blank" rel="noopener" class="px-7 py-4 rounded-3xl border border-white/30 hover:bg-white/5 font-medium flex items-center gap-3 transition-all group"><i class="fa-brands fa-linkedin text-xl text-blue-400 group-hover:text-blue-300 transition-transform"></i>LinkedIn</a>
@@ -198,6 +200,7 @@ body.cursor-on #cursorGlow{opacity:1}
     <button class="slider-dot" onclick="sGo(2)" aria-label="Go to slide 3"></button>
     <button class="slider-dot" onclick="sGo(3)" aria-label="Go to slide 4"></button>
     <button class="slider-dot" onclick="sGo(4)" aria-label="Go to slide 5"></button>
+    <button class="slider-dot" onclick="sGo(5)" aria-label="Go to slide 6"></button>
   </div>
   <button class="slider-pause bottom-6 right-6" onclick="sTogglePause()" aria-label="Pause slideshow"><i id="sliderPauseIcon" class="fa-solid fa-pause"></i></button>
   <!-- Floating chips -->
@@ -226,18 +229,18 @@ body.cursor-on #cursorGlow{opacity:1}
     </div>
     <div class="bg-slate-900 p-8 group hover:bg-slate-800/70 transition-colors duration-300">
       <i class="fa-solid fa-globe text-2xl text-emerald-400/70 mb-3 block group-hover:text-emerald-300 group-hover:scale-110 transition-all duration-300"></i>
-      <div class="text-5xl md:text-6xl font-semibold tracking-tighter text-emerald-400" data-count="4">0</div>
-      <div class="text-sm text-slate-400 mt-1">Countries of Active Impact</div>
+      <div class="text-5xl md:text-6xl font-semibold tracking-tighter text-emerald-400" data-count="8">0</div>
+      <div class="text-sm text-slate-400 mt-1">Countries of Active Partnership</div>
     </div>
     <div class="bg-slate-900 p-8 group hover:bg-slate-800/70 transition-colors duration-300">
       <i class="fa-solid fa-file-lines text-2xl text-amber-400/70 mb-3 block group-hover:text-amber-300 group-hover:scale-110 transition-all duration-300"></i>
-      <div class="text-5xl md:text-6xl font-semibold tracking-tighter text-amber-400" data-count="20">0</div>
+      <div class="text-5xl md:text-6xl font-semibold tracking-tighter text-amber-400" data-count="30">0</div>
       <div class="text-sm text-slate-400 mt-1">Peer-Reviewed Publications+</div>
     </div>
     <div class="bg-slate-900 p-8 group hover:bg-slate-800/70 transition-colors duration-300">
-      <i class="fa-solid fa-heart text-2xl text-rose-400/70 mb-3 block group-hover:text-rose-300 group-hover:scale-110 transition-all duration-300"></i>
-      <div class="text-5xl md:text-6xl font-semibold tracking-tighter text-rose-400 inf-pop">∞</div>
-      <div class="text-sm text-slate-400 mt-1">Lives Touched</div>
+      <i class="fa-solid fa-people-group text-2xl text-rose-400/70 mb-3 block group-hover:text-rose-300 group-hover:scale-110 transition-all duration-300"></i>
+      <div class="text-5xl md:text-6xl font-semibold tracking-tighter text-rose-400 inf-pop" data-count="60000">0</div>
+      <div class="text-sm text-slate-400 mt-1">Community Members Reached</div>
     </div>
   </div>
 </div>
@@ -248,29 +251,30 @@ body.cursor-on #cursorGlow{opacity:1}
     <div class="lg:col-span-5 reveal">
       <div class="relative w-full max-w-md mx-auto">
         <div class="absolute -inset-3 bg-gradient-to-br from-blue-500/30 to-emerald-500/20 rounded-[2rem] blur-2xl"></div>
-        <img src="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/11908054/rAPdfGf2dFswwNAQ?Expires=1789427778&Signature=vLqVVFuPWYanvstGrcS4Gy7-CyU9Vnus9oHqfhr1gdPWrJiYDL8UcyM-kiRLhhVD-6r2eQdUX9RuKF6hoyJx0L~xok6wvSg-8Z6lqVrc~h8xjW7creukC8VZgQpOhDyZDmKeS6gZPNH741-4-fAIP4EaOM9Umzb-MckUAxi3N5GtCpm5smeNuRgcReUhDQFWGnJrCSQz3YZcw~KQ4vaW3frPWDp4fKJsV7cqaABXOdh1wVoeQ~eC5JfNuTL9PoMw1kTuQ-QVioO6AU-cQDHTkXj5hOZzw3TLjo4R902Zr--yWh5u9hn-BIKvKrXz66bF~A72A3UT2x3ozEeIA2-KHA__&Key-Pair-Id=K3USGZIKWMDCSX" alt="Dr. Rick Wolthusen professional portrait" class="rounded-3xl w-full shadow-2xl border border-white/10 relative" loading="lazy" decoding="async">
+        <img src="images/portrait.jpg" alt="Portrait of Dr. Rick Wolthusen" class="rounded-3xl w-full shadow-2xl border border-white/10 relative" loading="lazy" decoding="async">
         <div class="absolute -bottom-5 left-1/2 -translate-x-1/2 flex gap-2 flex-wrap justify-center">
-          <span class="px-4 py-2 rounded-2xl glass bg-slate-900/80 text-xs font-semibold shadow-xl backdrop-blur">MD — Germany</span>
+          <span class="px-4 py-2 rounded-2xl glass bg-slate-900/80 text-xs font-semibold shadow-xl backdrop-blur">MD — TU Dresden</span>
           <span class="px-4 py-2 rounded-2xl glass bg-slate-900/80 text-xs font-semibold shadow-xl backdrop-blur">MPP — Harvard Kennedy</span>
-          <span class="px-4 py-2 rounded-2xl glass bg-slate-900/80 text-xs font-semibold shadow-xl backdrop-blur">Residency — Duke</span>
+          <span class="px-4 py-2 rounded-2xl glass bg-slate-900/80 text-xs font-semibold shadow-xl backdrop-blur">Residency — Duke &amp; Middlemore NZ</span>
         </div>
       </div>
     </div>
     <div class="lg:col-span-7 reveal">
       <div class="uppercase tracking-[4px] text-xs font-semibold text-blue-400 mb-3">CHAPTER I — ABOUT</div>
-      <h2 class="sh serif mb-4">A physician-scientist with a global vision.</h2>
+      <h2 class="sh serif mb-4">Improving care for severe mental illness, locally and globally.</h2>
       <div class="aline mb-8"></div>
       <div class="space-y-5 text-lg text-slate-300 leading-relaxed">
-        <p>Born in East Germany, <strong class="text-white">Dr. Rick Wolthusen</strong> combines European scientific rigor, American clinical excellence, and a deep commitment to communities across Africa. He is a Staff Psychiatrist with the Schizophrenia and Bipolar Disorder Inpatient Program at <strong class="text-white">McLean Hospital</strong> and an Instructor in Psychiatry at <strong class="text-white">Harvard Medical School</strong>.</p>
-        <p>After earning his MD in Germany, Rick completed a <strong class="text-white">Master of Public Policy</strong> at the Harvard Kennedy School and his psychiatry residency at <strong class="text-white">Duke University</strong> — uniquely equipping him to work at the intersection of medicine, policy, and health systems.</p>
-        <p>As Co-Founder and Director of the non-profit <strong class="text-white">On The Move e.V.</strong>, he champions brain health, fights stigma, and builds community mental health capacity in <strong class="text-white">Ghana and Kenya</strong> — in partnership with the University of Ghana and international collaborators such as Deconstructing Stigma.</p>
+        <p><strong class="text-white">Dr. Rick Wolthusen</strong> is a psychiatrist in the Division of Psychotic Disorders at <strong class="text-white">McLean Hospital</strong> and an Instructor in Psychiatry at <strong class="text-white">Harvard Medical School</strong>. His clinical work focuses on people living with psychosis, bipolar disorder, and catatonia — including complex, recurrent forms of catatonia that may require longer-term management.</p>
+        <p>His research grows directly out of clinical practice. He has published on catatonia across a range of settings, including low-resource environments and different linguistic and cultural contexts, and serves on the <strong class="text-white">Medical Advisory Board of the Catatonia Foundation</strong>. He is also Head of Training and Education for the Chester M. Pierce Division of Global Psychiatry at <strong class="text-white">Massachusetts General Hospital</strong>.</p>
+        <p>A central theme of his work is strengthening the connection between specialist psychiatric care and the communities in which patients live — partnering with patients, families, community health workers, and religious and community leaders to improve recognition of severe mental illness, reduce stigma, and support sustained engagement with care. This work spans <strong class="text-white">Ghana, Kenya, Rwanda, Ecuador, South Africa, Australia, and New Zealand</strong>.</p>
       </div>
       <div class="flex flex-wrap gap-3 mt-8">
+        <span class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-default">Catatonia</span>
+        <span class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-default">Severe Mental Illness</span>
+        <span class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-default">Psychosis &amp; Bipolar Disorder</span>
         <span class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-default">Global Mental Health</span>
-        <span class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-default">Community Psychiatry</span>
-        <span class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-default">Health Policy</span>
-        <span class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-default">Neuroimaging Research</span>
-        <span class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-default">Anti-Stigma Advocacy</span>
+        <span class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-default">Community Partnership</span>
+        <span class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-default">Medical Education</span>
       </div>
     </div>
   </div>
@@ -279,45 +283,45 @@ body.cursor-on #cursorGlow{opacity:1}
 <!-- SERVICES -->
 <section id="services" class="max-w-screen-2xl mx-auto px-6 py-20 border-t border-white/10">
   <div class="max-w-2xl mb-12 reveal">
-    <div class="uppercase tracking-[4px] text-xs font-semibold text-blue-400 mb-3">CHAPTER II — SERVICES & EXPERTISE</div>
-    <h2 class="sh serif">What I offer.</h2><div class="aline mt-5"></div>
+    <div class="uppercase tracking-[4px] text-xs font-semibold text-blue-400 mb-3">CHAPTER II — AREAS OF FOCUS</div>
+    <h2 class="sh serif">What I do.</h2><div class="aline mt-5"></div>
   </div>
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
     <div class="card glass p-8 rounded-3xl reveal d1">
       <div class="icon-chip"><i class="fa-solid fa-brain"></i></div>
       <h3 class="font-semibold text-2xl my-3">Clinical Psychiatry</h3>
-      <p class="text-slate-300">Expert inpatient care for psychotic disorders, schizophrenia, bipolar disorder, and complex psychiatric presentations at McLean Hospital.</p>
-      <div class="text-xs text-slate-500 mt-4 tracking-wide">Inpatient Care · Psychosis</div>
+      <p class="text-slate-300">Inpatient care in the Division of Psychotic Disorders at McLean Hospital, for people living with psychosis, bipolar disorder, and complex neuropsychiatric conditions.</p>
+      <div class="text-xs text-slate-500 mt-4 tracking-wide">McLean Hospital · Inpatient Care</div>
     </div>
     <div class="card glass p-8 rounded-3xl reveal d2">
-      <div class="icon-chip"><i class="fa-solid fa-globe"></i></div>
-      <h3 class="font-semibold text-2xl my-3">Global Mental Health</h3>
-      <p class="text-slate-300">Designing sustainable, culturally adapted mental health interventions in low-resource settings across Ghana, Kenya, and beyond.</p>
-      <div class="text-xs text-slate-500 mt-4 tracking-wide">Ghana · Kenya · Systems</div>
+      <div class="icon-chip"><i class="fa-solid fa-heart-pulse"></i></div>
+      <h3 class="font-semibold text-2xl my-3">Catatonia</h3>
+      <p class="text-slate-300">Improving the recognition, conceptualisation, and treatment of catatonia — including recurrent and persistent forms that may need longer-term management.</p>
+      <div class="text-xs text-slate-500 mt-4 tracking-wide">Catatonia Foundation · Consultation</div>
     </div>
     <div class="card glass p-8 rounded-3xl reveal d3">
-      <div class="icon-chip"><i class="fa-solid fa-users-gear"></i></div>
-      <h3 class="font-semibold text-2xl my-3">Task-Shifting & Training</h3>
-      <p class="text-slate-300">Building capacity through community health worker training, task-shifting models, and train-the-trainer programs that scale care.</p>
-      <div class="text-xs text-slate-500 mt-4 tracking-wide">Training · Community Workers</div>
+      <div class="icon-chip"><i class="fa-solid fa-globe"></i></div>
+      <h3 class="font-semibold text-2xl my-3">Global Mental Health</h3>
+      <p class="text-slate-300">Developing global mental health curricula and training partnerships — as Head of Training and Education in the Chester M. Pierce Division of Global Psychiatry.</p>
+      <div class="text-xs text-slate-500 mt-4 tracking-wide">Mass General · Ghana · Kenya</div>
     </div>
     <div class="card glass p-8 rounded-3xl reveal d4">
-      <div class="icon-chip"><i class="fa-solid fa-scale-balanced"></i></div>
-      <h3 class="font-semibold text-2xl my-3">Policy & Advocacy</h3>
-      <p class="text-slate-300">Advising local and national governments on community mental health legislation, informed by an MPP and hands-on field experience.</p>
-      <div class="text-xs text-slate-500 mt-4 tracking-wide">Governments · Legislation</div>
+      <div class="icon-chip"><i class="fa-solid fa-chalkboard-user"></i></div>
+      <h3 class="font-semibold text-2xl my-3">Teaching & Supervision</h3>
+      <p class="text-slate-300">Supervising residents and medical students and teaching clinical reasoning around psychosis, catatonia, clozapine, ECT, and other complex presentations.</p>
+      <div class="text-xs text-slate-500 mt-4 tracking-wide">Residents · Curricula · Case Conferences</div>
     </div>
     <div class="card glass p-8 rounded-3xl reveal d5">
       <div class="icon-chip"><i class="fa-solid fa-microscope"></i></div>
-      <h3 class="font-semibold text-2xl my-3">Research & Publications</h3>
-      <p class="text-slate-300">Physician-scientist bridging neuroimaging, genetics, and implementation science — including ENIGMA consortium collaborations.</p>
-      <div class="text-xs text-slate-500 mt-4 tracking-wide">ENIGMA · Neuroimaging</div>
+      <h3 class="font-semibold text-2xl my-3">Clinical Research</h3>
+      <p class="text-slate-300">Scholarship that grows directly from clinical questions — publishing on catatonia and severe mental illness across cultural, linguistic, and low-resource settings.</p>
+      <div class="text-xs text-slate-500 mt-4 tracking-wide">Catatonia · Outcomes · Publications</div>
     </div>
     <div class="card glass p-8 rounded-3xl reveal d6">
-      <div class="icon-chip"><i class="fa-solid fa-chalkboard-user"></i></div>
-      <h3 class="font-semibold text-2xl my-3">Speaking & Teaching</h3>
-      <p class="text-slate-300">TEDx speaker, Harvard Medical School instructor, and CPD facilitator — demystifying psychiatry and deconstructing stigma worldwide.</p>
-      <div class="text-xs text-slate-500 mt-4 tracking-wide">TEDx · CPD · Teaching</div>
+      <div class="icon-chip"><i class="fa-solid fa-people-group"></i></div>
+      <h3 class="font-semibold text-2xl my-3">Policy & Community Partnership</h3>
+      <p class="text-slate-300">Working with governments, community health workers, and religious and community leaders to strengthen pathways to care and reduce stigma.</p>
+      <div class="text-xs text-slate-500 mt-4 tracking-wide">Policy · Community · Anti-Stigma</div>
     </div>
   </div>
 </section>
@@ -329,7 +333,7 @@ body.cursor-on #cursorGlow{opacity:1}
     <h2 class="sh serif">Ideas worth sharing.</h2><div class="aline mt-5"></div>
     <p class="text-slate-400 mt-4 text-sm">Videos play right here on the page — just press play.</p>
   </div>
-  <div class="grid md:grid-cols-2 gap-8">
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
     <div class="glass rounded-3xl p-5 reveal card">
       <button onclick="openVideo('BmqVsCx2qVQ')" class="video-thumb relative w-full aspect-video rounded-2xl overflow-hidden block bg-gradient-to-br from-blue-900 to-slate-900 group" aria-label="Play TED Talk video">
         <img src="https://i.ytimg.com/vi/BmqVsCx2qVQ/hqdefault.jpg" alt="Rick Wolthusen TED Talk" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" onerror="this.style.display='none'">
@@ -348,6 +352,23 @@ body.cursor-on #cursorGlow{opacity:1}
       </button>
       <div class="p-4"><h3 class="font-semibold text-xl mb-1">Global-Local Paradigm in Mental Health</h3><p class="text-slate-400 text-sm">Task-shifting: bringing lessons from afar to our doorsteps.</p></div>
     </div>
+    <div class="glass rounded-3xl p-5 reveal card">
+      <button onclick="openVideo('xqVDRxsiW5s')" class="video-thumb relative w-full aspect-video rounded-2xl overflow-hidden block bg-gradient-to-br from-indigo-900 to-slate-900 group" aria-label="Play featured video">
+        <img src="https://i.ytimg.com/vi/xqVDRxsiW5s/hqdefault.jpg" alt="Featured video" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" onerror="this.style.display='none'">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20"></div>
+        <span class="play-btn"><i class="fa-solid fa-play ml-0.5"></i></span>
+        <span class="absolute bottom-3 left-4 px-3 py-1 rounded-full glass text-[11px] font-semibold tracking-wider text-white">VIDEO</span>
+      </button>
+      <div class="p-4"><h3 class="font-semibold text-xl mb-1">Featured Video</h3><p class="text-slate-400 text-sm">A recent video — press play to watch it here on the page.</p></div>
+    </div>
+  </div>
+  <div class="mt-10 reveal">
+    <div class="text-xs uppercase tracking-[4px] text-slate-500 mb-4">More videos &amp; links</div>
+    <div class="flex flex-wrap gap-3">
+      <a href="https://www.youtube.com/results?search_query=rick+wolthusen" target="_blank" rel="noopener" class="inline-flex items-center gap-3 px-6 py-3 rounded-2xl border border-white/20 hover:bg-white/5 hover:border-red-400/60 transition-all group"><i class="fa-brands fa-youtube text-red-400"></i> More videos on YouTube</a>
+      <a href="https://share.google/317dIRB1ZCpqWxzrU" target="_blank" rel="noopener" class="inline-flex items-center gap-3 px-6 py-3 rounded-2xl border border-white/20 hover:bg-white/5 hover:border-blue-400/60 transition-all group"><i class="fa-brands fa-google text-blue-400"></i> Featured coverage on Google</a>
+      <a href="https://www.linkedin.com/in/rick-wolthusen-md-mpp-33101359/" target="_blank" rel="noopener" class="inline-flex items-center gap-3 px-6 py-3 rounded-2xl border border-white/20 hover:bg-white/5 hover:border-blue-400/60 transition-all group"><i class="fa-brands fa-linkedin text-blue-400"></i> Connect on LinkedIn</a>
+    </div>
   </div>
 </section>
 
@@ -360,57 +381,79 @@ body.cursor-on #cursorGlow{opacity:1}
   </div>
   <div class="space-y-4">
 
-    <div class="pub card glass p-6 rounded-3xl flex flex-col md:flex-row md:items-start gap-4 reveal" data-url="https://psychiatryonline.org/doi/10.1176/appi.pn.2026.03.3.8" role="button" tabindex="0" aria-expanded="false" title="Click to preview summary — click again to open">
-      <div class="pub-cover c-emerald"><span class="pub-abbr">PN</span><i class="fa-solid fa-newspaper"></i></div>
+    <div class="pub card glass p-6 rounded-3xl flex flex-col md:flex-row md:items-start gap-4 reveal" data-url="https://www.sciencedirect.com/science/article/abs/pii/S0920996426002823" role="button" tabindex="0" aria-expanded="false" title="Click to preview summary — click again to open">
+      <div class="pub-cover c-blue"><span class="pub-abbr">CAT</span><i class="fa-solid fa-heart-pulse"></i></div>
       <div class="flex-1">
-        <div class="font-semibold text-lg">Reflections From Ghana on Psychiatry, Community, and Mutual Growth</div>
-        <div class="text-sm text-slate-400 mt-1">Wolthusen RP • Psychiatric News • 2026</div>
-        <div class="flex items-center gap-3 mt-3"><span class="px-4 py-1 text-xs rounded-full border border-emerald-400/40 text-emerald-300 w-max">Global Health</span><span class="text-xs text-slate-500">Preview</span></div>
-        <div class="pub-summary"><p class="text-sm text-slate-300 leading-relaxed">A first-person reflection from Ghana on how community connection and mutual learning shape meaningful psychiatric practice across cultures — and what the Global North can learn in return.</p><span class="pub-open-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Read full publication</span></div>
+        <div class="font-semibold text-lg">A Two-Stage Allostatic Model of Catatonia: From Severity Marker to Sensitized Vulnerability</div>
+        <div class="text-sm text-slate-400 mt-1">Wolthusen RPF, Valcourt SC, England ML, Stoklosa JB • Schizophrenia Research • 2026</div>
+        <div class="flex items-center gap-3 mt-3"><span class="px-4 py-1 text-xs rounded-full border border-blue-400/40 text-blue-300 w-max">Catatonia</span><span class="text-xs text-slate-500">Preview</span></div>
+        <div class="pub-summary"><p class="text-sm text-slate-300 leading-relaxed">A new framework reframing catatonia as a condition that can recur and sensitise over time — with direct implications for how clinicians treat, taper, and monitor it.</p><span class="pub-open-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Read full publication</span></div>
       </div>
       <div class="pub-chevron md:mt-2"><i class="fa-solid fa-chevron-down"></i></div>
     </div>
 
-    <div class="pub card glass p-6 rounded-3xl flex flex-col md:flex-row md:items-start gap-4 reveal" data-url="https://pmc.ncbi.nlm.nih.gov/articles/PMC11733618/" role="button" tabindex="0" aria-expanded="false" title="Click to preview summary — click again to open">
-      <div class="pub-cover c-blue"><span class="pub-abbr">DMH</span><i class="fa-solid fa-mobile-screen-button"></i></div>
+    <div class="pub card glass p-6 rounded-3xl flex flex-col md:flex-row md:items-start gap-4 reveal" data-url="https://scholar.google.com/scholar?q=Belz+Wolthusen+catatonia+low+and+middle-income+countries+scoping+review" role="button" tabindex="0" aria-expanded="false" title="Click to preview summary — click again to open">
+      <div class="pub-cover c-indigo"><span class="pub-abbr">CAT</span><i class="fa-solid fa-list-check"></i></div>
       <div class="flex-1">
-        <div class="font-semibold text-lg">Early Career Psychiatrists' Perceptions of and Training in Digital Mental Health</div>
-        <div class="text-sm text-slate-400 mt-1">Țăpoi C, … Wolthusen RPF • 2025</div>
-        <div class="flex items-center gap-3 mt-3"><span class="px-4 py-1 text-xs rounded-full border border-blue-400/40 text-blue-300 w-max">Digital Psychiatry</span><span class="text-xs text-slate-500">Preview</span></div>
-        <div class="pub-summary"><p class="text-sm text-slate-300 leading-relaxed">An international survey of early-career psychiatrists exploring their readiness for and attitudes toward digital mental health tools — and the training gaps that must close.</p><span class="pub-open-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Read full publication</span></div>
+        <div class="font-semibold text-lg">Diagnosing and Treating Catatonia in Low- and Middle-Income Countries: A Scoping Review</div>
+        <div class="text-sm text-slate-400 mt-1">Belz F, … Wolthusen RPF • Comprehensive Psychiatry • 2025</div>
+        <div class="flex items-center gap-3 mt-3"><span class="px-4 py-1 text-xs rounded-full border border-indigo-400/40 text-indigo-300 w-max">Catatonia</span><span class="text-xs text-slate-500">Preview</span></div>
+        <div class="pub-summary"><p class="text-sm text-slate-300 leading-relaxed">A scoping review of how catatonia is recognised and treated where psychiatric resources are scarce — and what high-income systems can learn in return.</p><span class="pub-open-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Read full publication</span></div>
+      </div>
+      <div class="pub-chevron md:mt-2"><i class="fa-solid fa-chevron-down"></i></div>
+    </div>
+
+    <div class="pub card glass p-6 rounded-3xl flex flex-col md:flex-row md:items-start gap-4 reveal" data-url="https://scholar.google.com/scholar?q=Wolthusen+Kumado+Adomdza+Brain+Spirit+Desk+design+thinking+mental+health" role="button" tabindex="0" aria-expanded="false" title="Click to preview summary — click again to open">
+      <div class="pub-cover c-emerald"><span class="pub-abbr">BSD</span><i class="fa-solid fa-lightbulb"></i></div>
+      <div class="flex-1">
+        <div class="font-semibold text-lg">Design Thinking for Cross-Sector Collaboration in Mental Health: The Brain Spirit Desk Model</div>
+        <div class="text-sm text-slate-400 mt-1">Wolthusen RPF, Kumado JA, Adomdza GK • Psychiatric Services • 2025</div>
+        <div class="flex items-center gap-3 mt-3"><span class="px-4 py-1 text-xs rounded-full border border-emerald-400/40 text-emerald-300 w-max">Global Health</span><span class="text-xs text-slate-500">Preview</span></div>
+        <div class="pub-summary"><p class="text-sm text-slate-300 leading-relaxed">How a collaborative 'desk' in Ghana brings mental health professionals together with religious and community leaders — increasing screening, referral, and trust.</p><span class="pub-open-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Read full publication</span></div>
+      </div>
+      <div class="pub-chevron md:mt-2"><i class="fa-solid fa-chevron-down"></i></div>
+    </div>
+
+    <div class="pub card glass p-6 rounded-3xl flex flex-col md:flex-row md:items-start gap-4 reveal" data-url="https://scholar.google.com/scholar?q=Meyerson+Shepard+Wolthusen+financing+community+mental+health+worker+programs" role="button" tabindex="0" aria-expanded="false" title="Click to preview summary — click again to open">
+      <div class="pub-cover c-amber"><span class="pub-abbr">CHW</span><i class="fa-solid fa-coins"></i></div>
+      <div class="flex-1">
+        <div class="font-semibold text-lg">Financing Community Mental Health Worker Programs in the United States: Three Paths Forward</div>
+        <div class="text-sm text-slate-400 mt-1">Meyerson J, Shepard M, Wolthusen RPF • Community Mental Health Journal • 2026</div>
+        <div class="flex items-center gap-3 mt-3"><span class="px-4 py-1 text-xs rounded-full border border-amber-400/40 text-amber-300 w-max">Health Policy</span><span class="text-xs text-slate-500">Preview</span></div>
+        <div class="pub-summary"><p class="text-sm text-slate-300 leading-relaxed">Three practical financing pathways for sustaining community mental health worker programmes — a workforce model drawn from global mental health practice.</p><span class="pub-open-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Read full publication</span></div>
       </div>
       <div class="pub-chevron md:mt-2"><i class="fa-solid fa-chevron-down"></i></div>
     </div>
 
     <div class="pub card glass p-6 rounded-3xl flex flex-col md:flex-row md:items-start gap-4 reveal" data-url="https://link.springer.com/article/10.1007/s40596-026-02406-9" role="button" tabindex="0" aria-expanded="false" title="Click to preview summary — click again to open">
-      <div class="pub-cover c-indigo"><span class="pub-abbr">AI</span><i class="fa-solid fa-robot"></i></div>
+      <div class="pub-cover c-cyan"><span class="pub-abbr">AI</span><i class="fa-solid fa-robot"></i></div>
       <div class="flex-1">
-        <div class="font-semibold text-lg">Artificial Intelligence in Psychiatric Graduate Medical Education (cited work: Wolthusen RP, El-Tohami M, Hendler RA, Riordan PA, Stoklosa JB)</div>
-        <div class="text-sm text-slate-400 mt-1">Academic Psychiatry • 2024–2026</div>
-        <div class="flex items-center gap-3 mt-3"><span class="px-4 py-1 text-xs rounded-full border border-blue-400/40 text-blue-300 w-max">AI & Education</span><span class="text-xs text-slate-500">Preview</span></div>
-        <div class="pub-summary"><p class="text-sm text-slate-300 leading-relaxed">A forward-looking examination of how artificial intelligence is reshaping psychiatric residency training — and what educators and trainees must prepare for.</p><span class="pub-open-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Read full publication</span></div>
+        <div class="font-semibold text-lg">A Framework for Artificial Intelligence in Medical Education: Could I, Would I, Should I?</div>
+        <div class="text-sm text-slate-400 mt-1">Wolthusen RPF, El-Tohami M, Hendler RA, Riordan PA, Stoklosa JB • Academic Psychiatry • 2024</div>
+        <div class="flex items-center gap-3 mt-3"><span class="px-4 py-1 text-xs rounded-full border border-cyan-400/40 text-cyan-300 w-max">AI &amp; Education</span><span class="text-xs text-slate-500">Preview</span></div>
+        <div class="pub-summary"><p class="text-sm text-slate-300 leading-relaxed">A practical framework helping educators and trainees decide when artificial intelligence genuinely adds value to psychiatric training — and when it does not.</p><span class="pub-open-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Read full publication</span></div>
       </div>
       <div class="pub-chevron md:mt-2"><i class="fa-solid fa-chevron-down"></i></div>
     </div>
 
-    <div class="pub card glass p-6 rounded-3xl flex flex-col md:flex-row md:items-start gap-4 reveal" data-url="https://psychiatryonline.org/doi/10.1176/appi.ps.20230348" role="button" tabindex="0" aria-expanded="false" title="Click to preview summary — click again to open">
-      <div class="pub-cover c-amber"><span class="pub-abbr">PS</span><i class="fa-solid fa-user-doctor"></i></div>
+    <div class="pub card glass p-6 rounded-3xl flex flex-col md:flex-row md:items-start gap-4 reveal" data-url="https://scholar.google.com/scholar?q=Wolthusen+socioecological+model+equity+inclusion+global+mental+health+conferences" role="button" tabindex="0" aria-expanded="false" title="Click to preview summary — click again to open">
+      <div class="pub-cover c-teal"><span class="pub-abbr">WCP</span><i class="fa-solid fa-people-arrows"></i></div>
       <div class="flex-1">
-        <div class="font-semibold text-lg">Alleviating the Behavioral Health Workforce Shortage</div>
-        <div class="text-sm text-slate-400 mt-1">Belz FF, Wolthusen RP • Psychiatric Services • 2024</div>
-        <div class="flex items-center gap-3 mt-3"><span class="px-4 py-1 text-xs rounded-full border border-amber-400/40 text-amber-300 w-max">Health Policy</span><span class="text-xs text-slate-500">Preview</span></div>
-        <div class="pub-summary"><p class="text-sm text-slate-300 leading-relaxed">A policy-focused analysis of strategies to expand and sustain the behavioral health workforce — a critical bottleneck for equitable mental health care.</p><span class="pub-open-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Read full publication</span></div>
+        <div class="font-semibold text-lg">Applying a Socioecological Model Lens to Improve Equity and Inclusion in Global Mental Health Conferences</div>
+        <div class="text-sm text-slate-400 mt-1">Wolthusen RPF, Read U, Kpobi L, et al. • World Cultural Psychiatry Research Review • 2025</div>
+        <div class="flex items-center gap-3 mt-3"><span class="px-4 py-1 text-xs rounded-full border border-teal-400/40 text-teal-300 w-max">Global Health</span><span class="text-xs text-slate-500">Preview</span></div>
+        <div class="pub-summary"><p class="text-sm text-slate-300 leading-relaxed">A practical analysis of who gets to speak, lead, and be heard at global mental health conferences — and how to make the field measurably more inclusive.</p><span class="pub-open-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Read full publication</span></div>
       </div>
       <div class="pub-chevron md:mt-2"><i class="fa-solid fa-chevron-down"></i></div>
     </div>
 
-    <div class="pub card glass p-6 rounded-3xl flex flex-col md:flex-row md:items-start gap-4 reveal" data-url="https://psychiatryonline.org/doi/10.1176/appi.pn.2024.09.6.29" role="button" tabindex="0" aria-expanded="false" title="Click to preview summary — click again to open">
-      <div class="pub-cover c-teal"><span class="pub-abbr">PN</span><i class="fa-solid fa-plane"></i></div>
+    <div class="pub card glass p-6 rounded-3xl flex flex-col md:flex-row md:items-start gap-4 reveal" data-url="https://psychiatryonline.org/doi/10.1176/appi.pn.2026.03.3.8" role="button" tabindex="0" aria-expanded="false" title="Click to preview summary — click again to open">
+      <div class="pub-cover c-violet"><span class="pub-abbr">PN</span><i class="fa-solid fa-pen-nib"></i></div>
       <div class="flex-1">
-        <div class="font-semibold text-lg">(Medical) Mission Accomplished: Reflections From a Global Mental Health Experience</div>
-        <div class="text-sm text-slate-400 mt-1">Wolthusen RPF • Psychiatric News • 2024</div>
-        <div class="flex items-center gap-3 mt-3"><span class="px-4 py-1 text-xs rounded-full border border-emerald-400/40 text-emerald-300 w-max">Global Health</span><span class="text-xs text-slate-500">Preview</span></div>
-        <div class="pub-summary"><p class="text-sm text-slate-300 leading-relaxed">A reflective account of a global mental health mission — capturing lessons on humility, partnership, and what sustainable impact really requires.</p><span class="pub-open-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Read full publication</span></div>
+        <div class="font-semibold text-lg">Reflections From Ghana on Psychiatry, Community, and Mutual Growth</div>
+        <div class="text-sm text-slate-400 mt-1">Wolthusen RP • Psychiatric News • 2026</div>
+        <div class="flex items-center gap-3 mt-3"><span class="px-4 py-1 text-xs rounded-full border border-violet-400/40 text-violet-300 w-max">Global Health</span><span class="text-xs text-slate-500">Preview</span></div>
+        <div class="pub-summary"><p class="text-sm text-slate-300 leading-relaxed">A first-person reflection on how community connection and mutual learning shape meaningful psychiatric practice across cultures — and what the Global North can learn in return.</p><span class="pub-open-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Read full publication</span></div>
       </div>
       <div class="pub-chevron md:mt-2"><i class="fa-solid fa-chevron-down"></i></div>
     </div>
@@ -421,77 +464,86 @@ body.cursor-on #cursorGlow{opacity:1}
         <div class="font-semibold text-lg">Cortical Brain Abnormalities in 4,474 Individuals With Schizophrenia (ENIGMA Consortium)</div>
         <div class="text-sm text-slate-400 mt-1">van Erp TGM, … Wolthusen RPF, et al. • Biological Psychiatry • 2018 • 1,100+ citations</div>
         <div class="flex items-center gap-3 mt-3"><span class="px-4 py-1 text-xs rounded-full border border-purple-400/40 text-purple-300 w-max">Neuroimaging</span><span class="text-xs text-slate-500">Preview</span></div>
-        <div class="pub-summary"><p class="text-sm text-slate-300 leading-relaxed">A landmark ENIGMA Consortium mega-analysis (1,100+ citations) mapping cortical thickness and surface area abnormalities across nearly 4,500 individuals with schizophrenia.</p><span class="pub-open-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Read full publication</span></div>
+        <div class="pub-summary"><p class="text-sm text-slate-300 leading-relaxed">A landmark ENIGMA Consortium mega-analysis mapping cortical thickness and surface area abnormalities across nearly 4,500 individuals with schizophrenia.</p><span class="pub-open-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Read full publication</span></div>
       </div>
       <div class="pub-chevron md:mt-2"><i class="fa-solid fa-chevron-down"></i></div>
     </div>
 
-    <div class="pub card glass p-6 rounded-3xl flex flex-col md:flex-row md:items-start gap-4 reveal" data-url="https://www.cambridge.org/core/journals/psychological-medicine/article/prefrontal-cortical-thinning-links-to-negative-symptoms-in-schizophrenia-via-the-enigma-consortium/B7FE158F6DEAE030607B51B586C5C553" role="button" tabindex="0" aria-expanded="false" title="Click to preview summary — click again to open">
-      <div class="pub-cover c-violet"><span class="pub-abbr">PM</span><i class="fa-solid fa-layer-group"></i></div>
-      <div class="flex-1">
-        <div class="font-semibold text-lg">Prefrontal Cortical Thinning Links to Negative Symptoms in Schizophrenia (ENIGMA)</div>
-        <div class="text-sm text-slate-400 mt-1">Walton E, … Wolthusen RPF, et al. • Psychological Medicine • 2018</div>
-        <div class="flex items-center gap-3 mt-3"><span class="px-4 py-1 text-xs rounded-full border border-purple-400/40 text-purple-300 w-max">Neuroimaging</span><span class="text-xs text-slate-500">Preview</span></div>
-        <div class="pub-summary"><p class="text-sm text-slate-300 leading-relaxed">ENIGMA Consortium findings linking prefrontal cortical thinning to negative symptoms — deepening the neuroanatomical understanding of schizophrenia.</p><span class="pub-open-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Read full publication</span></div>
-      </div>
-      <div class="pub-chevron md:mt-2"><i class="fa-solid fa-chevron-down"></i></div>
-    </div>
-
-    <div class="pub card glass p-6 rounded-3xl flex flex-col md:flex-row md:items-start gap-4 reveal" data-url="https://scholar.google.com/scholar?q=Wolthusen+RPF+left+superior+temporal+gyrus" role="button" tabindex="0" aria-expanded="false" title="Click to preview summary — click again to open">
-      <div class="pub-cover c-cyan"><span class="pub-abbr">WJBP</span><i class="fa-solid fa-dna"></i></div>
-      <div class="flex-1">
-        <div class="font-semibold text-lg">Genetic Underpinnings of Left Superior Temporal Gyrus Thickness in Patients With Schizophrenia</div>
-        <div class="text-sm text-slate-400 mt-1">Wolthusen RP, et al. • World Journal of Biological Psychiatry • 2015</div>
-        <div class="flex items-center gap-3 mt-3"><span class="px-4 py-1 text-xs rounded-full border border-purple-400/40 text-purple-300 w-max">Genetics</span><span class="text-xs text-slate-500">Preview</span></div>
-        <div class="pub-summary"><p class="text-sm text-slate-300 leading-relaxed">Among the first studies to explore genetic influences on left superior temporal gyrus thickness in schizophrenia — an early window into the disorder's heritable architecture.</p><span class="pub-open-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Read full publication</span></div>
-      </div>
-      <div class="pub-chevron md:mt-2"><i class="fa-solid fa-chevron-down"></i></div>
-    </div>
-
-    <div class="pub card glass p-6 rounded-3xl flex flex-col md:flex-row md:items-start gap-4 reveal" data-url="https://scholar.google.com/scholar?q=Holt+Boeke+Wolthusen+fear+generalization+faces" role="button" tabindex="0" aria-expanded="false" title="Click to preview summary — click again to open">
-      <div class="pub-cover c-rose"><span class="pub-abbr">FG</span><i class="fa-solid fa-face-surprise"></i></div>
-      <div class="flex-1">
-        <div class="font-semibold text-lg">A Parametric Study of Fear Generalization to Faces and Non-Face Objects</div>
-        <div class="text-sm text-slate-400 mt-1">Holt DJ, Boeke EA, Wolthusen RPF, et al.</div>
-        <div class="flex items-center gap-3 mt-3"><span class="px-4 py-1 text-xs rounded-full border border-purple-400/40 text-purple-300 w-max">Neuroscience</span><span class="text-xs text-slate-500">Preview</span></div>
-        <div class="pub-summary"><p class="text-sm text-slate-300 leading-relaxed">Experimental work characterizing how fear generalizes to faces versus non-face objects — foundational for understanding anxiety and trauma circuitry.</p><span class="pub-open-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Read full publication</span></div>
-      </div>
-      <div class="pub-chevron md:mt-2"><i class="fa-solid fa-chevron-down"></i></div>
-    </div>
-
-  </div>
-  <div class="mt-8 reveal">
+  </div>  <div class="mt-8 reveal">
     <a href="https://scholar.google.com/scholar?q=%22Wolthusen+RPF%22+OR+%22Rick+Wolthusen%22" target="_blank" rel="noopener" class="inline-flex items-center gap-3 px-8 py-4 rounded-3xl border border-white/30 hover:bg-white/5 font-medium transition-all group">
       <i class="fa-solid fa-graduation-cap text-blue-400 group-hover:text-blue-300 transition-colors"></i> View full publication record on Google Scholar
     </a>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section id="testimonials" class="max-w-screen-2xl mx-auto px-6 py-20 border-t border-white/10">
+<!-- RECOGNITION -->
+<section id="recognition" class="max-w-screen-2xl mx-auto px-6 py-20 border-t border-white/10">
   <div class="max-w-2xl mb-12 reveal">
-    <div class="uppercase tracking-[4px] text-xs font-semibold text-blue-400 mb-3">CHAPTER V — TESTIMONIALS</div>
-    <h2 class="sh serif">Voices from the field.</h2><div class="aline mt-5"></div>
+    <div class="uppercase tracking-[4px] text-xs font-semibold text-blue-400 mb-3">CHAPTER V — RECOGNITION</div>
+    <h2 class="sh serif">Honours and awards.</h2><div class="aline mt-5"></div>
+    <p class="text-slate-400 mt-4 text-sm">Selected recognition for clinical, research, teaching, and global mental health work.</p>
   </div>
-  <div class="grid md:grid-cols-3 gap-6">
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
     <div class="card glass p-8 rounded-3xl reveal d1">
-      <i class="fa-solid fa-quote-left text-3xl text-blue-400"></i>
-      <div class="flex gap-1 text-amber-400 text-sm mt-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-      <p class="text-slate-300 italic my-5">"Rick brings a rare combination of clinical brilliance and genuine humility. His work with our trainees in Accra has transformed how we think about community mental health."</p>
-      <div class="flex items-center gap-3"><div class="w-11 h-11 rounded-full bg-blue-500/20 flex items-center justify-center"><i class="fa-solid fa-user-doctor text-blue-400"></i></div><div><div class="font-semibold text-sm">Academic Partner</div><div class="text-xs text-slate-400">University of Ghana, Accra</div></div></div>
+      <div class="flex items-start justify-between gap-3">
+        <i class="fa-solid fa-award text-3xl text-blue-400"></i>
+        <span class="px-3 py-1 rounded-full text-xs font-semibold border border-white/20 text-slate-300">2020</span>
+      </div>
+      <h3 class="font-semibold text-xl mt-5 mb-2">Robert F. Kennedy Award for Excellence in Public Service</h3>
+      <div class="text-sm text-blue-400 mb-3">Harvard Kennedy School</div>
+      <p class="text-slate-300 text-sm">The highest award given to a Harvard Kennedy School student, for exceptional public service.</p>
     </div>
+
     <div class="card glass p-8 rounded-3xl reveal d2">
-      <i class="fa-solid fa-quote-left text-3xl text-emerald-400"></i>
-      <div class="flex gap-1 text-amber-400 text-sm mt-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-      <p class="text-slate-300 italic my-5">"Through On The Move, Dr. Wolthusen has empowered hundreds of community members to talk openly about brain health — the stigma is finally beginning to lift."</p>
-      <div class="flex items-center gap-3"><div class="w-11 h-11 rounded-full bg-emerald-500/20 flex items-center justify-center"><i class="fa-solid fa-hands-holding-child text-emerald-400"></i></div><div><div class="font-semibold text-sm">Community Health Advocate</div><div class="text-xs text-slate-400">On The Move e.V., Ghana</div></div></div>
+      <div class="flex items-start justify-between gap-3">
+        <i class="fa-solid fa-medal text-3xl text-amber-400"></i>
+        <span class="px-3 py-1 rounded-full text-xs font-semibold border border-white/20 text-slate-300">2023</span>
+      </div>
+      <h3 class="font-semibold text-xl mt-5 mb-2">Order of Merit of the Federal Republic of Germany</h3>
+      <div class="text-sm text-amber-400 mb-3">Federal Republic of Germany</div>
+      <p class="text-slate-300 text-sm">Germany's highest tribute for services to the nation, recognising global (mental) health work.</p>
     </div>
+
     <div class="card glass p-8 rounded-3xl reveal d3">
-      <i class="fa-solid fa-quote-left text-3xl text-amber-400"></i>
-      <div class="flex gap-1 text-amber-400 text-sm mt-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-      <p class="text-slate-300 italic my-5">"An exceptional physician-scientist whose global-local paradigm is reshaping how the next generation of psychiatrists thinks about equitable mental health care."</p>
-      <div class="flex items-center gap-3"><div class="w-11 h-11 rounded-full bg-amber-500/20 flex items-center justify-center"><i class="fa-solid fa-graduation-cap text-amber-400"></i></div><div><div class="font-semibold text-sm">Faculty Colleague</div><div class="text-xs text-slate-400">Harvard Medical School, Boston</div></div></div>
+      <div class="flex items-start justify-between gap-3">
+        <i class="fa-solid fa-hand-holding-heart text-3xl text-rose-400"></i>
+        <span class="px-3 py-1 rounded-full text-xs font-semibold border border-white/20 text-slate-300">2022</span>
+      </div>
+      <h3 class="font-semibold text-xl mt-5 mb-2">Humanitarian Award</h3>
+      <div class="text-sm text-rose-400 mb-3">Society of Biological Psychiatry</div>
+      <p class="text-slate-300 text-sm">Recognising demonstrated service and advocacy for people living with mental illness.</p>
     </div>
+
+    <div class="card glass p-8 rounded-3xl reveal d4">
+      <div class="flex items-start justify-between gap-3">
+        <i class="fa-solid fa-people-group text-3xl text-emerald-400"></i>
+        <span class="px-3 py-1 rounded-full text-xs font-semibold border border-white/20 text-slate-300">2022</span>
+      </div>
+      <h3 class="font-semibold text-xl mt-5 mb-2">James H. Carter, Sr. Community Service Award</h3>
+      <div class="text-sm text-emerald-400 mb-3">Duke University Medical Center</div>
+      <p class="text-slate-300 text-sm">For compassion and advocacy with diverse patients from underserved communities, and contributions to global mental health.</p>
+    </div>
+
+    <div class="card glass p-8 rounded-3xl reveal d5">
+      <div class="flex items-start justify-between gap-3">
+        <i class="fa-solid fa-globe text-3xl text-teal-400"></i>
+        <span class="px-3 py-1 rounded-full text-xs font-semibold border border-white/20 text-slate-300">2024</span>
+      </div>
+      <h3 class="font-semibold text-xl mt-5 mb-2">Early Career Psychiatrist Fellowship</h3>
+      <div class="text-sm text-teal-400 mb-3">World Psychiatric Association</div>
+      <p class="text-slate-300 text-sm">Awarded for contributions to the global mental health field.</p>
+    </div>
+
+    <div class="card glass p-8 rounded-3xl reveal d6">
+      <div class="flex items-start justify-between gap-3">
+        <i class="fa-solid fa-lightbulb text-3xl text-purple-400"></i>
+        <span class="px-3 py-1 rounded-full text-xs font-semibold border border-white/20 text-slate-300">2019</span>
+      </div>
+      <h3 class="font-semibold text-xl mt-5 mb-2">Adrian Cheng Fellow, Social Innovation and Change Initiative</h3>
+      <div class="text-sm text-purple-400 mb-3">Harvard Kennedy School</div>
+      <p class="text-slate-300 text-sm">For work on mental health and spirituality in Ghana.</p>
+    </div>
+
   </div>
 </section>
 
@@ -503,19 +555,22 @@ body.cursor-on #cursorGlow{opacity:1}
   </div>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
     <div class="gitem rounded-3xl glass reveal lg:col-span-2 lg:row-span-2" onclick="openLB(this)">
-      <img src="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/11908054/IHMT39VRWN9346ig.?Expires=1789428281&Signature=tGGBlr8soGK5BausGktU7S4RKZDI-Xgtl7QD~SZIaX8rfHF1GAO5Ia58A~rKRXMc8Yjx3LotGZU-DpdP3XRAXBjcnJGnhpDFG9mX~m2X2JC7XEE7NQ5cMQgetDdFezAbYzTYHSJ2Oq89ZcvsbieYi3u4lWHRWJ52vf2xfQHCNolhYBjmr9rhz9tKuGadWVRL0v94APK6zqou96TXnEZdc~B0lkGTEwvC07PNQcAJu3o1ARw-93LU0BjWyaVy4jMX5FZPNzIlsxUB~W9qGtKAAymzKFU63a5Gz2trA9u9mwsMtfUcT5nsUuzvuwLqeFypQGAoNYrJDn5PwYfC0FbiYg__&Key-Pair-Id=K3USGZIKWMDCSX" alt="International collaboration — team gathering" class="w-full h-full object-cover rounded-3xl" loading="lazy" decoding="async">
+      <img src="images/gallery-1.jpg" alt="International collaboration — team gathering" class="w-full h-full object-cover rounded-3xl" loading="lazy" decoding="async">
     </div>
     <div class="gitem rounded-3xl glass reveal" onclick="openLB(this)">
-      <img src="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/11908054/ILi8cLobDUzRFuQQ.?Expires=1789427758&Signature=Iwx3eTf-NEgkCk1Fao9NtLlI6cmDVgMcvkrcA1sMhPjyCl1YgEx7t1VL0RVggBtDUcK3Ff4ji9w1OGo9Acldk3mNyWHidaZtJDcY7qmygmTg7koWMnucw-NMWv4xEgjLRya16aAhYd2JLKOgV40FP3tRIeBdzKLGKLN198Uxorc3ch1~42ye28DjaknRY0zkTiglXZ31Ty--bsUYu0vyuN55goeDH9t6we8VyOBN-HsvAlHxGSAu9FHEtf~P~y2~uCR5yna-QuoACou2f3ne1pGBVk5qiKUnNS6D3eFIInd9dZi72B8pjlf03YWfV3RBlWp5exa~tblHiP0jFn7H-A__&Key-Pair-Id=K3USGZIKWMDCSX" alt="Dr. Wolthusen in Ghana" class="w-full h-64 object-cover rounded-3xl" loading="lazy" decoding="async">
+      <img src="images/gallery-2.jpg" alt="Dr. Wolthusen in Ghana" class="w-full h-64 object-cover rounded-3xl" loading="lazy" decoding="async">
     </div>
     <div class="gitem rounded-3xl glass reveal" onclick="openLB(this)">
-      <img src="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/11908054/CMrX0SgZrFkaZtz8.?Expires=1789428446&Signature=I4mr2G3ngl14RtL7P1FZ-SxO~YckQ5dee78-WgzrvNDEyqcRV7GiluOQhnEQUF8ufB3oQBqWuwtBsj0k-TktoGM-V0CGk-7HiZPqf4ZXK1wvDl1nJTocC8fnDslZeLTq~iX09TvxxCmqLZ9zJHcPAuTboypNa-pP6uZPNVvk4uQajd0CVUT40aKVmNK~Q7pmgFpOMnF5zDmpYJuOWb9-Y9dDcviMyfdaINYQbZuapKuwMkY5BRRURyb9U-nGi2pBhLYzQ8uBAreP2sUm5ZHRWH~n~2fXvRVdlS2W~Iy1Z1QLSi1aH2U02IQZqtXBYeoO9Q3h5UfBPX7JRIIqKa0l4A__&Key-Pair-Id=K3USGZIKWMDCSX" alt="Hands-on community work — painting a clinic in Ghana" class="w-full h-64 object-cover rounded-3xl" loading="lazy" decoding="async">
+      <img src="images/gallery-3.jpg" alt="Community mental health work in Ghana" class="w-full h-64 object-cover rounded-3xl" loading="lazy" decoding="async">
     </div>
     <div class="gitem rounded-3xl glass reveal" onclick="openLB(this)">
-      <img src="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/11908054/doXjEyFzCjar07WX.?Expires=1789427825&Signature=W9hYguut45t519LShqvjgSpAPXpxy2PaESXc6D0jD~tF3RtnecJXNd3IeeBGPR2hTaWuRJnjGnlfFtVXYSmUC4utohXrxuDaeJ5d0DtRrtUYKdMIthE4fvsB2wjXaVnQ4K~G2~gOpiTC64JOomTjGfWMxZ24tPM5ndGebrbWDXXY88b9w2Iso7XTgd-jqLs6GOlBhK3PFYpHhnC~ZUFM8B52R7voEXAlpeflJx9p6byhY4wp2pbIZnNuxaLAwZUn00klL0btUmrEs4jEGzVXFtnYnOnxm-lfpbaMkLplavadyocJkv4NK~Z45FkJgQvHU-maG942BGSGCmDzADgwlQ__&Key-Pair-Id=K3USGZIKWMDCSX" alt="With colleagues and collaborators" class="w-full h-64 object-cover rounded-3xl" loading="lazy" decoding="async">
+      <img src="images/gallery-4.jpg" alt="With colleagues and collaborators" class="w-full h-64 object-cover rounded-3xl" loading="lazy" decoding="async">
     </div>
     <div class="gitem rounded-3xl glass reveal" onclick="openLB(this)">
-      <img src="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/11908054/rAPdfGf2dFswwNAQ?Expires=1789427778&Signature=vLqVVFuPWYanvstGrcS4Gy7-CyU9Vnus9oHqfhr1gdPWrJiYDL8UcyM-kiRLhhVD-6r2eQdUX9RuKF6hoyJx0L~xok6wvSg-8Z6lqVrc~h8xjW7creukC8VZgQpOhDyZDmKeS6gZPNH741-4-fAIP4EaOM9Umzb-MckUAxi3N5GtCpm5smeNuRgcReUhDQFWGnJrCSQz3YZcw~KQ4vaW3frPWDp4fKJsV7cqaABXOdh1wVoeQ~eC5JfNuTL9PoMw1kTuQ-QVioO6AU-cQDHTkXj5hOZzw3TLjo4R902Zr--yWh5u9hn-BIKvKrXz66bF~A72A3UT2x3ozEeIA2-KHA__&Key-Pair-Id=K3USGZIKWMDCSX" alt="Professional portrait" class="w-full h-64 object-cover rounded-3xl" loading="lazy" decoding="async">
+      <img src="images/gallery-5.jpg" alt="Moments from teaching and clinical practice" class="w-full h-64 object-cover rounded-3xl" loading="lazy" decoding="async">
+    </div>
+    <div class="gitem rounded-3xl glass reveal" onclick="openLB(this)">
+      <img src="images/gallery-6.jpg" alt="Partnerships and community mental health work" class="w-full h-64 object-cover rounded-3xl" loading="lazy" decoding="async">
     </div>
   </div>
   <p class="text-sm text-slate-500 mt-6">More moments on <a href="https://web.facebook.com/rick.wolthusen" target="_blank" rel="noopener" class="text-blue-400 hover:underline">Facebook</a>.</p>
@@ -576,7 +631,7 @@ body.cursor-on #cursorGlow{opacity:1}
     <div class="flex justify-between items-start mb-7">
       <div>
         <div class="font-semibold text-2xl">Get in touch</div>
-        <div class="text-sm text-slate-400">McLean Hospital • Harvard Medical School</div>
+        <div class="text-sm text-slate-400">McLean Hospital • Mass General • Harvard Medical School</div>
       </div>
       <button onclick="hideModal()" class="text-3xl leading-none text-slate-400 hover:text-white" aria-label="Close">&times;</button>
     </div>
@@ -726,10 +781,10 @@ body.cursor-on #cursorGlow{opacity:1}
       const ease = t => 1 - Math.pow(1 - t, 4); // ease-out quart
       const tick = (now) => {
         const p = Math.min(1, (now - t0) / duration);
-        el.textContent = Math.round(target * ease(p));
+        el.textContent = Math.round(target * ease(p)).toLocaleString();
         if (p < 1) { requestAnimationFrame(tick); }
         else {
-          el.textContent = target;
+          el.textContent = target.toLocaleString();
           el.classList.add('num-pop');
           setTimeout(() => el.classList.remove('num-pop'), 700);
         }
@@ -759,8 +814,7 @@ body.cursor-on #cursorGlow{opacity:1}
     });
   });
 
-  // Hero slider: auto-advance, pause + spontaneous restart after 3s
-  const sTrack = document.querySelector('.slider-track');
+  // Hero slider: crossfade auto-advance, pause + spontaneous restart after 3s
   const sSlides = document.querySelectorAll('.slider-slide');
   const sDots = document.querySelectorAll('.slider-dot');
   const sPauseBtn = document.querySelector('.slider-pause');
@@ -771,7 +825,7 @@ body.cursor-on #cursorGlow{opacity:1}
 
   function sGo(i) {
     sIdx = ((i % sSlides.length) + sSlides.length) % sSlides.length;
-    sTrack.style.transform = 'translateX(' + (-sIdx * 100) + '%)';
+    sSlides.forEach((s, k) => s.classList.toggle('active', k === sIdx));
     sDots.forEach((d, k) => d.classList.toggle('active', k === sIdx));
     if (!sPaused && sAutoOk) sAuto();
   }

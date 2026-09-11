@@ -1,3 +1,8 @@
 *.bak.html
 .git
 README.md
+*.pdf
+*.zip
+*.txt
+images/WhatsApp*
+WhatsApp*.jpeg

@@ -5,6 +5,14 @@
 
 # Original photo source files (resized copies live in /images)
 rick*.jpg
+images/WhatsApp*
+WhatsApp*.jpeg
+*.zip
+
+# Sensitive source documents — kept local, never committed
+*.pdf
+further instructions.txt
+cv_extracted.txt
 
 # OS cruft
 .DS_Store
