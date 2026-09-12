@@ -4,6 +4,8 @@ README.md
 *.pdf
 *.zip
 *.txt
+_*.py
+__pycache__/
 images/WhatsApp*
 WhatsApp*.jpeg
 rick*.jpg

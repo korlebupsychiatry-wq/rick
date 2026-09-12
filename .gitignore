@@ -19,4 +19,8 @@ cv_extracted.txt
 Thumbs.db
 desktop.ini
 
+# Local image-analysis helpers (never published)
+_*.py
+__pycache__/
+
 .vercel
