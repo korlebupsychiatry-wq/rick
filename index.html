@@ -99,6 +99,39 @@ body.cursor-on #cursorGlow{opacity:1}
 .social-btn:hover{transform:translateY(-2px) scale(1.06)}
 :focus-visible{outline:2px solid #60a5fa;outline-offset:3px;border-radius:10px}
 @media(max-width:640px){.pub-cover{width:70px;min-width:70px;height:70px}.pub-abbr{font-size:.95rem}}
+
+/* ── Professional polish: editorial type, button system, layered cards, motion ── */
+:root{--line:rgba(255,255,255,.10)}
+.sh{font-size:clamp(2.1rem,4.6vw,3.25rem);line-height:1.04;font-weight:600;letter-spacing:-.035em}
+.serif{text-wrap:balance}
+.eyebrow{display:inline-flex;align-items:center;gap:.7rem;text-transform:uppercase;letter-spacing:.26em;font-size:.68rem;font-weight:600;color:#93c5fd}
+.eyebrow::before{content:"";width:30px;height:1px;flex:0 0 auto;background:linear-gradient(90deg,#60a5fa,rgba(96,165,250,0))}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;padding:1rem 1.6rem;border-radius:.9rem;font-size:.9rem;font-weight:600;letter-spacing:.01em;line-height:1;transition:transform .4s cubic-bezier(.23,1,.32,1),background .3s,border-color .3s,box-shadow .3s,color .3s}
+.btn i{transition:transform .4s cubic-bezier(.23,1,.32,1)}
+.btn-primary{background:#fff;color:#0a0f1e;box-shadow:0 20px 44px -20px rgba(0,0,0,.8)}
+.btn-primary:hover{background:#eef4ff;transform:translateY(-2px);box-shadow:0 26px 54px -22px rgba(96,165,250,.55)}
+.btn-ghost{background:rgba(255,255,255,.04);color:#e2e8f0;border:1px solid rgba(255,255,255,.18)}
+.btn-ghost:hover{background:rgba(255,255,255,.09);border-color:rgba(96,165,250,.5);transform:translateY(-2px)}
+.btn:hover .fa-arrow-right{transform:translateX(4px)}
+.glass{background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.042));backdrop-filter:blur(18px);border:1px solid var(--line);box-shadow:0 24px 60px -32px rgba(0,0,0,.85),inset 0 1px 0 rgba(255,255,255,.06)}
+.card{transition:transform .5s cubic-bezier(.23,1,.32,1),box-shadow .5s cubic-bezier(.23,1,.32,1),border-color .5s}
+.card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .45s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(96,165,250,.12),transparent 60%)}
+.card:hover{transform:translateY(-6px);box-shadow:0 34px 74px -32px rgba(0,0,0,.9),0 0 0 1px rgba(96,165,250,.28),inset 0 1px 0 rgba(255,255,255,.08)}
+.card:hover::after{opacity:1}
+.affil{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.55rem 1.9rem}
+.affil .a-item{font-size:.82rem;font-weight:500;color:#94a3b8;transition:color .3s}
+.affil .a-item:hover{color:#e2e8f0}
+@keyframes riseIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.rise{opacity:0;animation:riseIn .9s cubic-bezier(.22,1,.36,1) forwards}
+.rise.d-1{animation-delay:.1s}.rise.d-2{animation-delay:.22s}.rise.d-3{animation-delay:.34s}.rise.d-4{animation-delay:.46s}
+.foot-link{color:#94a3b8;font-size:.875rem;transition:color .3s}
+.foot-link:hover{color:#fff}
+#navbar.nav-scrolled > div{padding-top:.7rem;padding-bottom:.7rem}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal{opacity:1!important;transform:none!important}
+  .rise{opacity:1!important}
+}
 </style>
 </head>
 <body class="bg-slate-950 text-slate-200 overflow-x-hidden">
@@ -133,7 +166,7 @@ body.cursor-on #cursorGlow{opacity:1}
       <a href="#contact" class="nav-link hover:text-blue-400">Contact</a>
     </div>
     <div class="flex items-center gap-3">
-      <button onclick="showModal()" class="hidden sm:block px-6 py-2.5 text-sm font-semibold rounded-3xl btn-grad active:scale-95 transition-all">Get in touch</button>
+      <button onclick="showModal()" class="hidden sm:block btn btn-primary px-5 py-2.5 text-sm">Get in touch</button>
       <button onclick="toggleMenu()" class="lg:hidden w-11 h-11 rounded-xl glass flex items-center justify-center"><i class="fa-solid fa-bars"></i></button>
     </div>
   </div>
@@ -145,7 +178,7 @@ body.cursor-on #cursorGlow{opacity:1}
     <a href="#recognition" onclick="toggleMenu()" class="block hover:text-blue-400">Recognition</a>
     <a href="#gallery" onclick="toggleMenu()" class="block hover:text-blue-400">Gallery</a>
     <a href="#contact" onclick="toggleMenu()" class="block hover:text-blue-400">Contact</a>
-    <button onclick="toggleMenu();showModal()" class="w-full px-6 py-3 rounded-2xl btn-grad font-semibold">Get in touch</button>
+    <button onclick="toggleMenu();showModal()" class="w-full btn btn-primary py-3">Get in touch</button>
   </div>
 </nav>
 
@@ -185,17 +218,17 @@ body.cursor-on #cursorGlow{opacity:1}
   <!-- Inscription on the left -->
   <div class="max-w-screen-2xl mx-auto px-6 py-12 w-full relative z-10">
     <div class="max-w-3xl">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-3xl bg-white/10 border border-white/10 mb-8 backdrop-blur">
+      <div class="rise d-1 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/10 mb-8 backdrop-blur">
         <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
         <span class="text-xs sm:text-sm font-medium tracking-wider">McLEAN HOSPITAL • HARVARD MEDICAL SCHOOL</span>
       </div>
-      <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tighter leading-[0.95] serif mb-6">Rick Peter Fritz<br><span class="text-blue-400">Wolthusen</span></h1>
-      <p class="max-w-md text-xl md:text-2xl text-slate-300 font-light mb-4">Psychiatrist. Clinician-Educator.<br>Global Mental Health Researcher.</p>
-      <p class="max-w-lg text-slate-400 mb-10">I work to improve the care of people with severe mental illness — bridging clinical practice, research, teaching, and community partnership across Boston, Ghana, Kenya, and beyond.</p>
-      <div class="flex flex-wrap gap-4">
-        <a href="#about" class="group px-8 py-4 rounded-3xl bg-white text-slate-950 font-semibold flex items-center gap-3 hover:bg-blue-50 shadow-lg shadow-black/20 active:scale-95 transition-all">Explore my work <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i></a>
-        <a href="https://www.linkedin.com/in/rick-wolthusen-md-mpp-33101359/" target="_blank" rel="noopener" class="px-7 py-4 rounded-3xl border border-white/30 hover:bg-white/5 font-medium flex items-center gap-3 transition-all group"><i class="fa-brands fa-linkedin text-xl text-blue-400 group-hover:text-blue-300 transition-transform"></i>LinkedIn</a>
-        <a href="https://web.facebook.com/rick.wolthusen" target="_blank" rel="noopener" class="px-7 py-4 rounded-3xl border border-white/30 hover:bg-white/5 font-medium flex items-center gap-3 transition-all group"><i class="fa-brands fa-facebook text-xl text-blue-500 group-hover:text-blue-400 transition-transform"></i>Facebook</a>
+      <h1 class="rise d-2 text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tighter leading-[0.95] serif mb-6">Rick Peter Fritz<br><span class="text-blue-400">Wolthusen</span></h1>
+      <p class="rise d-3 max-w-md text-xl md:text-2xl text-slate-300 font-light mb-4">Psychiatrist. Clinician-Educator.<br>Global Mental Health Researcher.</p>
+      <p class="rise d-3 max-w-lg text-slate-400 mb-10">I work to improve the care of people with severe mental illness — bridging clinical practice, research, teaching, and community partnership across Boston, Ghana, Kenya, and beyond.</p>
+      <div class="rise d-4 flex flex-wrap gap-4">
+        <a href="#about" class="btn btn-primary">Explore my work <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="https://www.linkedin.com/in/rick-wolthusen-md-mpp-33101359/" target="_blank" rel="noopener" class="btn btn-ghost"><i class="fa-brands fa-linkedin text-lg text-blue-400"></i> LinkedIn</a>
+        <a href="https://web.facebook.com/rick.wolthusen" target="_blank" rel="noopener" class="btn btn-ghost"><i class="fa-brands fa-facebook text-lg text-blue-500"></i> Facebook</a>
       </div>
     </div>
   </div>
@@ -259,6 +292,19 @@ body.cursor-on #cursorGlow{opacity:1}
       <div class="text-sm text-slate-400 mt-1">Community Members Reached</div>
     </a>
   </div>
+  <div class="mt-6 rounded-3xl glass px-6 py-5 reveal">
+    <div class="affil">
+      <span class="uppercase tracking-[3px] text-[11px] text-slate-500">Affiliations</span>
+      <span class="a-item">McLean Hospital</span>
+      <span class="a-item">Harvard Medical School</span>
+      <span class="a-item">Massachusetts General Hospital</span>
+      <span class="a-item">Duke University</span>
+      <span class="a-item">TU Dresden</span>
+      <span class="a-item">World Psychiatric Association</span>
+      <span class="a-item">American Psychiatric Association</span>
+      <span class="a-item">Catatonia Foundation</span>
+    </div>
+  </div>
 </div>
 
 <!-- ABOUT -->
@@ -276,7 +322,7 @@ body.cursor-on #cursorGlow{opacity:1}
       </div>
     </div>
     <div class="lg:col-span-7 reveal">
-      <div class="uppercase tracking-[4px] text-xs font-semibold text-blue-400 mb-3">CHAPTER I — ABOUT</div>
+      <div class="eyebrow mb-3">CHAPTER I — ABOUT</div>
       <h2 class="sh serif mb-4">Improving care for severe mental illness, locally and globally.</h2>
       <div class="aline mb-8"></div>
       <div class="space-y-5 text-lg text-slate-300 leading-relaxed">
@@ -326,7 +372,7 @@ body.cursor-on #cursorGlow{opacity:1}
 <!-- SERVICES -->
 <section id="services" class="max-w-screen-2xl mx-auto px-6 py-20 border-t border-white/10">
   <div class="max-w-2xl mb-12 reveal">
-    <div class="uppercase tracking-[4px] text-xs font-semibold text-blue-400 mb-3">CHAPTER II — AREAS OF FOCUS</div>
+    <div class="eyebrow mb-3">CHAPTER II — AREAS OF FOCUS</div>
     <h2 class="sh serif">What I do.</h2><div class="aline mt-5"></div>
   </div>
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -372,7 +418,7 @@ body.cursor-on #cursorGlow{opacity:1}
 <!-- MEDIA -->
 <section id="media" class="max-w-screen-2xl mx-auto px-6 py-20 border-t border-white/10">
   <div class="max-w-2xl mb-12 reveal">
-    <div class="uppercase tracking-[4px] text-xs font-semibold text-blue-400 mb-3">CHAPTER III — TALKS & MEDIA</div>
+    <div class="eyebrow mb-3">CHAPTER III — TALKS & MEDIA</div>
     <h2 class="sh serif">Ideas worth sharing.</h2><div class="aline mt-5"></div>
     <p class="text-slate-400 mt-4 text-sm">Videos play right here on the page — just press play. If your network blocks the player, each card also has a direct YouTube link.</p>
   </div>
@@ -418,7 +464,7 @@ body.cursor-on #cursorGlow{opacity:1}
 <!-- PUBLICATIONS -->
 <section id="publications" class="max-w-screen-2xl mx-auto px-6 py-20 border-t border-white/10">
   <div class="max-w-2xl mb-12 reveal">
-    <div class="uppercase tracking-[4px] text-xs font-semibold text-blue-400 mb-3">CHAPTER IV — SELECTED PUBLICATIONS</div>
+    <div class="eyebrow mb-3">CHAPTER IV — SELECTED PUBLICATIONS</div>
     <h2 class="sh serif">Contributions to science.</h2><div class="aline mt-5"></div>
     <p class="text-slate-400 mt-4 text-sm">Click any title to preview a summary — click it again to open the full publication.</p>
   </div>
@@ -522,7 +568,7 @@ body.cursor-on #cursorGlow{opacity:1}
 <!-- RECOGNITION -->
 <section id="recognition" class="max-w-screen-2xl mx-auto px-6 py-20 border-t border-white/10">
   <div class="max-w-2xl mb-12 reveal">
-    <div class="uppercase tracking-[4px] text-xs font-semibold text-blue-400 mb-3">CHAPTER V — RECOGNITION</div>
+    <div class="eyebrow mb-3">CHAPTER V — RECOGNITION</div>
     <h2 class="sh serif">Honours and awards.</h2><div class="aline mt-5"></div>
     <p class="text-slate-400 mt-4 text-sm">Selected recognition for clinical, research, teaching, and global mental health work.</p>
   </div>
@@ -593,7 +639,7 @@ body.cursor-on #cursorGlow{opacity:1}
 <!-- GALLERY -->
 <section id="gallery" class="max-w-screen-2xl mx-auto px-6 py-20 border-t border-white/10">
   <div class="max-w-2xl mb-12 reveal">
-    <div class="uppercase tracking-[4px] text-xs font-semibold text-blue-400 mb-3">CHAPTER VI — GALLERY</div>
+    <div class="eyebrow mb-3">CHAPTER VI — GALLERY</div>
     <h2 class="sh serif">Moments across three continents.</h2><div class="aline mt-5"></div>
   </div>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -635,27 +681,58 @@ body.cursor-on #cursorGlow{opacity:1}
       <h2 class="serif text-4xl md:text-5xl tracking-tighter mb-4">Let's collaborate.</h2>
       <p class="text-slate-300 mb-8">Whether you're interested in clinical consultation, research collaboration, speaking engagements, or global mental health initiatives — the door is open.</p>
       <div class="flex flex-wrap justify-center gap-4">
-        <button onclick="showModal()" class="px-10 py-4 rounded-3xl btn-grad font-semibold text-lg active:scale-95 transition-all">
-          Schedule a conversation
-        </button>
-        <a href="https://www.linkedin.com/in/rick-wolthusen-md-mpp-33101359/" target="_blank" rel="noopener"
-           class="px-8 py-4 rounded-3xl border border-white/30 hover:bg-white/5 font-medium flex items-center gap-3 transition-all group">
-          <i class="fa-brands fa-linkedin text-xl text-blue-400 group-hover:text-blue-300 transition-colors"></i> Connect on LinkedIn
-        </a>
+        <button onclick="showModal()" class="btn btn-primary text-base px-7 py-4">Schedule a conversation <i class="fa-solid fa-arrow-right"></i></button>
+        <a href="https://www.linkedin.com/in/rick-wolthusen-md-mpp-33101359/" target="_blank" rel="noopener" class="btn btn-ghost text-base px-7 py-4"><i class="fa-brands fa-linkedin text-lg text-blue-400"></i> Connect on LinkedIn</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="border-t border-white/10 py-10 text-center">
-  <div class="flex justify-center gap-7 mb-5 text-xl">
-    <a href="https://www.linkedin.com/in/rick-wolthusen-md-mpp-33101359/" target="_blank" rel="noopener" class="social-btn text-slate-400 hover:text-blue-400" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-    <a href="https://web.facebook.com/rick.wolthusen" target="_blank" rel="noopener" class="social-btn text-slate-400 hover:text-blue-500" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-    <a href="https://www.youtube.com/watch?v=BmqVsCx2qVQ" target="_blank" rel="noopener" class="social-btn text-slate-400 hover:text-red-400" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-    <a href="https://scholar.google.com/scholar?q=%22Wolthusen+RPF%22+OR+%22Rick+Wolthusen%22" target="_blank" rel="noopener" class="social-btn text-slate-400 hover:text-blue-400" aria-label="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
+<footer class="border-t border-white/10">
+  <div class="max-w-screen-2xl mx-auto px-6 py-14">
+    <div class="grid gap-10 md:grid-cols-12">
+      <div class="md:col-span-5">
+        <a href="#home" class="flex items-center gap-3 mb-4 w-max">
+          <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-blue-400 to-emerald-400 flex items-center justify-center shadow-lg shadow-blue-500/30"><span class="text-slate-950 font-extrabold text-xl">RW</span></div>
+          <div><div class="font-semibold leading-tight">Rick Wolthusen</div><div class="text-[10px] text-slate-400 tracking-wider">MD, MPP</div></div>
+        </a>
+        <p class="text-sm text-slate-400 max-w-xs">Psychiatrist, clinician-educator, and global mental health researcher working to improve care for people with severe mental illness.</p>
+      </div>
+      <div class="md:col-span-2">
+        <div class="eyebrow mb-4">Explore</div>
+        <ul class="space-y-2.5">
+          <li><a href="#about" class="foot-link">About</a></li>
+          <li><a href="#services" class="foot-link">Focus</a></li>
+          <li><a href="#media" class="foot-link">Talks &amp; Media</a></li>
+          <li><a href="#publications" class="foot-link">Publications</a></li>
+        </ul>
+      </div>
+      <div class="md:col-span-2">
+        <div class="eyebrow mb-4">More</div>
+        <ul class="space-y-2.5">
+          <li><a href="#recognition" class="foot-link">Recognition</a></li>
+          <li><a href="#gallery" class="foot-link">Gallery</a></li>
+          <li><a href="#contact" class="foot-link">Contact</a></li>
+          <li><a href="https://scholar.google.com/scholar?q=%22Wolthusen+RPF%22+OR+%22Rick+Wolthusen%22" target="_blank" rel="noopener" class="foot-link">Google Scholar</a></li>
+        </ul>
+      </div>
+      <div class="md:col-span-3">
+        <div class="eyebrow mb-4">Connect</div>
+        <div class="flex gap-4 text-xl mb-5">
+          <a href="https://www.linkedin.com/in/rick-wolthusen-md-mpp-33101359/" target="_blank" rel="noopener" class="social-btn text-slate-400 hover:text-blue-400" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://web.facebook.com/rick.wolthusen" target="_blank" rel="noopener" class="social-btn text-slate-400 hover:text-blue-500" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a href="https://www.youtube.com/watch?v=BmqVsCx2qVQ" target="_blank" rel="noopener" class="social-btn text-slate-400 hover:text-red-400" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://scholar.google.com/scholar?q=%22Wolthusen+RPF%22+OR+%22Rick+Wolthusen%22" target="_blank" rel="noopener" class="social-btn text-slate-400 hover:text-blue-400" aria-label="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
+        </div>
+        <button onclick="showModal()" class="btn btn-ghost px-5 py-3 text-xs">Get in touch</button>
+      </div>
+    </div>
+    <div class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="text-xs text-slate-500">© 2026 Dr. Rick Peter Fritz Wolthusen, MD, MPP. All rights reserved.</div>
+      <div class="text-xs text-slate-500">McLean Hospital · Harvard Medical School</div>
+    </div>
   </div>
-  <div class="text-xs text-slate-500 tracking-wider">© 2026 Dr. Rick Peter Fritz Wolthusen, MD, MPP. All rights reserved.</div>
 </footer>
 
 <!-- BACK TO TOP -->
@@ -948,6 +1025,15 @@ body.cursor-on #cursorGlow{opacity:1}
     });
     if (sAutoOk) sAuto();
   }
+
+  // Pointer-follow sheen on cards
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('pointermove', (e) => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+      card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+    });
+  });
 
   // Cursor glow (soft spotlight that follows the pointer)
   if (window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
