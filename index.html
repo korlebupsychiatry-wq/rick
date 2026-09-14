@@ -127,6 +127,41 @@ body.cursor-on #cursorGlow{opacity:1}
 .foot-link{color:#94a3b8;font-size:.875rem;transition:color .3s}
 .foot-link:hover{color:#fff}
 #navbar.nav-scrolled > div{padding-top:.7rem;padding-bottom:.7rem}
+
+/* Landing-page refinement: give the introduction a quieter, editorial hierarchy. */
+#home{min-height:clamp(700px,100svh,980px);isolation:isolate}
+.hero-bg{background:#07111f}
+.hero-photo{filter:saturate(.78) contrast(1.04) brightness(.82);transform:scale(1.015);transition:filter 1.15s ease,transform 7s ease}
+.slider-slide.active .hero-photo{filter:saturate(.9) contrast(1.05) brightness(.88);transform:scale(1.045)}
+.hero-wash{background:linear-gradient(90deg,rgba(4,12,24,.97) 0%,rgba(5,15,29,.91) 29%,rgba(7,19,36,.59) 58%,rgba(7,19,36,.2) 100%)}
+.hero-wash::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 74% 18%,rgba(59,130,246,.24),transparent 30%),linear-gradient(180deg,rgba(2,6,23,.22),transparent 40%,rgba(2,6,23,.88) 100%)}
+.hero-grid{background-image:linear-gradient(rgba(148,163,184,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.07) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(90deg,black,rgba(0,0,0,.15) 70%,transparent)}
+.hero-copy{max-width:44rem}
+.hero-kicker{letter-spacing:.19em}
+.hero-title{font-size:clamp(3.35rem,7.1vw,6.75rem);line-height:.91;letter-spacing:-.055em;text-wrap:balance}
+.hero-title .accent{background:linear-gradient(100deg,#93c5fd 8%,#60a5fa 58%,#5eead4);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-role{font-size:clamp(1rem,1.35vw,1.2rem);letter-spacing:.015em;color:#dbeafe}
+.hero-summary{font-size:clamp(.96rem,1.15vw,1.08rem);line-height:1.75;color:#bac8dc}
+.hero-photo-center{object-position:center center}
+.hero-social{display:flex;align-items:center;gap:.85rem;font-size:.9rem;font-weight:600}
+.hero-social a{display:inline-flex;align-items:center;gap:.55rem;padding:.95rem 1.25rem;border-radius:.9rem;color:#e2e8f0;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(14px);box-shadow:inset 0 1px 0 rgba(255,255,255,.06);transition:transform .3s,background .3s,border-color .3s,color .3s}
+.hero-social a:hover{color:#fff;transform:translateY(-2px);background:rgba(255,255,255,.12);border-color:rgba(96,165,250,.55)}
+.slider-nav{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;background:rgba(7,18,34,.66);border-color:rgba(191,219,254,.2)}
+.slider-prev{left:1.25rem}.slider-next{right:1.25rem}
+.slider-pause{position:absolute;right:1.5rem;bottom:1.5rem;width:38px;height:38px;background:rgba(7,18,34,.66);border-color:rgba(191,219,254,.2)}
+.slider-dots{display:flex;left:1.5rem;bottom:1.85rem}
+.scroll-cue{bottom:1.65rem}
+@media(max-width:767px){
+  #home{min-height:760px;padding-top:5rem!important}
+  .hero-wash{background:linear-gradient(90deg,rgba(4,12,24,.93),rgba(5,15,29,.77) 80%,rgba(5,15,29,.65))}
+  .hero-copy{max-width:38rem}
+  .hero-title{font-size:clamp(3rem,14vw,4.5rem)}
+  .slider-prev{left:.85rem}.slider-next{right:.85rem}
+  .slider-dots{left:1rem;bottom:1.35rem;gap:5px}
+  .slider-dot{width:6px;height:6px}.slider-dot.active{width:16px}
+  .slider-pause{right:1rem;bottom:1rem}
+  .scroll-cue{display:none!important}
+}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   .reveal{opacity:1!important;transform:none!important}
@@ -187,82 +222,54 @@ body.cursor-on #cursorGlow{opacity:1}
   <!-- Background photo slider -->
   <div class="slider absolute inset-0 z-0">
     <div class="slider-track h-full">
-      <div class="slider-slide active"><img src="images/hero-1.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 1" fetchpriority="high" decoding="async"></div>
-      <div class="slider-slide"><img src="images/hero-2.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 2" decoding="async"></div>
-      <div class="slider-slide"><img src="images/hero-3.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 3" loading="lazy" decoding="async"></div>
-      <div class="slider-slide"><img src="images/hero-4.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 4" loading="lazy" decoding="async"></div>
-      <div class="slider-slide"><img src="images/hero-5.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 5" loading="lazy" decoding="async"></div>
-      <div class="slider-slide"><img src="images/hero-6.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 6" loading="lazy" decoding="async"></div>
-      <div class="slider-slide"><img src="images/hero-7.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 7" loading="lazy" decoding="async"></div>
-      <div class="slider-slide"><img src="images/hero-8.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 8" loading="lazy" decoding="async"></div>
-      <div class="slider-slide"><img src="images/hero-9.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 9" loading="lazy" decoding="async"></div>
-      <div class="slider-slide"><img src="images/hero-10.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 10" loading="lazy" decoding="async"></div>
-      <div class="slider-slide"><img src="images/hero-11.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 11" loading="lazy" decoding="async"></div>
-      <div class="slider-slide"><img src="images/hero-12.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 12" loading="lazy" decoding="async"></div>
-      <div class="slider-slide"><img src="images/hero-13.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 13" loading="lazy" decoding="async"></div>
-      <div class="slider-slide"><img src="images/hero-14.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 14" loading="lazy" decoding="async"></div>
+      <div class="slider-slide active"><img class="hero-photo" src="images/hero-13.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 13" fetchpriority="high" decoding="async"></div>
+      <div class="slider-slide"><img class="hero-photo" src="images/hero-11.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 11" decoding="async"></div>
+      <div class="slider-slide"><img class="hero-photo" src="images/hero-1.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 1" loading="lazy" decoding="async"></div>
+      <div class="slider-slide"><img class="hero-photo" src="images/hero-2.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 2" loading="lazy" decoding="async"></div>
+      <div class="slider-slide"><img class="hero-photo" src="images/hero-3.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 3" loading="lazy" decoding="async"></div>
+      <div class="slider-slide"><img class="hero-photo hero-photo-center" src="images/hero-4.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 4" loading="lazy" decoding="async"></div>
+      <div class="slider-slide"><img class="hero-photo" src="images/hero-5.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 5" loading="lazy" decoding="async"></div>
+      <div class="slider-slide"><img class="hero-photo" src="images/hero-6.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 6" loading="lazy" decoding="async"></div>
+      <div class="slider-slide"><img class="hero-photo" src="images/hero-7.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 7" loading="lazy" decoding="async"></div>
+      <div class="slider-slide"><img class="hero-photo" src="images/hero-8.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 8" loading="lazy" decoding="async"></div>
+      <div class="slider-slide"><img class="hero-photo" src="images/hero-9.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 9" loading="lazy" decoding="async"></div>
+      <div class="slider-slide"><img class="hero-photo" src="images/hero-10.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 10" loading="lazy" decoding="async"></div>
+      <div class="slider-slide"><img class="hero-photo" src="images/hero-12.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 12" loading="lazy" decoding="async"></div>
+      <div class="slider-slide"><img class="hero-photo" src="images/hero-14.jpg" alt="Dr. Rick Wolthusen — clinical and community work, photo 14" loading="lazy" decoding="async"></div>
     </div>
   </div>
-  <!-- Thin film for legibility -->
-  <div class="absolute inset-0 z-[1] bg-gradient-to-r from-[#0a0f1e]/90 via-[#0a0f1e]/55 to-[#0a0f1e]/25"></div>
+  <!-- Consistent film treatment keeps every photograph readable. -->
+  <div class="hero-wash absolute inset-0 z-[1]"></div>
   <div class="absolute inset-x-0 bottom-0 h-40 z-[1] bg-gradient-to-t from-[#0a0f1e] to-transparent"></div>
-  <!-- Single background curve -->
-  <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-[0.12] z-[2]" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
-    <defs>
-      <linearGradient id="curveGrad" x1="0" y1="0" x2="1440" y2="0" gradientUnits="userSpaceOnUse">
-        <stop stop-color="#60a5fa"></stop><stop offset="0.5" stop-color="#34d399"></stop><stop offset="1" stop-color="#60a5fa"></stop>
-      </linearGradient>
-    </defs>
-    <path d="M0,560 C340,430 700,700 1080,560 C1240,500 1360,420 1440,380" stroke="url(#curveGrad)" stroke-width="1.5"></path>
-  </svg>
+  <div class="hero-grid absolute inset-0 z-[2] pointer-events-none opacity-50"></div>
   <!-- Inscription on the left -->
   <div class="max-w-screen-2xl mx-auto px-6 py-12 w-full relative z-10">
-    <div class="max-w-3xl">
-      <div class="rise d-1 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/10 mb-8 backdrop-blur">
+    <div class="hero-copy">
+      <div class="rise d-1 hero-kicker inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/10 mb-7 backdrop-blur">
         <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-        <span class="text-xs sm:text-sm font-medium tracking-wider">McLEAN HOSPITAL • HARVARD MEDICAL SCHOOL</span>
+        <span class="text-[10px] sm:text-xs font-semibold">McLEAN HOSPITAL • HARVARD MEDICAL SCHOOL</span>
       </div>
-      <h1 class="rise d-2 text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tighter leading-[0.95] serif mb-6">Rick Peter Fritz<br><span class="text-blue-400">Wolthusen</span></h1>
-      <p class="rise d-3 max-w-md text-xl md:text-2xl text-slate-300 font-light mb-4">Psychiatrist. Clinician-Educator.<br>Global Mental Health Researcher.</p>
-      <p class="rise d-3 max-w-lg text-slate-400 mb-10">I work to improve the care of people with severe mental illness — bridging clinical practice, research, teaching, and community partnership across Boston, Ghana, Kenya, and beyond.</p>
-      <div class="rise d-4 flex flex-wrap gap-4">
-        <a href="#about" class="btn btn-primary">Explore my work <i class="fa-solid fa-arrow-right"></i></a>
-        <a href="https://www.linkedin.com/in/rick-wolthusen-md-mpp-33101359/" target="_blank" rel="noopener" class="btn btn-ghost"><i class="fa-brands fa-linkedin text-lg text-blue-400"></i> LinkedIn</a>
-        <a href="https://web.facebook.com/rick.wolthusen" target="_blank" rel="noopener" class="btn btn-ghost"><i class="fa-brands fa-facebook text-lg text-blue-500"></i> Facebook</a>
+      <h1 class="hero-title rise d-2 serif mb-7">Rick Peter Fritz<br><span class="accent">Wolthusen</span></h1>
+      <p class="hero-role rise d-3 mb-4">Psychiatrist <span class="text-blue-300/55 mx-1.5">·</span> Clinician-Educator <span class="text-blue-300/55 mx-1.5">·</span> Global Mental Health Researcher</p>
+      <p class="hero-summary rise d-3 max-w-xl mb-9">Improving care for people with severe mental illness through clinical practice, research, teaching, and community partnership — across Boston, Ghana, Kenya, and beyond.</p>
+      <div class="rise d-4 flex flex-wrap items-center gap-4">
+        <a href="#about" class="btn btn-primary">Explore profile <i class="fa-solid fa-arrow-right"></i></a>
+        <div class="hero-social">
+          <a href="https://www.linkedin.com/in/rick-wolthusen-md-mpp-33101359/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin text-base text-blue-400"></i> LinkedIn</a>
+          <a href="https://web.facebook.com/rick.wolthusen" target="_blank" rel="noopener"><i class="fa-brands fa-facebook text-base text-blue-400"></i> Facebook</a>
+        </div>
       </div>
     </div>
   </div>
   <!-- Slider controls -->
-  <button class="slider-nav slider-prev left-5" onclick="sGo(sIdx - 1)" aria-label="Previous slide"><i class="fa-solid fa-chevron-left"></i></button>
-  <button class="slider-nav slider-next right-5" onclick="sGo(sIdx + 1)" aria-label="Next slide"><i class="fa-solid fa-chevron-right"></i></button>
-  <div class="slider-dots bottom-6 left-6">
-    <button class="slider-dot active" onclick="sGo(0)" aria-label="Go to slide 1"></button>
-    <button class="slider-dot" onclick="sGo(1)" aria-label="Go to slide 2"></button>
-    <button class="slider-dot" onclick="sGo(2)" aria-label="Go to slide 3"></button>
-    <button class="slider-dot" onclick="sGo(3)" aria-label="Go to slide 4"></button>
-    <button class="slider-dot" onclick="sGo(4)" aria-label="Go to slide 5"></button>
-    <button class="slider-dot" onclick="sGo(5)" aria-label="Go to slide 6"></button>
-    <button class="slider-dot" onclick="sGo(6)" aria-label="Go to slide 7"></button>
-    <button class="slider-dot" onclick="sGo(7)" aria-label="Go to slide 8"></button>
-    <button class="slider-dot" onclick="sGo(8)" aria-label="Go to slide 9"></button>
-    <button class="slider-dot" onclick="sGo(9)" aria-label="Go to slide 10"></button>
-    <button class="slider-dot" onclick="sGo(10)" aria-label="Go to slide 11"></button>
-    <button class="slider-dot" onclick="sGo(11)" aria-label="Go to slide 12"></button>
-    <button class="slider-dot" onclick="sGo(12)" aria-label="Go to slide 13"></button>
-    <button class="slider-dot" onclick="sGo(13)" aria-label="Go to slide 14"></button>
+  <button class="slider-nav slider-prev" onclick="sGo(sIdx - 1)" aria-label="Previous slide"><i class="fa-solid fa-chevron-left"></i></button>
+  <button class="slider-nav slider-next" onclick="sGo(sIdx + 1)" aria-label="Next slide"><i class="fa-solid fa-chevron-right"></i></button>
+  <div class="slider-dots">
+    <button class="slider-dot active" onclick="sGo(0)" aria-label="Go to slide 1"></button><button class="slider-dot" onclick="sGo(1)" aria-label="Go to slide 2"></button><button class="slider-dot" onclick="sGo(2)" aria-label="Go to slide 3"></button><button class="slider-dot" onclick="sGo(3)" aria-label="Go to slide 4"></button><button class="slider-dot" onclick="sGo(4)" aria-label="Go to slide 5"></button><button class="slider-dot" onclick="sGo(5)" aria-label="Go to slide 6"></button><button class="slider-dot" onclick="sGo(6)" aria-label="Go to slide 7"></button><button class="slider-dot" onclick="sGo(7)" aria-label="Go to slide 8"></button><button class="slider-dot" onclick="sGo(8)" aria-label="Go to slide 9"></button><button class="slider-dot" onclick="sGo(9)" aria-label="Go to slide 10"></button><button class="slider-dot" onclick="sGo(10)" aria-label="Go to slide 11"></button><button class="slider-dot" onclick="sGo(11)" aria-label="Go to slide 12"></button><button class="slider-dot" onclick="sGo(12)" aria-label="Go to slide 13"></button><button class="slider-dot" onclick="sGo(13)" aria-label="Go to slide 14"></button>
   </div>
-  <button class="slider-pause bottom-6 right-6" onclick="sTogglePause()" aria-label="Pause slideshow"><i id="sliderPauseIcon" class="fa-solid fa-pause"></i></button>
-  <!-- Floating chips -->
-  <a href="#about" class="absolute top-24 right-6 hidden md:flex items-center gap-2.5 px-4 py-3 rounded-2xl glass bg-slate-900/70 float-slow shadow-xl z-20 hover:border-blue-400/60 transition-colors" aria-label="About Dr. Wolthusen's Harvard appointment">
-    <i class="fa-solid fa-graduation-cap text-blue-400"></i>
-    <div class="text-xs"><div class="font-semibold text-white">Harvard Medical School</div><div class="text-slate-400">Instructor in Psychiatry</div></div>
-  </a>
-  <a href="#gallery" class="absolute bottom-24 right-6 hidden md:flex items-center gap-2.5 px-4 py-3 rounded-2xl glass bg-slate-900/70 float-slow shadow-xl z-20 hover:border-emerald-400/60 transition-colors" style="animation-delay:-4s" aria-label="See community mental health work">
-    <i class="fa-solid fa-globe text-emerald-400"></i>
-    <div class="text-xs"><div class="font-semibold text-white">On The Move e.V.</div><div class="text-slate-400">Co-Founder &amp; Director</div></div>
-  </a>
+  <button class="slider-pause" onclick="sTogglePause()" aria-label="Pause slideshow"><i id="sliderPauseIcon" class="fa-solid fa-pause"></i></button>
   <!-- Scroll cue -->
-  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center z-20">
+  <div class="scroll-cue absolute left-1/2 -translate-x-1/2 flex flex-col items-center z-20">
     <div class="text-xs tracking-[3px] font-medium mb-3 text-slate-400">SCROLL TO BEGIN</div>
     <div class="bounce text-blue-400"><i class="fa-solid fa-chevron-down text-xl"></i></div>
   </div>
