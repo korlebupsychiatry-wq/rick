@@ -1,0 +1,513 @@
+{
+  "version": 1,
+  "updatedAt": "2026-09-14T23:18:22.586Z",
+  "updatedBy": "admin",
+  "hero": {
+    "kicker": "McLEAN HOSPITAL • HARVARD MEDICAL SCHOOL",
+    "titleLine1": "Rick Peter Fritz",
+    "accent": "Wolthusen",
+    "role": "Psychiatrist · Clinician-Educator · Global Mental Health Researcher",
+    "summary": "Improving care for people with severe mental illness through clinical practice, research, teaching, and community partnership — across Boston, Ghana, Kenya, and beyond.",
+    "slides": [
+      {
+        "src": "images/hero-13.jpg",
+        "alt": "Dr. Rick Wolthusen — clinical and community work, photo 13",
+        "pos": ""
+      },
+      {
+        "src": "images/hero-11.jpg",
+        "alt": "Dr. Rick Wolthusen — clinical and community work, photo 11",
+        "pos": ""
+      },
+      {
+        "src": "images/hero-1.jpg",
+        "alt": "Dr. Rick Wolthusen — clinical and community work, photo 1",
+        "pos": ""
+      },
+      {
+        "src": "images/hero-2.jpg",
+        "alt": "Dr. Rick Wolthusen — clinical and community work, photo 2",
+        "pos": ""
+      },
+      {
+        "src": "images/hero-3.jpg",
+        "alt": "Dr. Rick Wolthusen — clinical and community work, photo 3",
+        "pos": ""
+      },
+      {
+        "src": "images/hero-4.jpg",
+        "alt": "Dr. Rick Wolthusen — clinical and community work, photo 4",
+        "pos": "center"
+      },
+      {
+        "src": "images/hero-5.jpg",
+        "alt": "Dr. Rick Wolthusen — clinical and community work, photo 5",
+        "pos": ""
+      },
+      {
+        "src": "images/hero-6.jpg",
+        "alt": "Dr. Rick Wolthusen — clinical and community work, photo 6",
+        "pos": ""
+      },
+      {
+        "src": "images/hero-7.jpg",
+        "alt": "Dr. Rick Wolthusen — clinical and community work, photo 7",
+        "pos": ""
+      },
+      {
+        "src": "images/hero-8.jpg",
+        "alt": "Dr. Rick Wolthusen — clinical and community work, photo 8",
+        "pos": ""
+      },
+      {
+        "src": "images/hero-9.jpg",
+        "alt": "Dr. Rick Wolthusen — clinical and community work, photo 9",
+        "pos": ""
+      },
+      {
+        "src": "images/hero-10.jpg",
+        "alt": "Dr. Rick Wolthusen — clinical and community work, photo 10",
+        "pos": ""
+      },
+      {
+        "src": "images/hero-12.jpg",
+        "alt": "Dr. Rick Wolthusen — clinical and community work, photo 12",
+        "pos": ""
+      },
+      {
+        "src": "images/hero-14.jpg",
+        "alt": "Dr. Rick Wolthusen — clinical and community work, photo 14",
+        "pos": ""
+      }
+    ]
+  },
+  "stats": {
+    "items": [
+      {
+        "count": 10,
+        "color": "blue",
+        "icon": "fa-solid fa-user-doctor",
+        "label": "Years+ Clinical & Research Practice",
+        "href": "#about",
+        "title": "Read the full profile"
+      },
+      {
+        "count": 8,
+        "color": "emerald",
+        "icon": "fa-solid fa-globe",
+        "label": "Countries of Active Partnership",
+        "href": "#gallery",
+        "title": "See work across countries"
+      },
+      {
+        "count": 30,
+        "color": "amber",
+        "icon": "fa-solid fa-file-lines",
+        "label": "Peer-Reviewed Publications+",
+        "href": "#publications",
+        "title": "Browse selected publications"
+      },
+      {
+        "count": 60000,
+        "color": "rose",
+        "icon": "fa-solid fa-people-group",
+        "label": "Community Members Reached",
+        "href": "#media",
+        "title": "Watch talks and videos",
+        "pop": true
+      }
+    ],
+    "affiliations": [
+      "McLean Hospital",
+      "Harvard Medical School",
+      "Massachusetts General Hospital",
+      "Duke University",
+      "TU Dresden",
+      "World Psychiatric Association",
+      "American Psychiatric Association",
+      "Catatonia Foundation"
+    ]
+  },
+  "about": {
+    "eyebrow": "CHAPTER I — ABOUT",
+    "heading": "Improving care for severe mental illness, locally and globally.",
+    "portrait": {
+      "src": "images/portrait.jpg",
+      "alt": "Portrait of Dr. Rick Wolthusen"
+    },
+    "badges": [
+      "MD — TU Dresden",
+      "MPP — Harvard Kennedy",
+      "Residency — Duke & Middlemore NZ"
+    ],
+    "paragraphs": [
+      "<strong class=\"text-white\">Dr. Rick Wolthusen</strong> is a psychiatrist in the Division of Psychotic Disorders at <strong class=\"text-white\">McLean Hospital</strong> and an Instructor in Psychiatry at <strong class=\"text-white\">Harvard Medical School</strong>. His clinical work focuses on people living with psychosis, bipolar disorder, and catatonia — including complex, recurrent forms of catatonia that may require longer-term management.",
+      "His research grows directly out of clinical practice. He has published on catatonia across a range of settings, including low-resource environments and different linguistic and cultural contexts, and serves on the <strong class=\"text-white\">Medical Advisory Board of the Catatonia Foundation</strong>. He is also Head of Training and Education for the Chester M. Pierce Division of Global Psychiatry at <strong class=\"text-white\">Massachusetts General Hospital</strong>.",
+      "A central theme of his work is strengthening the connection between specialist psychiatric care and the communities in which patients live — partnering with patients, families, community health workers, and religious and community leaders to improve recognition of severe mental illness, reduce stigma, and support sustained engagement with care. This work spans <strong class=\"text-white\">Ghana, Kenya, Rwanda, Ecuador, South Africa, Australia, and New Zealand</strong>.",
+      "A growing part of his work is bringing lessons from global mental health back to the United States: adapting community- and culturally informed approaches to inpatient psychiatry, and training clinicians, chaplains, and other members of care teams to better recognise severe mental illness, suicide risk, and the cultural contexts that shape psychiatric care."
+    ],
+    "tags": [
+      {
+        "label": "Catatonia",
+        "href": "#publications"
+      },
+      {
+        "label": "Severe Mental Illness",
+        "href": "#services"
+      },
+      {
+        "label": "Psychosis & Bipolar Disorder",
+        "href": "#services"
+      },
+      {
+        "label": "Global Mental Health",
+        "href": "#gallery"
+      },
+      {
+        "label": "Community Partnership",
+        "href": "#contact"
+      },
+      {
+        "label": "Medical Education",
+        "href": "#media"
+      }
+    ],
+    "credentials": [
+      {
+        "icon": "fa-solid fa-certificate",
+        "color": "text-blue-400",
+        "title": "Board Certified",
+        "sub": "American Board of Psychiatry & Neurology"
+      },
+      {
+        "icon": "fa-solid fa-id-card",
+        "color": "text-emerald-400",
+        "title": "Licensed Physician",
+        "sub": "Massachusetts, USA & Germany"
+      },
+      {
+        "icon": "fa-solid fa-users",
+        "color": "text-amber-400",
+        "title": "American Psychiatric Association",
+        "sub": "Council Representative, Massachusetts Psychiatric Society"
+      },
+      {
+        "icon": "fa-solid fa-earth-americas",
+        "color": "text-teal-400",
+        "title": "World Psychiatric Association",
+        "sub": "Council of International Psychiatry & Global Health"
+      },
+      {
+        "icon": "fa-solid fa-heart-pulse",
+        "color": "text-rose-400",
+        "title": "Catatonia Foundation",
+        "sub": "Medical Advisory Board"
+      },
+      {
+        "icon": "fa-solid fa-magnifying-glass-chart",
+        "color": "text-purple-400",
+        "title": "Peer Reviewer",
+        "sub": "JAMA Psychiatry · Global Mental Health"
+      }
+    ]
+  },
+  "services": {
+    "eyebrow": "CHAPTER II — AREAS OF FOCUS",
+    "heading": "What I do.",
+    "items": [
+      {
+        "icon": "fa-solid fa-brain",
+        "title": "Clinical Psychiatry",
+        "text": "Inpatient care in the Division of Psychotic Disorders at McLean Hospital, for people living with psychosis, bipolar disorder, and complex neuropsychiatric conditions.",
+        "meta": "McLean Hospital · Inpatient Care",
+        "href": "#about",
+        "aria": "Clinical Psychiatry — read the full profile"
+      },
+      {
+        "icon": "fa-solid fa-heart-pulse",
+        "title": "Catatonia",
+        "text": "Improving the recognition, conceptualisation, and treatment of catatonia — including recurrent and persistent forms that may need longer-term management.",
+        "meta": "Catatonia Foundation · Consultation",
+        "href": "#publications",
+        "aria": "Catatonia — see related publications"
+      },
+      {
+        "icon": "fa-solid fa-globe",
+        "title": "Global Mental Health",
+        "text": "Developing global mental health curricula and training partnerships — as Head of Training and Education in the Chester M. Pierce Division of Global Psychiatry.",
+        "meta": "Mass General · Ghana · Kenya",
+        "href": "#gallery",
+        "aria": "Global Mental Health — see work across countries"
+      },
+      {
+        "icon": "fa-solid fa-chalkboard-user",
+        "title": "Teaching & Supervision",
+        "text": "Teaching residents, medical students, clinicians, and care teams — including chaplains — to recognise and respond to psychosis, catatonia, severe mental illness, and suicide risk.",
+        "meta": "Residents · Curricula · Case Conferences",
+        "href": "#media",
+        "aria": "Teaching and Supervision — watch talks and lectures"
+      },
+      {
+        "icon": "fa-solid fa-microscope",
+        "title": "Clinical Research",
+        "text": "Scholarship that grows directly from clinical questions — publishing on catatonia and severe mental illness across cultural, linguistic, and low-resource settings.",
+        "meta": "Catatonia · Outcomes · Publications",
+        "href": "#publications",
+        "aria": "Clinical Research — browse publications"
+      },
+      {
+        "icon": "fa-solid fa-people-group",
+        "title": "Policy & Community Partnership",
+        "text": "Working with governments, community health workers, and religious and community leaders to strengthen pathways to care and reduce stigma.",
+        "meta": "Policy · Community · Anti-Stigma",
+        "href": "#contact",
+        "aria": "Policy and Community Partnership — get in touch"
+      }
+    ]
+  },
+  "media": {
+    "eyebrow": "CHAPTER III — TALKS & MEDIA",
+    "heading": "Ideas worth sharing.",
+    "note": "Videos play right here on the page — just press play. If your network blocks the player, each card also has a direct YouTube link.",
+    "items": [
+      {
+        "id": "BmqVsCx2qVQ",
+        "badge": "TEDx TALK",
+        "title": "TED Talk",
+        "text": "Rethinking mental health, stigma, and the power of community.",
+        "alt": "Rick Wolthusen TED Talk",
+        "grad": "from-blue-900",
+        "aria": "Play TED Talk video"
+      },
+      {
+        "id": "r2hazwEEQdI",
+        "badge": "KEYNOTE",
+        "title": "Global-Local Paradigm in Mental Health",
+        "text": "Task-shifting: bringing lessons from afar to our doorsteps.",
+        "alt": "Global-Local Paradigm in Mental Health — Task-Shifting",
+        "grad": "from-emerald-900",
+        "aria": "Play Global-Local Paradigm video"
+      },
+      {
+        "id": "xqVDRxsiW5s",
+        "badge": "VIDEO",
+        "title": "Featured Video",
+        "text": "A recent video — press play to watch it here on the page.",
+        "alt": "Featured video",
+        "grad": "from-indigo-900",
+        "aria": "Play featured video"
+      }
+    ]
+  },
+  "publications": {
+    "eyebrow": "CHAPTER IV — SELECTED PUBLICATIONS",
+    "heading": "Contributions to science.",
+    "note": "Click any title to preview a summary — click it again to open the full publication.",
+    "items": [
+      {
+        "cover": "c-blue",
+        "abbr": "CAT",
+        "icon": "fa-solid fa-heart-pulse",
+        "color": "blue",
+        "title": "A Two-Stage Allostatic Model of Catatonia: From Severity Marker to Sensitized Vulnerability",
+        "authors": "Wolthusen RPF, Valcourt SC, England ML, Stoklosa JB • Schizophrenia Research • 2026",
+        "tag": "Catatonia",
+        "url": "https://www.sciencedirect.com/science/article/abs/pii/S0920996426002823",
+        "summary": "A new framework reframing catatonia as a condition that can recur and sensitise over time — with direct implications for how clinicians treat, taper, and monitor it."
+      },
+      {
+        "cover": "c-indigo",
+        "abbr": "CAT",
+        "icon": "fa-solid fa-list-check",
+        "color": "indigo",
+        "title": "Diagnosing and Treating Catatonia in Low- and Middle-Income Countries: A Scoping Review",
+        "authors": "Belz F, … Wolthusen RPF • Comprehensive Psychiatry • 2025",
+        "tag": "Catatonia",
+        "url": "https://scholar.google.com/scholar?q=Belz+Wolthusen+catatonia+low+and+middle-income+countries+scoping+review",
+        "summary": "A scoping review of how catatonia is recognised and treated where psychiatric resources are scarce — and what high-income systems can learn in return."
+      },
+      {
+        "cover": "c-emerald",
+        "abbr": "BSD",
+        "icon": "fa-solid fa-lightbulb",
+        "color": "emerald",
+        "title": "Design Thinking for Cross-Sector Collaboration in Mental Health: The Brain Spirit Desk Model",
+        "authors": "Wolthusen RPF, Kumado JA, Adomdza GK • Psychiatric Services • 2025",
+        "tag": "Global Health",
+        "url": "https://scholar.google.com/scholar?q=Wolthusen+Kumado+Adomdza+Brain+Spirit+Desk+design+thinking+mental+health",
+        "summary": "How a collaborative 'desk' in Ghana brings mental health professionals together with religious and community leaders — increasing screening, referral, and trust."
+      },
+      {
+        "cover": "c-amber",
+        "abbr": "CHW",
+        "icon": "fa-solid fa-coins",
+        "color": "amber",
+        "title": "Financing Community Mental Health Worker Programs in the United States: Three Paths Forward",
+        "authors": "Meyerson J, Shepard M, Wolthusen RPF • Community Mental Health Journal • 2026",
+        "tag": "Health Policy",
+        "url": "https://scholar.google.com/scholar?q=Meyerson+Shepard+Wolthusen+financing+community+mental+health+worker+programs",
+        "summary": "Three practical financing pathways for sustaining community mental health worker programmes — a workforce model drawn from global mental health practice."
+      },
+      {
+        "cover": "c-cyan",
+        "abbr": "AI",
+        "icon": "fa-solid fa-robot",
+        "color": "cyan",
+        "title": "A Framework for Artificial Intelligence in Medical Education: Could I, Would I, Should I?",
+        "authors": "Wolthusen RPF, El-Tohami M, Hendler RA, Riordan PA, Stoklosa JB • Academic Psychiatry • 2024",
+        "tag": "AI & Education",
+        "url": "https://link.springer.com/article/10.1007/s40596-026-02406-9",
+        "summary": "A practical framework helping educators and trainees decide when artificial intelligence genuinely adds value to psychiatric training — and when it does not."
+      },
+      {
+        "cover": "c-teal",
+        "abbr": "WCP",
+        "icon": "fa-solid fa-people-arrows",
+        "color": "teal",
+        "title": "Applying a Socioecological Model Lens to Improve Equity and Inclusion in Global Mental Health Conferences",
+        "authors": "Wolthusen RPF, Read U, Kpobi L, et al. • World Cultural Psychiatry Research Review • 2025",
+        "tag": "Global Health",
+        "url": "https://scholar.google.com/scholar?q=Wolthusen+socioecological+model+equity+inclusion+global+mental+health+conferences",
+        "summary": "A practical analysis of who gets to speak, lead, and be heard at global mental health conferences — and how to make the field measurably more inclusive."
+      },
+      {
+        "cover": "c-violet",
+        "abbr": "PN",
+        "icon": "fa-solid fa-pen-nib",
+        "color": "violet",
+        "title": "Reflections From Ghana on Psychiatry, Community, and Mutual Growth",
+        "authors": "Wolthusen RP • Psychiatric News • 2026",
+        "tag": "Global Health",
+        "url": "https://psychiatryonline.org/doi/10.1176/appi.pn.2026.03.3.8",
+        "summary": "A first-person reflection on how community connection and mutual learning shape meaningful psychiatric practice across cultures — and what the Global North can learn in return."
+      },
+      {
+        "cover": "c-purple",
+        "abbr": "ENIGMA",
+        "icon": "fa-solid fa-brain",
+        "color": "purple",
+        "title": "Cortical Brain Abnormalities in 4,474 Individuals With Schizophrenia (ENIGMA Consortium)",
+        "authors": "van Erp TGM, … Wolthusen RPF, et al. • Biological Psychiatry • 2018 • 1,100+ citations",
+        "tag": "Neuroimaging",
+        "url": "https://www.biologicalpsychiatryjournal.com/article/S0006-3223(18)31517-8/fulltext",
+        "summary": "A landmark ENIGMA Consortium mega-analysis mapping cortical thickness and surface area abnormalities across nearly 4,500 individuals with schizophrenia."
+      }
+    ]
+  },
+  "recognition": {
+    "eyebrow": "CHAPTER V — RECOGNITION",
+    "heading": "Honours and awards.",
+    "note": "Selected recognition for clinical, research, teaching, and global mental health work.",
+    "items": [
+      {
+        "icon": "fa-solid fa-award",
+        "color": "text-blue-400",
+        "year": "2020",
+        "title": "Robert F. Kennedy Award for Excellence in Public Service",
+        "org": "Harvard Kennedy School",
+        "text": "The highest award given to a Harvard Kennedy School student, for exceptional public service."
+      },
+      {
+        "icon": "fa-solid fa-medal",
+        "color": "text-amber-400",
+        "year": "2023",
+        "title": "Order of Merit of the Federal Republic of Germany",
+        "org": "Federal Republic of Germany",
+        "text": "Germany's highest tribute for services to the nation, recognising global (mental) health work."
+      },
+      {
+        "icon": "fa-solid fa-hand-holding-heart",
+        "color": "text-rose-400",
+        "year": "2022",
+        "title": "Humanitarian Award",
+        "org": "Society of Biological Psychiatry",
+        "text": "Recognising demonstrated service and advocacy for people living with mental illness."
+      },
+      {
+        "icon": "fa-solid fa-people-group",
+        "color": "text-emerald-400",
+        "year": "2022",
+        "title": "James H. Carter, Sr. Community Service Award",
+        "org": "Duke University Medical Center",
+        "text": "For compassion and advocacy with diverse patients from underserved communities, and contributions to global mental health."
+      },
+      {
+        "icon": "fa-solid fa-globe",
+        "color": "text-teal-400",
+        "year": "2024",
+        "title": "Early Career Psychiatrist Fellowship",
+        "org": "World Psychiatric Association",
+        "text": "Awarded for contributions to the global mental health field."
+      },
+      {
+        "icon": "fa-solid fa-lightbulb",
+        "color": "text-purple-400",
+        "year": "2019",
+        "title": "Adrian Cheng Fellow, Social Innovation and Change Initiative",
+        "org": "Harvard Kennedy School",
+        "text": "For work on mental health and spirituality in Ghana."
+      }
+    ]
+  },
+  "gallery": {
+    "eyebrow": "CHAPTER VI — GALLERY",
+    "heading": "Moments across three continents.",
+    "note": "More moments on <a href=\"https://web.facebook.com/rick.wolthusen\" target=\"_blank\" rel=\"noopener\" class=\"text-blue-400 hover:underline\">Facebook</a>.",
+    "items": [
+      {
+        "src": "images/gallery-1.jpg",
+        "alt": "Dr. Rick Wolthusen — international collaboration and community mental health work",
+        "large": true
+      },
+      {
+        "src": "images/gallery-2.jpg",
+        "alt": "Clinical practice and inpatient psychiatry",
+        "large": false
+      },
+      {
+        "src": "images/gallery-3.jpg",
+        "alt": "Teaching and case conferences with trainees",
+        "large": false
+      },
+      {
+        "src": "images/gallery-4.jpg",
+        "alt": "Global mental health partnership in West Africa",
+        "large": false
+      },
+      {
+        "src": "images/gallery-5.jpg",
+        "alt": "With colleagues and collaborators",
+        "large": false
+      },
+      {
+        "src": "images/gallery-6.jpg",
+        "alt": "Community mental health work and outreach",
+        "large": false
+      },
+      {
+        "src": "images/gallery-7.jpg",
+        "alt": "Moments from teaching and clinical practice",
+        "large": false
+      },
+      {
+        "src": "images/gallery-8.jpg",
+        "alt": "Partnerships across three continents",
+        "large": false
+      },
+      {
+        "src": "images/gallery-9.jpg",
+        "alt": "Convenings, lectures, and community engagement",
+        "large": false
+      }
+    ]
+  },
+  "contact": {
+    "heading": "Let's collaborate.",
+    "text": "Whether you're interested in clinical consultation, research collaboration, speaking engagements, or global mental health initiatives — the door is open."
+  },
+  "footer": {
+    "tagline": "Psychiatrist, clinician-educator, and global mental health researcher working to improve care for people with severe mental illness.",
+    "copyright": "© 2026 Dr. Rick Peter Fritz Wolthusen, MD, MPP. All rights reserved.",
+    "location": "McLean Hospital · Harvard Medical School"
+  }
+}
