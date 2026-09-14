@@ -21,6 +21,12 @@ desktop.ini
 
 # Local image-analysis helpers (never published)
 _*.py
+_tools/
 __pycache__/
+
+# Local secrets (the CMS reads these from the environment, never from the repo)
+.env
+.env.*
+!.env.example
 
 .vercel

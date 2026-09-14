@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Content Studio — Dr. Rick Wolthusen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --bg:#070b14; --bg-2:#0b1120; --panel:#101827; --panel-2:#141d2f;
+    --line:rgba(255,255,255,.08); --line-2:rgba(255,255,255,.14);
+    --text:#e8edf7; --muted:#93a1b8; --dim:#66748c;
+    --blue:#5b9bff; --emerald:#34d399; --amber:#fbbf24; --rose:#fb7185;
+    --radius:16px; --shadow:0 18px 50px rgba(0,0,0,.45);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    font-size:14.5px; line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+    background:
+      radial-gradient(900px 500px at 12% -8%, rgba(91,155,255,.16), transparent 60%),
+      radial-gradient(700px 420px at 96% 4%, rgba(52,211,153,.11), transparent 60%);
+  }
+  a{color:var(--blue);text-decoration:none}
+  button{font:inherit;color:inherit}
+  .hidden{display:none!important}
+
+  /* ---------------------------------------------------------------- login */
+  #login{position:relative;z-index:1;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+  .login-card{
+    width:100%;max-width:410px;background:linear-gradient(180deg,rgba(20,29,47,.96),rgba(12,18,32,.96));
+    border:1px solid var(--line);border-radius:24px;padding:38px 34px;box-shadow:var(--shadow);
+  }
+  .brand{display:flex;align-items:center;gap:12px;margin-bottom:26px}
+  .brand-mark{
+    width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,var(--blue),var(--emerald));color:#06101f;font-weight:800;font-size:18px;
+    box-shadow:0 10px 26px rgba(91,155,255,.32);
+  }
+  .brand-name{font-weight:700;font-size:16px;letter-spacing:-.01em}
+  .brand-sub{font-size:12px;color:var(--dim)}
+  .login-card h1{margin:0 0 6px;font-size:22px;letter-spacing:-.02em}
+  .login-card p.sub{margin:0 0 26px;color:var(--muted);font-size:13.5px}
+  .login-foot{margin-top:22px;font-size:12px;color:var(--dim);text-align:center}
+
+  /* ---------------------------------------------------------------- shell */
+  #app{position:relative;z-index:1;min-height:100vh;display:grid;grid-template-columns:264px 1fr;grid-template-rows:auto 1fr}
+  .topbar{
+    grid-column:1/-1;display:flex;align-items:center;gap:14px;padding:12px 20px;
+    border-bottom:1px solid var(--line);background:rgba(9,14,25,.86);backdrop-filter:blur(14px);
+    position:sticky;top:0;z-index:20;
+  }
+  .topbar .grow{flex:1}
+  .who{display:flex;align-items:center;gap:9px;padding:6px 12px 6px 6px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.03)}
+  .avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(91,155,255,.9),rgba(52,211,153,.9));color:#06101f;font-weight:700;font-size:12px}
+  .who-name{font-size:13px;font-weight:600;line-height:1.1}
+  .who-role{font-size:11px;color:var(--dim);line-height:1.2}
+  .pill{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;border:1px solid var(--line-2);color:var(--muted)}
+  .pill.super{border-color:rgba(52,211,153,.45);color:#5eead4}
+
+  .sidebar{border-right:1px solid var(--line);padding:18px 12px 120px;background:rgba(10,15,27,.6);overflow-y:auto;max-height:calc(100vh - 61px);position:sticky;top:61px}
+  .side-label{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);padding:12px 12px 6px;font-weight:700}
+  .navbtn{
+    display:flex;align-items:center;gap:11px;width:100%;padding:9.5px 12px;border:0;border-radius:11px;
+    background:transparent;cursor:pointer;color:var(--muted);text-align:left;font-size:13.5px;transition:background .15s,color .15s;
+  }
+  .navbtn i{width:17px;text-align:center;font-size:13px;opacity:.85}
+  .navbtn:hover{background:rgba(255,255,255,.045);color:var(--text)}
+  .navbtn.on{background:linear-gradient(90deg,rgba(91,155,255,.18),rgba(91,155,255,.04));color:#dce9ff;box-shadow:inset 2px 0 0 var(--blue)}
+  .navbtn .count{margin-left:auto;font-size:11px;color:var(--dim)}
+  .side-sep{height:1px;background:var(--line);margin:12px 10px}
+
+  .main{padding:28px 32px 140px;max-width:900px}
+  .panel-head{margin-bottom:22px}
+  .panel-head h2{margin:0 0 4px;font-size:23px;letter-spacing:-.02em}
+  .panel-head p{margin:0;color:var(--muted);font-size:13.5px;max-width:640px}
+
+  .card{background:linear-gradient(180deg,rgba(20,29,47,.7),rgba(13,19,33,.7));border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin-bottom:18px}
+  .card > h3{margin:0 0 3px;font-size:15px}
+  .card > .hint{margin-bottom:16px}
+
+  /* ---------------------------------------------------------------- fields */
+  .fld{margin-bottom:16px}
+  .fld:last-child{margin-bottom:0}
+  .fld-label{display:block;font-size:12.5px;font-weight:600;color:#c3cfe2;margin-bottom:6px}
+  .inp{
+    width:100%;padding:10px 12px;background:rgba(6,10,19,.75);border:1px solid var(--line-2);
+    border-radius:11px;color:var(--text);font:inherit;font-size:13.5px;outline:none;transition:border-color .15s,box-shadow .15s;
+  }
+  .inp:focus{border-color:rgba(91,155,255,.7);box-shadow:0 0 0 3px rgba(91,155,255,.14)}
+  textarea.inp{resize:vertical;min-height:78px;line-height:1.6}
+  textarea.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px}
+  select.inp{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#7b8aa3 50%),linear-gradient(135deg,#7b8aa3 50%,transparent 50%);background-position:calc(100% - 17px) 50%,calc(100% - 12px) 50%;background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:34px}
+  .hint{font-size:11.5px;color:var(--dim);margin-top:4px}
+  .fld-inline{display:flex;gap:10px;align-items:center}
+  .fld-inline .inp{flex:1}
+  input[type=checkbox]{width:17px;height:17px;accent-color:var(--blue);margin:0}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:11px;border:1px solid var(--line-2);
+    background:rgba(255,255,255,.04);cursor:pointer;font-size:13px;font-weight:600;transition:background .15s,border-color .15s,transform .1s;
+    white-space:nowrap;
+  }
+  .btn:hover{background:rgba(255,255,255,.09)}
+  .btn:active{transform:translateY(1px)}
+  .btn-sm{padding:6.5px 11px;font-size:12.5px;border-radius:9px}
+  .btn-primary{background:linear-gradient(135deg,var(--blue),#3f7fe0);border-color:transparent;color:#04101f;box-shadow:0 8px 22px rgba(91,155,255,.26)}
+  .btn-primary:hover{background:linear-gradient(135deg,#7cb0ff,#4f8ce8)}
+  .btn-primary:disabled{opacity:.55;cursor:progress;transform:none}
+  .btn-ghost{background:transparent}
+  .btn-danger{color:#ffc9d2;border-color:rgba(251,113,133,.4)}
+  .btn-danger:hover{background:rgba(251,113,133,.14)}
+  .btn-block{width:100%;justify-content:center;padding:12px}
+  .iconbtn{
+    width:29px;height:29px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;
+    border:1px solid var(--line);background:rgba(255,255,255,.03);cursor:pointer;color:var(--muted);font-size:12px;
+  }
+  .iconbtn:hover{background:rgba(255,255,255,.1);color:var(--text)}
+  .iconbtn.danger:hover{background:rgba(251,113,133,.16);color:#ffc9d2;border-color:rgba(251,113,133,.4)}
+
+  /* ---------------------------------------------------------------- lists */
+  .list-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:13px}
+  .list-head > div:first-child{flex:1}
+  .list-title{font-size:12.5px;font-weight:600;color:#c3cfe2}
+  .list-body{display:flex;flex-direction:column;gap:9px}
+  .item{border:1px solid var(--line);border-radius:13px;background:rgba(6,10,19,.42);overflow:hidden}
+  .item[open]{border-color:var(--line-2);background:rgba(6,10,19,.6)}
+  .item summary{display:flex;align-items:center;gap:10px;padding:10px 12px;cursor:pointer;list-style:none;user-select:none}
+  .item summary::-webkit-details-marker{display:none}
+  .item summary::before{content:'\f054';font:900 10px 'Font Awesome 6 Free';color:var(--dim);transition:transform .18s}
+  .item[open] summary::before{transform:rotate(90deg)}
+  .item-title{flex:1;font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .item-tools{display:flex;gap:5px}
+  .item-body{padding:4px 14px 16px 14px;border-top:1px solid var(--line)}
+  .item-body .fld:first-child{margin-top:14px}
+  .empty{padding:18px;text-align:center;color:var(--dim);font-size:13px;border:1px dashed var(--line-2);border-radius:12px}
+
+  /* ---------------------------------------------------------------- image field */
+  .imgfield{display:flex;gap:13px;align-items:flex-start}
+  .imgprev{
+    width:118px;height:80px;flex:none;border-radius:11px;border:1px solid var(--line-2);overflow:hidden;
+    background:rgba(6,10,19,.7) center/cover no-repeat;display:flex;align-items:center;justify-content:center;color:var(--dim);font-size:11px;text-align:center;
+  }
+  .imgbody{flex:1;min-width:0}
+  .imgactions{display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap}
+  .upstatus{font-size:11.5px;color:var(--muted)}
+
+  /* ---------------------------------------------------------------- table */
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th{text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);font-weight:700;padding:0 12px 10px}
+  td{padding:12px;border-top:1px solid var(--line);vertical-align:middle}
+  td.actions{text-align:right;white-space:nowrap}
+  .role-tag{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;letter-spacing:.05em}
+  .role-tag.super{background:rgba(52,211,153,.14);color:#5eead4;border:1px solid rgba(52,211,153,.35)}
+  .role-tag.editor{background:rgba(91,155,255,.13);color:#a9caff;border:1px solid rgba(91,155,255,.32)}
+
+  /* ---------------------------------------------------------------- savebar */
+  .savebar{
+    position:fixed;left:264px;right:0;bottom:0;z-index:30;display:flex;align-items:center;gap:14px;
+    padding:13px 32px;border-top:1px solid var(--line);background:rgba(8,12,22,.92);backdrop-filter:blur(14px);
+  }
+  .savebar .grow{flex:1}
+  .status{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--dim)}
+  .status.dirty .dot{background:var(--amber);box-shadow:0 0 10px rgba(251,191,36,.7)}
+  .status.saved .dot{background:var(--emerald);box-shadow:0 0 10px rgba(52,211,153,.7)}
+  .status.busy .dot{background:var(--blue);animation:pulse 1s infinite}
+  @keyframes pulse{50%{opacity:.25}}
+
+  .banner{display:flex;gap:12px;align-items:flex-start;padding:13px 15px;border-radius:13px;font-size:13px;margin-bottom:18px;border:1px solid}
+  .banner.warn{background:rgba(251,191,36,.09);border-color:rgba(251,191,36,.32);color:#fde4a8}
+  .banner.err{background:rgba(251,113,133,.1);border-color:rgba(251,113,133,.36);color:#ffd0d8}
+  .banner.ok{background:rgba(52,211,153,.09);border-color:rgba(52,211,153,.3);color:#b6f5dc}
+  .banner .grow{flex:1}
+
+  .toasts{position:fixed;bottom:82px;left:50%;transform:translateX(-50%);z-index:60;display:flex;flex-direction:column;gap:9px;align-items:center}
+  .toast{
+    padding:11px 17px;border-radius:12px;background:rgba(17,25,42,.97);border:1px solid var(--line-2);
+    box-shadow:var(--shadow);font-size:13px;display:flex;align-items:center;gap:10px;animation:rise .22s ease-out;
+  }
+  @keyframes rise{from{opacity:0;transform:translateY(9px)}}
+  .toast.ok i{color:var(--emerald)}
+  .toast.err i{color:var(--rose)}
+
+  .muted{color:var(--muted)}
+  .dim{color:var(--dim)}
+  .kv{display:grid;grid-template-columns:150px 1fr;gap:8px 16px;font-size:13.5px}
+  .kv dt{color:var(--dim)}
+  .kv dd{margin:0}
+  .row{display:flex;gap:10px;flex-wrap:wrap}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:900px){
+    #app{grid-template-columns:1fr}
+    .sidebar{position:static;max-height:none;border-right:0;border-bottom:1px solid var(--line);padding-bottom:14px}
+    .savebar{left:0;padding:11px 16px}
+    .main{padding:20px 16px 150px}
+    .split{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================== LOGIN ============================== -->
+<div id="login">
+  <div class="login-card">
+    <div class="brand">
+      <div class="brand-mark">RW</div>
+      <div>
+        <div class="brand-name">Content Studio</div>
+        <div class="brand-sub">Dr. Rick Wolthusen</div>
+      </div>
+    </div>
+    <h1>Sign in</h1>
+    <p class="sub">Edit the public site, change photos, and manage who has access.</p>
+    <div id="loginError" class="banner err hidden"><i class="fa-solid fa-circle-exclamation"></i><div class="grow" id="loginErrorText"></div></div>
+    <form id="loginForm" autocomplete="on">
+      <div class="fld">
+        <label class="fld-label" for="lgUser">Username</label>
+        <input class="inp" id="lgUser" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+      </div>
+      <div class="fld">
+        <label class="fld-label" for="lgPass">Password</label>
+        <input class="inp" id="lgPass" name="password" type="password" autocomplete="current-password" required>
+      </div>
+      <button class="btn btn-primary btn-block" type="submit" id="lgSubmit"><i class="fa-solid fa-arrow-right-to-bracket"></i> Sign in</button>
+    </form>
+    <div class="login-foot">Authorised access only · <a href="/">back to the site</a></div>
+  </div>
+</div>
+
+<!-- =============================== APP =============================== -->
+<div id="app" class="hidden">
+  <header class="topbar">
+    <div class="brand" style="margin:0">
+      <div class="brand-mark" style="width:36px;height:36px;border-radius:11px;font-size:15px">RW</div>
+      <div>
+        <div class="brand-name" style="font-size:14.5px">Content Studio</div>
+        <div class="brand-sub" style="font-size:11px">rick-phi-azure.vercel.app</div>
+      </div>
+    </div>
+    <div class="grow"></div>
+    <a class="btn btn-sm btn-ghost" href="/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> View site</a>
+    <div class="who">
+      <div class="avatar" id="whoAvatar">A</div>
+      <div>
+        <div class="who-name" id="whoName">Admin</div>
+        <div class="who-role" id="whoRole">super admin</div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sidebar" id="sidebar"></nav>
+  <main class="main" id="main"></main>
+
+  <div class="savebar" id="savebar">
+    <div class="status" id="saveStatus"><span class="dot"></span><span id="saveStatusText">All changes saved</span></div>
+    <div class="grow"></div>
+    <button class="btn btn-sm btn-ghost hidden" id="reloadBtn"><i class="fa-solid fa-rotate"></i> Reload latest</button>
+    <button class="btn btn-sm btn-ghost" id="discardBtn"><i class="fa-solid fa-rotate-left"></i> Discard changes</button>
+    <button class="btn btn-primary" id="saveBtn"><i class="fa-solid fa-cloud-arrow-up"></i> Save &amp; publish</button>
+  </div>
+</div>
+
+<div class="toasts" id="toasts"></div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* =============================== helpers =============================== */
+
+  var $ = function (sel, root) { return (root || document).querySelector(sel); };
+
+  function esc(value) {
+    return String(value == null ? '' : value).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function getIn(obj, path) {
+    if (!path) return obj;
+    return String(path).split('.').reduce(function (acc, key) {
+      return acc == null ? undefined : acc[key];
+    }, obj);
+  }
+
+  function setIn(obj, path, value) {
+    var keys = String(path).split('.');
+    var last = keys.pop();
+    var target = keys.reduce(function (acc, key) {
+      if (acc[key] == null || typeof acc[key] !== 'object') acc[key] = {};
+      return acc[key];
+    }, obj);
+    target[last] = value;
+  }
+
+  function mediaUrl(path) {
+    var value = String(path == null ? '' : path);
+    if (!value) return '';
+    if (/^(https?:)?\/\//.test(value) || value.indexOf('data:') === 0) return value;
+    if (value.indexOf('uploads/') === 0) return '/api/media?path=' + encodeURIComponent(value);
+    return value;
+  }
+
+  function clone(value) { return JSON.parse(JSON.stringify(value)); }
+
+  function h(html) {
+    var t = document.createElement('template');
+    t.innerHTML = String(html).trim();
+    return t.content.firstElementChild;
+  }
+
+  var uidSeq = 0;
+  function uid(prefix) { uidSeq += 1; return (prefix || 'f') + uidSeq; }
+
+  function toast(message, kind) {
+    var node = h('<div class="toast ' + (kind || 'ok') + '"><i class="fa-solid ' + (kind === 'err' ? 'fa-circle-exclamation' : 'fa-circle-check') + '"></i><span>' + esc(message) + '</span></div>');
+    $('#toasts').appendChild(node);
+    setTimeout(function () {
+      node.style.transition = 'opacity .3s, transform .3s';
+      node.style.opacity = '0';
+      node.style.transform = 'translateY(8px)';
+      setTimeout(function () { node.remove(); }, 320);
+    }, kind === 'err' ? 6000 : 2800);
+  }
+
+  /* =============================== api =============================== */
+
+  var state = {
+    user: null,
+    content: null,
+    base: null,
+    sha: null,
+    section: 'hero',
+    admins: [],
+    canManage: false,
+    saving: false,
+    conflictNode: null
+  };
+
+  async function api(path, options) {
+    var opts = Object.assign({ credentials: 'same-origin' }, options || {});
+    opts.headers = Object.assign({ Accept: 'application/json' }, opts.headers || {});
+    var res = await fetch(path, opts);
+    var data = null;
+    try { data = await res.json(); } catch (_) { data = null; }
+    if (!res.ok || (data && data.ok === false)) {
+      var error = new Error((data && data.error) || ('Request failed (' + res.status + ')'));
+      error.status = res.status;
+      error.data = data;
+      if (res.status === 401 && state.user) showLogin('Your session has ended. Please sign in again.');
+      throw error;
+    }
+    return data;
+  }
+
+  /* =============================== schema =============================== */
+
+  var ICONS = [
+    'fa-solid fa-brain','fa-solid fa-heart-pulse','fa-solid fa-globe','fa-solid fa-chalkboard-user',
+    'fa-solid fa-microscope','fa-solid fa-people-group','fa-solid fa-user-doctor','fa-solid fa-file-lines',
+    'fa-solid fa-certificate','fa-solid fa-id-card','fa-solid fa-users','fa-solid fa-earth-americas',
+    'fa-solid fa-magnifying-glass-chart','fa-solid fa-award','fa-solid fa-medal','fa-solid fa-hand-holding-heart',
+    'fa-solid fa-lightbulb','fa-solid fa-graduation-cap','fa-solid fa-book-open','fa-solid fa-pen-nib',
+    'fa-solid fa-robot','fa-solid fa-coins','fa-solid fa-list-check','fa-solid fa-people-arrows',
+    'fa-solid fa-hospital','fa-solid fa-stethoscope','fa-solid fa-comments','fa-solid fa-scale-balanced'
+  ];
+  var ICON_HINT = 'Font Awesome class, e.g. ' + ICONS[0];
+
+  function iconField(path, label) {
+    return { path: path, label: label, type: 'icon', hint: ICON_HINT };
+  }
+
+  var SCHEMA = [
+    {
+      id: 'hero', label: 'Hero', nav: 'fa-solid fa-house', blurb: 'The landing panel: badge, name, roles, intro line and the rotating background photographs.',
+      fields: [
+        { path: 'hero.kicker', label: 'Badge text', type: 'text', hint: 'Small pill above the name.' },
+        { path: 'hero.titleLine1', label: 'Name — first line', type: 'text' },
+        { path: 'hero.accent', label: 'Name — highlighted line', type: 'text', hint: 'Rendered with the gradient treatment.' },
+        { path: 'hero.role', label: 'Roles', type: 'text', hint: 'Separate each role with ·' },
+        { path: 'hero.summary', label: 'Intro paragraph', type: 'textarea' },
+        { path: 'hero.slides', label: 'Background photos', type: 'list', item: 'Photo', titleField: 'alt', hint: 'Shown in this order, crossfading every 4.5 seconds.', fields: [
+          { path: 'src', label: 'Image', type: 'image' },
+          { path: 'alt', label: 'Description (alt text)', type: 'text', hint: 'Used by screen readers and search engines.' },
+          { path: 'pos', label: 'Crop focus', type: 'select', options: [['', 'Default (fill the frame)'], ['center', 'Centre'], ['top', 'Top'], ['bottom', 'Bottom'], ['left', 'Left'], ['right', 'Right']] }
+        ] }
+      ]
+    },
+    {
+      id: 'stats', label: 'Numbers', nav: 'fa-solid fa-chart-simple', blurb: 'The headline statistics strip and the list of affiliations.',
+      fields: [
+        { path: 'stats.items', label: 'Headline numbers', type: 'list', item: 'Statistic', titleField: 'label', fields: [
+          { path: 'count', label: 'Number', type: 'number' },
+          { path: 'label', label: 'Caption', type: 'text' },
+          iconField('icon', 'Icon'),
+          { path: 'color', label: 'Colour', type: 'select', options: [['blue', 'Blue'], ['emerald', 'Green'], ['amber', 'Amber'], ['rose', 'Rose']] },
+          { path: 'href', label: 'Links to', type: 'text', hint: 'e.g. #about' },
+          { path: 'title', label: 'Tooltip', type: 'text' }
+        ] },
+        { path: 'stats.affiliations', label: 'Affiliations', type: 'stringlist', item: 'Affiliation', itemLabel: 'Name', hint: 'One per row, shown as pills.' }
+      ]
+    },
+    {
+      id: 'about', label: 'About', nav: 'fa-solid fa-user', blurb: 'Portrait, biography paragraphs, focus tags and credentials.',
+      fields: [
+        { path: 'about.eyebrow', label: 'Section label', type: 'text' },
+        { path: 'about.heading', label: 'Heading', type: 'text' },
+        { path: 'about.portrait', label: 'Portrait', type: 'group', fields: [
+          { path: 'src', label: 'Image', type: 'image' },
+          { path: 'alt', label: 'Description (alt text)', type: 'text' }
+        ] },
+        { path: 'about.badges', label: 'Portrait badges', type: 'stringlist', item: 'Badge', itemLabel: 'Text', hint: 'The three pills under the portrait.' },
+        { path: 'about.paragraphs', label: 'Biography', type: 'stringlist', item: 'Paragraph', itemLabel: 'Paragraph', html: true, hint: 'One paragraph per row. Basic HTML is allowed — for example <strong class="text-white">text</strong> for emphasis.' },
+        { path: 'about.tags', label: 'Focus tags', type: 'list', item: 'Tag', titleField: 'label', fields: [
+          { path: 'label', label: 'Label', type: 'text' },
+          { path: 'href', label: 'Links to', type: 'text', hint: 'e.g. #publications' }
+        ] },
+        { path: 'about.credentials', label: 'Credentials', type: 'list', item: 'Credential', titleField: 'title', fields: [
+          { path: 'title', label: 'Title', type: 'text' },
+          { path: 'sub', label: 'Detail', type: 'text' },
+          iconField('icon', 'Icon'),
+          { path: 'color', label: 'Colour', type: 'select', options: [['text-blue-400', 'Blue'], ['text-emerald-400', 'Green'], ['text-amber-400', 'Amber'], ['text-rose-400', 'Rose'], ['text-teal-400', 'Teal'], ['text-purple-400', 'Purple'], ['text-indigo-400', 'Indigo'], ['text-cyan-400', 'Cyan']] }
+        ] }
+      ]
+    },
+    {
+      id: 'services', label: 'Areas of focus', nav: 'fa-solid fa-layer-group', blurb: 'The six cards describing clinical, research and teaching work.',
+      fields: [
+        { path: 'services.eyebrow', label: 'Section label', type: 'text' },
+        { path: 'services.heading', label: 'Heading', type: 'text' },
+        { path: 'services.items', label: 'Cards', type: 'list', item: 'Card', titleField: 'title', fields: [
+          { path: 'title', label: 'Title', type: 'text' },
+          { path: 'text', label: 'Description', type: 'textarea' },
+          iconField('icon', 'Icon'),
+          { path: 'meta', label: 'Footer line', type: 'text', hint: 'Separate items with ·' },
+          { path: 'href', label: 'Links to', type: 'text', hint: 'e.g. #publications' },
+          { path: 'aria', label: 'Screen-reader label', type: 'text' }
+        ] }
+      ]
+    },
+    {
+      id: 'media', label: 'Talks & media', nav: 'fa-solid fa-play', blurb: 'YouTube videos shown as playable cards.',
+      fields: [
+        { path: 'media.eyebrow', label: 'Section label', type: 'text' },
+        { path: 'media.heading', label: 'Heading', type: 'text' },
+        { path: 'media.note', label: 'Intro note', type: 'textarea' },
+        { path: 'media.items', label: 'Videos', type: 'list', item: 'Video', titleField: 'title', hint: 'The thumbnail is fetched from YouTube automatically.', fields: [
+          { path: 'id', label: 'YouTube video ID', type: 'text', hint: 'The part after v= in the video link.' },
+          { path: 'badge', label: 'Corner badge', type: 'text', hint: 'e.g. TEDx TALK' },
+          { path: 'title', label: 'Title', type: 'text' },
+          { path: 'text', label: 'Description', type: 'textarea' },
+          { path: 'alt', label: 'Image description', type: 'text' },
+          { path: 'grad', label: 'Card tint', type: 'select', options: [['from-blue-900', 'Blue'], ['from-emerald-900', 'Green'], ['from-indigo-900', 'Indigo'], ['from-purple-900', 'Purple'], ['from-rose-900', 'Rose']] },
+          { path: 'aria', label: 'Screen-reader label', type: 'text' }
+        ] }
+      ]
+    },
+    {
+      id: 'publications', label: 'Publications', nav: 'fa-solid fa-book', blurb: 'Selected papers. Each entry opens a summary, then the full article.',
+      fields: [
+        { path: 'publications.eyebrow', label: 'Section label', type: 'text' },
+        { path: 'publications.heading', label: 'Heading', type: 'text' },
+        { path: 'publications.note', label: 'Intro note', type: 'textarea' },
+        { path: 'publications.items', label: 'Papers', type: 'list', item: 'Paper', titleField: 'title', fields: [
+          { path: 'title', label: 'Title', type: 'text' },
+          { path: 'authors', label: 'Authors & journal', type: 'text', hint: 'Separate with •' },
+          { path: 'summary', label: 'Plain-language summary', type: 'textarea' },
+          { path: 'url', label: 'Link to the paper', type: 'text' },
+          { path: 'tag', label: 'Topic tag', type: 'text' },
+          { path: 'color', label: 'Accent colour', type: 'select', options: [['blue', 'Blue'], ['indigo', 'Indigo'], ['emerald', 'Green'], ['amber', 'Amber'], ['cyan', 'Cyan'], ['teal', 'Teal'], ['violet', 'Violet'], ['purple', 'Purple'], ['rose', 'Rose']] },
+          { path: 'abbr', label: 'Cover abbreviation', type: 'text', hint: 'Up to 8 characters.' },
+          iconField('icon', 'Cover icon')
+        ] }
+      ]
+    },
+    {
+      id: 'recognition', label: 'Recognition', nav: 'fa-solid fa-trophy', blurb: 'Honours and awards.',
+      fields: [
+        { path: 'recognition.eyebrow', label: 'Section label', type: 'text' },
+        { path: 'recognition.heading', label: 'Heading', type: 'text' },
+        { path: 'recognition.note', label: 'Intro note', type: 'textarea' },
+        { path: 'recognition.items', label: 'Awards', type: 'list', item: 'Award', titleField: 'title', fields: [
+          { path: 'title', label: 'Award', type: 'text' },
+          { path: 'org', label: 'Awarding body', type: 'text' },
+          { path: 'year', label: 'Year', type: 'text' },
+          { path: 'text', label: 'Description', type: 'textarea' },
+          iconField('icon', 'Icon'),
+          { path: 'color', label: 'Colour', type: 'select', options: [['text-blue-400', 'Blue'], ['text-amber-400', 'Amber'], ['text-rose-400', 'Rose'], ['text-emerald-400', 'Green'], ['text-teal-400', 'Teal'], ['text-purple-400', 'Purple'], ['text-indigo-400', 'Indigo'], ['text-cyan-400', 'Cyan']] }
+        ] }
+      ]
+    },
+    {
+      id: 'gallery', label: 'Gallery', nav: 'fa-solid fa-images', blurb: 'The photo grid. The first photo can span two columns.',
+      fields: [
+        { path: 'gallery.eyebrow', label: 'Section label', type: 'text' },
+        { path: 'gallery.heading', label: 'Heading', type: 'text' },
+        { path: 'gallery.note', label: 'Closing note', type: 'html', hint: 'Basic HTML is allowed (links, emphasis).' },
+        { path: 'gallery.items', label: 'Photos', type: 'list', item: 'Photo', titleField: 'alt', fields: [
+          { path: 'src', label: 'Image', type: 'image' },
+          { path: 'alt', label: 'Description (alt text)', type: 'text' },
+          { path: 'large', label: 'Feature this photo (double size)', type: 'checkbox' }
+        ] }
+      ]
+    },
+    {
+      id: 'contact', label: 'Contact & footer', nav: 'fa-solid fa-envelope', blurb: 'Closing call to action and the footer line.',
+      fields: [
+        { path: 'contact.heading', label: 'Contact heading', type: 'text' },
+        { path: 'contact.text', label: 'Contact text', type: 'textarea' },
+        { path: 'footer.tagline', label: 'Footer tagline', type: 'textarea' },
+        { path: 'footer.copyright', label: 'Copyright line', type: 'text' },
+        { path: 'footer.location', label: 'Location line', type: 'text' }
+      ]
+    }
+  ];
+
+  /* =============================== renderers =============================== */
+
+  function fieldShell(label, hint) {
+    var row = document.createElement('div');
+    row.className = 'fld';
+    if (label) {
+      var lab = document.createElement('label');
+      lab.className = 'fld-label';
+      lab.textContent = label;
+      row.appendChild(lab);
+    }
+    return row;
+  }
+
+  function addHint(row, hint) {
+    if (!hint) return;
+    var node = document.createElement('div');
+    node.className = 'hint';
+    node.textContent = hint;
+    row.appendChild(node);
+  }
+
+  function makeField(field, obj, onChange) {
+    if (field.type === 'group') {
+      var group = getIn(obj, field.path);
+      if (group == null || typeof group !== 'object') { setIn(obj, field.path, {}); group = getIn(obj, field.path); }
+      var box = document.createElement('div');
+      box.className = 'card';
+      box.innerHTML = '<h3>' + esc(field.label) + '</h3>';
+      (field.fields || []).forEach(function (sub) { box.appendChild(makeField(sub, group, onChange)); });
+      var outer = document.createElement('div');
+      outer.className = 'fld';
+      outer.appendChild(box);
+      return outer;
+    }
+
+    if (field.type === 'list') return makeList(field, obj, onChange);
+    if (field.type === 'stringlist') return makeStringList(field, obj, onChange);
+    if (field.type === 'image') return makeImageField(field, obj, onChange);
+
+    var row = fieldShell(field.label, null);
+    var id = uid();
+    var input;
+    var value = getIn(obj, field.path);
+
+    if (field.type === 'textarea' || field.type === 'html') {
+      input = document.createElement('textarea');
+      input.className = 'inp' + (field.type === 'html' ? ' mono' : '');
+      input.rows = field.type === 'html' ? 3 : 3;
+      input.value = value == null ? '' : String(value);
+    } else if (field.type === 'select') {
+      input = document.createElement('select');
+      input.className = 'inp';
+      (field.options || []).forEach(function (pair) {
+        var opt = document.createElement('option');
+        opt.value = pair[0];
+        opt.textContent = pair[1];
+        input.appendChild(opt);
+      });
+      input.value = value == null ? '' : String(value);
+    } else if (field.type === 'checkbox') {
+      input = document.createElement('input');
+      input.type = 'checkbox';
+      input.checked = !!value;
+    } else if (field.type === 'number') {
+      input = document.createElement('input');
+      input.className = 'inp';
+      input.type = 'number';
+      input.min = '0';
+      input.step = '1';
+      input.value = value == null ? '' : String(value);
+    } else {
+      input = document.createElement('input');
+      input.className = 'inp';
+      input.type = 'text';
+      input.value = value == null ? '' : String(value);
+      input.spellcheck = field.type !== 'text' ? false : true;
+    }
+    input.id = id;
+    row.querySelector('label').setAttribute('for', id);
+
+    if (field.type === 'icon') {
+      input.setAttribute('list', 'iconList');
+      row.appendChild(input);
+    } else if (field.type === 'checkbox') {
+      var wrap = document.createElement('label');
+      wrap.className = 'fld-inline';
+      wrap.style.cursor = 'pointer';
+      wrap.appendChild(input);
+      var txt = document.createElement('span');
+      txt.className = 'muted';
+      txt.textContent = field.label;
+      row.querySelector('.fld-label').remove();
+      wrap.appendChild(txt);
+      row.appendChild(wrap);
+    } else {
+      row.appendChild(input);
+    }
+
+    function commit() {
+      var next;
+      if (field.type === 'checkbox') next = input.checked;
+      else if (field.type === 'number') next = input.value === '' ? 0 : Number(input.value);
+      else next = input.value;
+      setIn(obj, field.path, next);
+      markDirty();
+      if (onChange) onChange(next);
+    }
+    input.addEventListener('input', commit);
+    input.addEventListener('change', commit);
+    addHint(row, field.hint);
+    return row;
+  }
+
+  function defaultItem(field) {
+    var item = {};
+    (field.fields || []).forEach(function (sub) {
+      if (sub.type === 'number') item[sub.path] = 0;
+      else if (sub.type === 'checkbox') item[sub.path] = false;
+      else if (sub.type === 'select') item[sub.path] = (sub.options && sub.options[0] && sub.options[0][0]) || '';
+      else if (sub.type === 'group') item[sub.path] = {};
+      else item[sub.path] = '';
+    });
+    return item;
+  }
+
+  function itemTitle(field, item, index) {
+    var value = field.titleField ? item && item[field.titleField] : null;
+    if (typeof value === 'string' && value.trim()) {
+      return value.length > 68 ? value.slice(0, 68) + '…' : value;
+    }
+    return field.item + ' ' + (index + 1);
+  }
+
+  function iconButton(icon, label, handler, extraClass) {
+    var button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'iconbtn' + (extraClass ? ' ' + extraClass : '');
+    button.title = label;
+    button.setAttribute('aria-label', label);
+    button.innerHTML = '<i class="fa-solid ' + icon + '"></i>';
+    button.addEventListener('click', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      handler();
+    });
+    return button;
+  }
+
+  function makeList(field, obj, onChange) {
+    var wrap = document.createElement('div');
+    wrap.className = 'fld';
+    var head = document.createElement('div');
+    head.className = 'list-head';
+    var titleBox = document.createElement('div');
+    titleBox.innerHTML = '<div class="list-title">' + esc(field.label) + '</div>' + (field.hint ? '<div class="hint">' + esc(field.hint) + '</div>' : '');
+    head.appendChild(titleBox);
+    var add = document.createElement('button');
+    add.type = 'button';
+    add.className = 'btn btn-sm';
+    add.innerHTML = '<i class="fa-solid fa-plus"></i> Add ' + esc((field.item || 'item').toLowerCase());
+    head.appendChild(add);
+    wrap.appendChild(head);
+
+    var body = document.createElement('div');
+    body.className = 'list-body';
+    wrap.appendChild(body);
+
+    function rebuild() {
+      body.innerHTML = '';
+      var items = getIn(obj, field.path);
+      if (!Array.isArray(items)) { items = []; setIn(obj, field.path, items); }
+      if (!items.length) {
+        var empty = document.createElement('div');
+        empty.className = 'empty';
+        empty.textContent = 'Nothing yet — use the button above to add one.';
+        body.appendChild(empty);
+        return;
+      }
+      items.forEach(function (item, index) { body.appendChild(makeItem(field, items, index, rebuild, onChange)); });
+    }
+
+    add.addEventListener('click', function () {
+      var items = getIn(obj, field.path);
+      items.push(defaultItem(field));
+      rebuild();
+      markDirty();
+      var last = body.lastElementChild;
+      if (last) { last.open = true; last.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
+      if (onChange) onChange();
+    });
+
+    rebuild();
+    return wrap;
+  }
+
+  function makeItem(field, items, index, rebuild, onChange) {
+    var item = items[index];
+    var details = document.createElement('details');
+    details.className = 'item';
+    if (index === 0) details.open = true;
+
+    var summary = document.createElement('summary');
+    var title = document.createElement('span');
+    title.className = 'item-title';
+    title.textContent = itemTitle(field, item, index);
+    summary.appendChild(title);
+
+    var tools = document.createElement('span');
+    tools.className = 'item-tools';
+    tools.appendChild(iconButton('fa-arrow-up', 'Move up', function () {
+      if (index === 0) return;
+      items.splice(index - 1, 0, items.splice(index, 1)[0]);
+      rebuild(); markDirty(); if (onChange) onChange();
+    }));
+    tools.appendChild(iconButton('fa-arrow-down', 'Move down', function () {
+      if (index === items.length - 1) return;
+      items.splice(index + 1, 0, items.splice(index, 1)[0]);
+      rebuild(); markDirty(); if (onChange) onChange();
+    }));
+    tools.appendChild(iconButton('fa-copy', 'Duplicate', function () {
+      items.splice(index + 1, 0, clone(item));
+      rebuild(); markDirty(); if (onChange) onChange();
+    }));
+    tools.appendChild(iconButton('fa-trash', 'Remove', function () {
+      items.splice(index, 1);
+      rebuild(); markDirty(); if (onChange) onChange();
+    }, 'danger'));
+    summary.appendChild(tools);
+    details.appendChild(summary);
+
+    var body = document.createElement('div');
+    body.className = 'item-body';
+    var refreshTitle = function () { title.textContent = itemTitle(field, item, index); };
+    (field.fields || []).forEach(function (sub) {
+      body.appendChild(makeField(sub, item, function () { refreshTitle(); if (onChange) onChange(); }));
+    });
+    details.appendChild(body);
+    return details;
+  }
+
+  function makeStringList(field, obj, onChange) {
+    var wrap = document.createElement('div');
+    wrap.className = 'fld';
+    var head = document.createElement('div');
+    head.className = 'list-head';
+    head.innerHTML = '<div><div class="list-title">' + esc(field.label) + '</div>' + (field.hint ? '<div class="hint">' + esc(field.hint) + '</div>' : '') + '</div>';
+    var add = document.createElement('button');
+    add.type = 'button';
+    add.className = 'btn btn-sm';
+    add.innerHTML = '<i class="fa-solid fa-plus"></i> Add ' + esc((field.item || 'item').toLowerCase());
+    head.appendChild(add);
+    wrap.appendChild(head);
+
+    var body = document.createElement('div');
+    body.className = 'list-body';
+    wrap.appendChild(body);
+
+    function rebuild() {
+      body.innerHTML = '';
+      var items = getIn(obj, field.path);
+      if (!Array.isArray(items)) { items = []; setIn(obj, field.path, items); }
+      items.forEach(function (value, index) {
+        var row = document.createElement('div');
+        row.className = 'fld-inline';
+        var input = document.createElement('textarea');
+        input.className = 'inp' + (field.html ? ' mono' : '');
+        input.rows = field.html ? 3 : 2;
+        input.value = value == null ? '' : String(value);
+        input.addEventListener('input', function () {
+          items[index] = input.value;
+          markDirty();
+          if (onChange) onChange();
+        });
+        var tools = document.createElement('span');
+        tools.className = 'item-tools';
+        tools.style.flexDirection = 'column';
+        tools.appendChild(iconButton('fa-arrow-up', 'Move up', function () {
+          if (index === 0) return;
+          items.splice(index - 1, 0, items.splice(index, 1)[0]);
+          rebuild(); markDirty();
+        }));
+        tools.appendChild(iconButton('fa-arrow-down', 'Move down', function () {
+          if (index === items.length - 1) return;
+          items.splice(index + 1, 0, items.splice(index, 1)[0]);
+          rebuild(); markDirty();
+        }));
+        tools.appendChild(iconButton('fa-trash', 'Remove', function () {
+          items.splice(index, 1);
+          rebuild(); markDirty();
+        }, 'danger'));
+        row.appendChild(input);
+        row.appendChild(tools);
+        body.appendChild(row);
+      });
+      if (!items.length) {
+        body.innerHTML = '<div class="empty">Nothing yet — use the button above to add one.</div>';
+      }
+    }
+
+    add.addEventListener('click', function () {
+      var items = getIn(obj, field.path);
+      items.push('');
+      rebuild(); markDirty();
+      var inputs = body.querySelectorAll('textarea');
+      if (inputs.length) inputs[inputs.length - 1].focus();
+    });
+
+    rebuild();
+    return wrap;
+  }
+
+  function makeImageField(field, obj, onChange) {
+    var row = fieldShell(field.label, null);
+    var value = getIn(obj, field.path) || '';
+
+    var box = document.createElement('div');
+    box.className = 'imgfield';
+    var preview = document.createElement('div');
+    preview.className = 'imgprev';
+    var body = document.createElement('div');
+    body.className = 'imgbody';
+
+    var input = document.createElement('input');
+    input.className = 'inp';
+    input.type = 'text';
+    input.placeholder = 'images/… or upload a new file';
+    input.value = String(value);
+    input.spellcheck = false;
+
+    var actions = document.createElement('div');
+    actions.className = 'imgactions';
+    var fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = 'image/*';
+    fileInput.className = 'hidden';
+    var upload = document.createElement('button');
+    upload.type = 'button';
+    upload.className = 'btn btn-sm';
+    upload.innerHTML = '<i class="fa-solid fa-arrow-up-from-bracket"></i> Upload image';
+    var status = document.createElement('span');
+    status.className = 'upstatus';
+    actions.appendChild(upload);
+    actions.appendChild(fileInput);
+    actions.appendChild(status);
+
+    body.appendChild(input);
+    body.appendChild(actions);
+    box.appendChild(preview);
+    box.appendChild(body);
+    row.appendChild(box);
+
+    function paint() {
+      var url = mediaUrl(getIn(obj, field.path));
+      if (url) {
+        preview.style.backgroundImage = 'url("' + url.replace(/"/g, '%22') + '")';
+        preview.textContent = '';
+      } else {
+        preview.style.backgroundImage = '';
+        preview.textContent = 'No image';
+      }
+    }
+
+    input.addEventListener('input', function () {
+      setIn(obj, field.path, input.value.trim());
+      paint(); markDirty(); if (onChange) onChange();
+    });
+
+    upload.addEventListener('click', function () { fileInput.click(); });
+
+    fileInput.addEventListener('change', async function () {
+      var file = fileInput.files && fileInput.files[0];
+      fileInput.value = '';
+      if (!file) return;
+      status.textContent = 'Preparing…';
+      upload.disabled = true;
+      try {
+        var prepared = await shrink(file);
+        status.textContent = 'Uploading ' + Math.round(prepared.size / 1024) + ' KB…';
+        // Sent as octet-stream: the serverless runtime drops some image content types.
+        var res = await fetch('/api/upload?name=' + encodeURIComponent(prepared.name) + '&type=' + encodeURIComponent(prepared.type || 'image/jpeg'), {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: { 'Content-Type': 'application/octet-stream' },
+          body: prepared
+        });
+        var data = await res.json().catch(function () { return null; });
+        if (!res.ok || !data || data.ok === false) throw new Error((data && data.error) || 'Upload failed');
+        setIn(obj, field.path, data.path);
+        input.value = data.path;
+        paint(); markDirty(); if (onChange) onChange();
+        status.textContent = 'Uploaded';
+        toast('Image uploaded');
+      } catch (error) {
+        status.textContent = '';
+        toast(error.message || 'Upload failed', 'err');
+      } finally {
+        upload.disabled = false;
+        setTimeout(function () { status.textContent = ''; }, 4000);
+      }
+    });
+
+    paint();
+    addHint(row, field.hint);
+    return row;
+  }
+
+  /** Keep uploads under the server limit without visible quality loss. */
+  async function shrink(file) {
+    var MAX = 2000;
+    var LIMIT = 1.5 * 1024 * 1024;
+    if (!/^image\//.test(file.type) || file.type === 'image/gif') return file;
+    var isPng = file.type === 'image/png';
+    if (file.size <= LIMIT && !isPng) return file;
+    var bitmap;
+    try { bitmap = await createImageBitmap(file); } catch (_) { return file; }
+    var scale = Math.min(1, MAX / Math.max(bitmap.width, bitmap.height));
+    var canvas = document.createElement('canvas');
+    canvas.width = Math.max(1, Math.round(bitmap.width * scale));
+    canvas.height = Math.max(1, Math.round(bitmap.height * scale));
+    canvas.getContext('2d').drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+    if (bitmap.close) bitmap.close();
+    if (isPng && scale === 1) return file;
+    var blob = await new Promise(function (resolve) { canvas.toBlob(resolve, 'image/jpeg', 0.86); });
+    if (!blob || blob.size >= file.size) return file;
+    var name = file.name.replace(/\.[^.]+$/, '') + '.jpg';
+    return new File([blob], name, { type: 'image/jpeg' });
+  }
+
+  /* =============================== status / save =============================== */
+
+  function isDirty() {
+    if (!state.content || !state.base) return false;
+    return JSON.stringify(state.content) !== JSON.stringify(state.base);
+  }
+
+  var statusTimer = null;
+  function markDirty() {
+    clearTimeout(statusTimer);
+    statusTimer = setTimeout(paintStatus, 120);
+  }
+
+  function paintStatus(mode, text) {
+    var box = $('#saveStatus');
+    var label = $('#saveStatusText');
+    box.className = 'status';
+    if (mode === 'busy') { box.classList.add('busy'); label.textContent = text || 'Saving…'; }
+    else if (mode === 'saved') { box.classList.add('saved'); label.textContent = text || 'Saved — live on the site'; }
+    else if (mode === 'error') { label.textContent = text || 'Could not save'; }
+    else if (isDirty()) { box.classList.add('dirty'); label.textContent = 'Unsaved changes'; }
+    else { box.classList.add('saved'); label.textContent = 'All changes saved'; }
+    $('#saveBtn').disabled = mode === 'busy' || !isDirty();
+    $('#discardBtn').disabled = !isDirty();
+  }
+
+  async function save() {
+    if (state.saving || !isDirty()) return;
+    state.saving = true;
+    paintStatus('busy');
+    try {
+      var data = await api('/api/save', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ content: state.content, sha: state.sha })
+      });
+      state.sha = data.sha || state.sha;
+      state.base = clone(state.content);
+      paintStatus('saved');
+      toast('Saved — the live site updates immediately');
+    } catch (error) {
+      paintStatus('error', error.message);
+      if (error.status === 409) {
+        showConflict(error.message);
+      } else {
+        toast(error.message, 'err');
+      }
+    } finally {
+      state.saving = false;
+      setTimeout(function () { if (!state.saving) paintStatus(); }, 2600);
+    }
+  }
+
+  function showConflict(message) {
+    clearConflict();
+    var banner = h('<div class="banner warn" id="conflict"><i class="fa-solid fa-triangle-exclamation"></i><div class="grow">' +
+      esc(message) + ' Your edits are still here — reload to work from the newest copy, then reapply them.</div>' +
+      '<button class="btn btn-sm" id="conflictReload"><i class="fa-solid fa-rotate"></i> Reload latest</button></div>');
+    state.conflictNode = banner;
+    $('#main').prepend(banner);
+    $('#conflictReload').addEventListener('click', function () {
+      loadContent().then(function () {
+        clearConflict();
+        renderNav();
+        renderPanel();
+        toast('Working from the newest copy');
+      });
+    });
+  }
+
+  function clearConflict() {
+    if (state.conflictNode) state.conflictNode.remove();
+    state.conflictNode = null;
+  }
+
+  /* =============================== nav + panels =============================== */
+
+  function renderNav() {
+    var nav = $('#sidebar');
+    nav.innerHTML = '';
+    var label = document.createElement('div');
+    label.className = 'side-label';
+    label.textContent = 'Content';
+    nav.appendChild(label);
+
+    SCHEMA.forEach(function (section) {
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'navbtn' + (state.section === section.id ? ' on' : '');
+      var items = getIn(state.content, section.id + '.items');
+      var count = Array.isArray(items) ? items.length : '';
+      button.innerHTML = '<i class="' + section.nav + '"></i><span>' + esc(section.label) + '</span>' + (count !== '' ? '<span class="count">' + count + '</span>' : '');
+      button.addEventListener('click', function () { go(section.id); });
+      nav.appendChild(button);
+    });
+
+    nav.appendChild(h('<div class="side-sep"></div>'));
+    var adminLabel = document.createElement('div');
+    adminLabel.className = 'side-label';
+    adminLabel.textContent = 'Administration';
+    nav.appendChild(adminLabel);
+
+    [
+      { id: 'admins', label: 'Team access', icon: 'fa-solid fa-user-shield' },
+      { id: 'settings', label: 'Settings', icon: 'fa-solid fa-gear' }
+    ].forEach(function (entry) {
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'navbtn' + (state.section === entry.id ? ' on' : '');
+      button.innerHTML = '<i class="' + entry.icon + '"></i><span>' + esc(entry.label) + '</span>';
+      button.addEventListener('click', function () { go(entry.id); });
+      nav.appendChild(button);
+    });
+  }
+
+  function go(id) {
+    state.section = id;
+    renderNav();
+    renderPanel();
+    $('#savebar').classList.toggle('hidden', id === 'admins' || id === 'settings');
+    window.scrollTo({ top: 0 });
+  }
+
+  function renderPanel() {
+    var main = $('#main');
+    main.innerHTML = '';
+    var conflict = $('#conflict');
+    if (conflict) main.appendChild(conflict);
+
+    if (state.section === 'admins') return renderAdmins(main);
+    if (state.section === 'settings') return renderSettings(main);
+
+    var section = SCHEMA.filter(function (s) { return s.id === state.section; })[0] || SCHEMA[0];
+    var head = document.createElement('div');
+    head.className = 'panel-head';
+    head.innerHTML = '<h2>' + esc(section.label) + '</h2><p>' + esc(section.blurb) + '</p>';
+    main.appendChild(head);
+
+    var card = document.createElement('div');
+    card.className = 'card';
+    var rerender = function () { renderNavCounts(); };
+    section.fields.forEach(function (field) { card.appendChild(makeField(field, state.content, rerender)); });
+    main.appendChild(card);
+
+    var meta = document.createElement('div');
+    meta.className = 'dim';
+    meta.style.fontSize = '12.5px';
+    meta.textContent = 'Last saved ' + (state.content.updatedAt ? new Date(state.content.updatedAt).toLocaleString() : '—') +
+      (state.content.updatedBy ? ' by ' + state.content.updatedBy : '') + '.';
+    main.appendChild(meta);
+    paintStatus();
+  }
+
+  function renderNavCounts() {
+    var nav = $('#sidebar');
+    SCHEMA.forEach(function (section, index) {
+      var badge = nav.querySelectorAll('.navbtn .count')[index];
+      if (!badge) return;
+      var items = getIn(state.content, section.id + '.items');
+      if (Array.isArray(items)) badge.textContent = items.length;
+    });
+  }
+
+  /* =============================== admins panel =============================== */
+
+  async function loadAdmins() {
+    var data = await api('/api/admins');
+    state.admins = data.admins || [];
+    state.canManage = !!data.canManage;
+    if (data.self) state.user = data.self;
+  }
+
+  function renderAdmins(main) {
+    var head = document.createElement('div');
+    head.className = 'panel-head';
+    head.innerHTML = '<h2>Team access</h2><p>Create accounts for colleagues and choose what each one can do. Changes take effect the next time they load a page.</p>';
+    main.appendChild(head);
+
+    if (!state.canManage) {
+      main.appendChild(h('<div class="banner warn"><i class="fa-solid fa-lock"></i><div class="grow">You have editor access, so you can update content but not manage accounts. Ask a super admin if you need to change that.</div></div>'));
+    }
+
+    var listCard = document.createElement('div');
+    listCard.className = 'card';
+    listCard.innerHTML = '<h3>People with access</h3><div class="hint">Super admins can edit content and manage accounts. Editors can only edit content.</div>';
+    var table = document.createElement('table');
+    table.innerHTML = '<thead><tr><th>Name</th><th>Username</th><th>Access</th><th></th></tr></thead>';
+    var tbody = document.createElement('tbody');
+
+    state.admins.forEach(function (admin) {
+      var tr = document.createElement('tr');
+      var role = admin.role === 'super' ? '<span class="role-tag super">Super admin</span>' : '<span class="role-tag editor">Editor</span>';
+      tr.innerHTML = '<td><div style="font-weight:600">' + esc(admin.name || admin.username) + '</div>' +
+        (admin.email ? '<div class="dim" style="font-size:12px">' + esc(admin.email) + '</div>' : '') + '</td>' +
+        '<td class="muted">' + esc(admin.username) + (admin.username === state.user.username ? ' <span class="dim">(you)</span>' : '') + '</td>' +
+        '<td>' + role + '</td><td class="actions"></td>';
+      var actions = tr.querySelector('.actions');
+      if (state.canManage) {
+        actions.appendChild(iconButton('fa-pen', 'Edit access', function () { editAdmin(admin); }));
+        actions.appendChild(iconButton('fa-key', 'Reset password', function () { resetPassword(admin); }));
+        if (admin.username !== state.user.username) {
+          actions.appendChild(iconButton('fa-trash', 'Remove access', function () { removeAdmin(admin); }, 'danger'));
+        }
+      }
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    listCard.appendChild(table);
+    main.appendChild(listCard);
+
+    if (state.canManage) {
+      var form = document.createElement('div');
+      form.className = 'card';
+      form.innerHTML = '<h3>Add an administrator</h3><div class="hint">They can sign in at <strong>/admin</strong> with the details you set here.</div>';
+      var split = document.createElement('div');
+      split.className = 'split';
+      split.appendChild(textRow('Name', 'newName', 'e.g. Amina Owusu'));
+      split.appendChild(textRow('Username', 'newUser', 'letters, numbers, dots, dashes'));
+      split.appendChild(textRow('Password', 'newPass', 'at least 8 characters', 'password'));
+      var roleRow = fieldShell('Access level', null);
+      var select = document.createElement('select');
+      select.className = 'inp';
+      select.id = 'newRole';
+      select.innerHTML = '<option value="editor">Editor — content only</option><option value="super">Super admin — content and accounts</option>';
+      roleRow.appendChild(select);
+      split.appendChild(roleRow);
+      form.appendChild(split);
+      var submit = document.createElement('button');
+      submit.className = 'btn btn-primary';
+      submit.innerHTML = '<i class="fa-solid fa-user-plus"></i> Create account';
+      submit.addEventListener('click', createAdmin);
+      form.appendChild(submit);
+      main.appendChild(form);
+    }
+
+    var note = document.createElement('div');
+    note.className = 'card';
+    note.innerHTML = '<h3>Your own password</h3><div class="hint">Change the password you sign in with.</div>';
+    var selfSplit = document.createElement('div');
+    selfSplit.className = 'split';
+    selfSplit.appendChild(textRow('Current password', 'selfCurrent', '', 'password'));
+    selfSplit.appendChild(textRow('New password', 'selfNew', 'at least 8 characters', 'password'));
+    note.appendChild(selfSplit);
+    var selfBtn = document.createElement('button');
+    selfBtn.className = 'btn';
+    selfBtn.innerHTML = '<i class="fa-solid fa-key"></i> Update password';
+    selfBtn.addEventListener('click', changeOwnPassword);
+    note.appendChild(selfBtn);
+    main.appendChild(note);
+  }
+
+  function textRow(label, id, placeholder, type) {
+    var row = fieldShell(label, null);
+    var input = document.createElement('input');
+    input.className = 'inp';
+    input.id = id;
+    input.type = type || 'text';
+    if (placeholder) input.placeholder = placeholder;
+    if (type === 'password') input.autocomplete = 'new-password';
+    row.appendChild(input);
+    return row;
+  }
+
+  async function createAdmin() {
+    var payload = {
+      action: 'create',
+      name: $('#newName').value,
+      username: $('#newUser').value,
+      password: $('#newPass').value,
+      role: $('#newRole').value
+    };
+    try {
+      var data = await api('/api/admins', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+      state.admins = data.admins;
+      toast('Account created for ' + payload.username);
+      renderPanel();
+    } catch (error) {
+      toast(error.message, 'err');
+    }
+  }
+
+  async function editAdmin(admin) {
+    var role = window.prompt('Access level for ' + admin.username + ': type "super" or "editor".', admin.role);
+    if (role === null) return;
+    role = role.trim().toLowerCase();
+    if (role !== 'super' && role !== 'editor') return toast('Access level must be "super" or "editor".', 'err');
+    var name = window.prompt('Display name for ' + admin.username + ':', admin.name || '');
+    if (name === null) return;
+    var email = window.prompt('Email for ' + admin.username + ' (optional):', admin.email || '');
+    if (email === null) return;
+    try {
+      var data = await api('/api/admins', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'update', username: admin.username, role: role, name: name, email: email }) });
+      state.admins = data.admins;
+      toast('Updated ' + admin.username);
+      renderPanel();
+    } catch (error) {
+      toast(error.message, 'err');
+    }
+  }
+
+  async function resetPassword(admin) {
+    var password = window.prompt('New password for ' + admin.username + ' (at least 8 characters):', '');
+    if (!password) return;
+    try {
+      var data = await api('/api/admins', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'update', username: admin.username, role: admin.role, password: password }) });
+      state.admins = data.admins;
+      toast('Password reset for ' + admin.username);
+    } catch (error) {
+      toast(error.message, 'err');
+    }
+  }
+
+  async function removeAdmin(admin) {
+    if (!window.confirm('Remove access for ' + admin.username + '? They will be signed out immediately.')) return;
+    try {
+      var data = await api('/api/admins', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'delete', username: admin.username }) });
+      state.admins = data.admins;
+      toast('Access removed for ' + admin.username);
+      renderPanel();
+    } catch (error) {
+      toast(error.message, 'err');
+    }
+  }
+
+  async function changeOwnPassword() {
+    try {
+      var data = await api('/api/admins', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'self-password', currentPassword: $('#selfCurrent').value, newPassword: $('#selfNew').value })
+      });
+      state.admins = data.admins;
+      $('#selfCurrent').value = '';
+      $('#selfNew').value = '';
+      toast('Your password has been updated');
+    } catch (error) {
+      toast(error.message, 'err');
+    }
+  }
+
+  /* =============================== settings panel =============================== */
+
+  function renderSettings(main) {
+    var head = document.createElement('div');
+    head.className = 'panel-head';
+    head.innerHTML = '<h2>Settings</h2><p>Your session and where the site content is stored.</p>';
+    main.appendChild(head);
+
+    var account = document.createElement('div');
+    account.className = 'card';
+    account.innerHTML = '<h3>Signed in</h3>';
+    var kv = document.createElement('dl');
+    kv.className = 'kv';
+    kv.innerHTML = '<dt>Name</dt><dd>' + esc(state.user.name || state.user.username) + '</dd>' +
+      '<dt>Username</dt><dd>' + esc(state.user.username) + '</dd>' +
+      '<dt>Access</dt><dd>' + (state.user.role === 'super' ? 'Super admin' : 'Editor') + '</dd>' +
+      '<dt>Contact email</dt><dd>' + (state.user.email ? esc(state.user.email) : '<span class="dim">not set</span>') + '</dd>';
+    account.appendChild(kv);
+    main.appendChild(account);
+
+    var site = document.createElement('div');
+    site.className = 'card';
+    site.innerHTML = '<h3>The site</h3><div class="hint">Content is stored with the site itself, so saving publishes straight away — there is no separate build step.</div>';
+    var contentMeta = document.createElement('dl');
+    contentMeta.className = 'kv';
+    contentMeta.innerHTML = '<dt>Content version</dt><dd>' + esc(state.content.version || 1) + '</dd>' +
+      '<dt>Last saved</dt><dd>' + (state.content.updatedAt ? esc(new Date(state.content.updatedAt).toLocaleString()) : '—') + '</dd>' +
+      '<dt>Last saved by</dt><dd>' + (state.content.updatedBy ? esc(state.content.updatedBy) : '—') + '</dd>';
+    site.appendChild(contentMeta);
+    var row = document.createElement('div');
+    row.className = 'row';
+    row.style.marginTop = '16px';
+    row.appendChild(h('<a class="btn" href="/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open the live site</a>'));
+    var out = document.createElement('button');
+    out.className = 'btn btn-danger';
+    out.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i> Sign out';
+    out.addEventListener('click', signOut);
+    row.appendChild(out);
+    site.appendChild(row);
+    main.appendChild(site);
+
+    var safety = document.createElement('div');
+    safety.className = 'card';
+    safety.innerHTML = '<h3>Keeping the content safe</h3><div class="hint">Every save is recorded as a revision, so an older version can always be restored. Uploaded photos are stored alongside the site and served from its own address.</div>';
+    main.appendChild(safety);
+  }
+
+  /* =============================== session =============================== */
+
+  function showLogin(message) {
+    state.user = null;
+    state.content = null;
+    state.base = null;
+    $('#app').classList.add('hidden');
+    $('#login').classList.remove('hidden');
+    if (message) {
+      $('#loginErrorText').textContent = message;
+      $('#loginError').classList.remove('hidden');
+    }
+    $('#lgPass').value = '';
+  }
+
+  async function signOut() {
+    try { await api('/api/logout', { method: 'POST' }); } catch (_) { /* ignore */ }
+    showLogin('You have been signed out.');
+    toast('Signed out');
+  }
+
+  function paintUser() {
+    $('#whoName').textContent = state.user.name || state.user.username;
+    $('#whoRole').textContent = (state.user.role === 'super' ? 'super admin' : 'editor');
+    $('#whoAvatar').textContent = (state.user.name || state.user.username).charAt(0).toUpperCase();
+  }
+
+  async function loadContent() {
+    var res = await fetch('/api/content', { cache: 'no-store', credentials: 'same-origin' });
+    if (!res.ok) throw new Error('Could not load the content (' + res.status + ')');
+    var data = await res.json();
+    state.sha = res.headers.get('x-content-sha') || null;
+    state.content = data;
+    state.base = clone(data);
+  }
+
+  async function enterStudio() {
+    paintUser();
+    await loadContent();
+    $('#login').classList.add('hidden');
+    $('#app').classList.remove('hidden');
+    go('hero');
+    paintStatus('saved', 'All changes saved');
+    if (state.user.role === 'super') {
+      loadAdmins().catch(function () { /* handled on the panel */ });
+    }
+  }
+
+  /* =============================== boot =============================== */
+
+  $('#iconList') ;
+  var datalist = document.createElement('datalist');
+  datalist.id = 'iconList';
+  ICONS.forEach(function (icon) {
+    var option = document.createElement('option');
+    option.value = icon;
+    datalist.appendChild(option);
+  });
+  document.body.appendChild(datalist);
+
+  $('#loginForm').addEventListener('submit', async function (event) {
+    event.preventDefault();
+    var button = $('#lgSubmit');
+    button.disabled = true;
+    $('#loginError').classList.add('hidden');
+    try {
+      var data = await api('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: $('#lgUser').value, password: $('#lgPass').value })
+      });
+      state.user = data.user;
+      button.disabled = false;
+      await enterStudio();
+    } catch (error) {
+      button.disabled = false;
+      $('#loginErrorText').textContent = error.message;
+      $('#loginError').classList.remove('hidden');
+    }
+  });
+
+  $('#saveBtn').addEventListener('click', save);
+  $('#discardBtn').addEventListener('click', function () {
+    if (!isDirty()) return;
+    if (!window.confirm('Discard your unsaved changes?')) return;
+    state.content = clone(state.base);
+    renderNav(); renderPanel();
+    toast('Changes discarded');
+  });
+  $('#reloadBtn').addEventListener('click', function () {
+    loadContent().then(function () { renderNav(); renderPanel(); toast('Reloaded the latest content'); });
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 's') {
+      event.preventDefault();
+      if (!$('#app').classList.contains('hidden') && state.section !== 'admins' && state.section !== 'settings') save();
+    }
+  });
+
+  window.addEventListener('beforeunload', function (event) {
+    if (isDirty()) { event.preventDefault(); event.returnValue = ''; }
+  });
+
+  (async function boot() {
+    try {
+      var me = await api('/api/me');
+      state.user = me.user;
+      await enterStudio();
+    } catch (error) {
+      showLogin(error.status === 401 ? '' : error.message);
+    }
+  })();
+})();
+</script>
+</body>
+</html>

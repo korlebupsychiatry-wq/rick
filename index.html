@@ -247,11 +247,11 @@ body.cursor-on #cursorGlow{opacity:1}
     <div class="hero-copy">
       <div class="rise d-1 hero-kicker inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/10 mb-7 backdrop-blur">
         <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-        <span class="text-[10px] sm:text-xs font-semibold">McLEAN HOSPITAL • HARVARD MEDICAL SCHOOL</span>
+        <span class="text-[10px] sm:text-xs font-semibold" data-cms="hero.kicker">McLEAN HOSPITAL • HARVARD MEDICAL SCHOOL</span>
       </div>
-      <h1 class="hero-title rise d-2 serif mb-7">Rick Peter Fritz<br><span class="accent">Wolthusen</span></h1>
-      <p class="hero-role rise d-3 mb-4">Psychiatrist <span class="text-blue-300/55 mx-1.5">·</span> Clinician-Educator <span class="text-blue-300/55 mx-1.5">·</span> Global Mental Health Researcher</p>
-      <p class="hero-summary rise d-3 max-w-xl mb-9">Improving care for people with severe mental illness through clinical practice, research, teaching, and community partnership — across Boston, Ghana, Kenya, and beyond.</p>
+      <h1 id="heroTitle" class="hero-title rise d-2 serif mb-7">Rick Peter Fritz<br><span class="accent">Wolthusen</span></h1>
+      <p id="heroRole" class="hero-role rise d-3 mb-4">Psychiatrist <span class="text-blue-300/55 mx-1.5">·</span> Clinician-Educator <span class="text-blue-300/55 mx-1.5">·</span> Global Mental Health Researcher</p>
+      <p class="hero-summary rise d-3 max-w-xl mb-9" data-cms="hero.summary">Improving care for people with severe mental illness through clinical practice, research, teaching, and community partnership — across Boston, Ghana, Kenya, and beyond.</p>
       <div class="rise d-4 flex flex-wrap items-center gap-4">
         <a href="#about" class="btn btn-primary">Explore profile <i class="fa-solid fa-arrow-right"></i></a>
         <div class="hero-social">
@@ -277,7 +277,7 @@ body.cursor-on #cursorGlow{opacity:1}
 
 <!-- STATS -->
 <div class="max-w-screen-2xl mx-auto px-6 py-16 reveal">
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 rounded-3xl overflow-hidden">
+  <div id="statsGrid" class="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 rounded-3xl overflow-hidden">
     <a href="#about" title="Read the full profile" class="bg-slate-900 p-8 group hover:bg-slate-800/70 transition-colors duration-300 block cursor-pointer">
       <i class="fa-solid fa-user-doctor text-2xl text-blue-400/70 mb-3 block group-hover:text-blue-300 group-hover:scale-110 transition-all duration-300"></i>
       <div class="text-5xl md:text-6xl font-semibold tracking-tighter text-blue-400" data-count="10">0</div>
@@ -300,7 +300,7 @@ body.cursor-on #cursorGlow{opacity:1}
     </a>
   </div>
   <div class="mt-6 rounded-3xl glass px-6 py-5 reveal">
-    <div class="affil">
+    <div class="affil" id="affilList">
       <span class="uppercase tracking-[3px] text-[11px] text-slate-500">Affiliations</span>
       <span class="a-item">McLean Hospital</span>
       <span class="a-item">Harvard Medical School</span>
@@ -320,8 +320,8 @@ body.cursor-on #cursorGlow{opacity:1}
     <div class="lg:col-span-5 reveal">
       <div class="relative w-full max-w-md mx-auto">
         <div class="absolute -inset-3 bg-gradient-to-br from-blue-500/30 to-emerald-500/20 rounded-[2rem] blur-2xl"></div>
-        <img src="images/portrait.jpg" alt="Portrait of Dr. Rick Wolthusen" class="rounded-3xl w-full shadow-2xl border border-white/10 relative" loading="lazy" decoding="async">
-        <div class="absolute -bottom-5 left-1/2 -translate-x-1/2 flex gap-2 flex-wrap justify-center">
+        <img id="aboutPortrait" src="images/portrait.jpg" alt="Portrait of Dr. Rick Wolthusen" class="rounded-3xl w-full shadow-2xl border border-white/10 relative" loading="lazy" decoding="async">
+        <div id="aboutBadges" class="absolute -bottom-5 left-1/2 -translate-x-1/2 flex gap-2 flex-wrap justify-center">
           <span class="px-4 py-2 rounded-2xl glass bg-slate-900/80 text-xs font-semibold shadow-xl backdrop-blur">MD — TU Dresden</span>
           <span class="px-4 py-2 rounded-2xl glass bg-slate-900/80 text-xs font-semibold shadow-xl backdrop-blur">MPP — Harvard Kennedy</span>
           <span class="px-4 py-2 rounded-2xl glass bg-slate-900/80 text-xs font-semibold shadow-xl backdrop-blur">Residency — Duke &amp; Middlemore NZ</span>
@@ -329,16 +329,16 @@ body.cursor-on #cursorGlow{opacity:1}
       </div>
     </div>
     <div class="lg:col-span-7 reveal">
-      <div class="eyebrow mb-3">CHAPTER I — ABOUT</div>
-      <h2 class="sh serif mb-4">Improving care for severe mental illness, locally and globally.</h2>
+      <div class="eyebrow mb-3" data-cms="about.eyebrow">CHAPTER I — ABOUT</div>
+      <h2 class="sh serif mb-4" data-cms="about.heading">Improving care for severe mental illness, locally and globally.</h2>
       <div class="aline mb-8"></div>
-      <div class="space-y-5 text-lg text-slate-300 leading-relaxed">
+      <div id="aboutParagraphs" class="space-y-5 text-lg text-slate-300 leading-relaxed">
         <p><strong class="text-white">Dr. Rick Wolthusen</strong> is a psychiatrist in the Division of Psychotic Disorders at <strong class="text-white">McLean Hospital</strong> and an Instructor in Psychiatry at <strong class="text-white">Harvard Medical School</strong>. His clinical work focuses on people living with psychosis, bipolar disorder, and catatonia — including complex, recurrent forms of catatonia that may require longer-term management.</p>
         <p>His research grows directly out of clinical practice. He has published on catatonia across a range of settings, including low-resource environments and different linguistic and cultural contexts, and serves on the <strong class="text-white">Medical Advisory Board of the Catatonia Foundation</strong>. He is also Head of Training and Education for the Chester M. Pierce Division of Global Psychiatry at <strong class="text-white">Massachusetts General Hospital</strong>.</p>
         <p>A central theme of his work is strengthening the connection between specialist psychiatric care and the communities in which patients live — partnering with patients, families, community health workers, and religious and community leaders to improve recognition of severe mental illness, reduce stigma, and support sustained engagement with care. This work spans <strong class="text-white">Ghana, Kenya, Rwanda, Ecuador, South Africa, Australia, and New Zealand</strong>.</p>
         <p>A growing part of his work is bringing lessons from global mental health back to the United States: adapting community- and culturally informed approaches to inpatient psychiatry, and training clinicians, chaplains, and other members of care teams to better recognise severe mental illness, suicide risk, and the cultural contexts that shape psychiatric care.</p>
       </div>
-      <div class="flex flex-wrap gap-3 mt-8">
+      <div id="aboutTags" class="flex flex-wrap gap-3 mt-8">
         <a href="#publications" class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-pointer">Catatonia</a>
         <a href="#services" class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-pointer">Severe Mental Illness</a>
         <a href="#services" class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-pointer">Psychosis &amp; Bipolar Disorder</a>
@@ -346,7 +346,7 @@ body.cursor-on #cursorGlow{opacity:1}
         <a href="#contact" class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-pointer">Community Partnership</a>
         <a href="#media" class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-pointer">Medical Education</a>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-8">
+      <div id="aboutCreds" class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-8">
         <div class="flex items-start gap-3 p-4 rounded-2xl bg-white/5 border border-white/10">
           <i class="fa-solid fa-certificate text-blue-400 mt-0.5"></i>
           <div class="text-sm"><div class="font-semibold text-white">Board Certified</div><div class="text-slate-400">American Board of Psychiatry &amp; Neurology</div></div>
@@ -379,10 +379,10 @@ body.cursor-on #cursorGlow{opacity:1}
 <!-- SERVICES -->
 <section id="services" class="max-w-screen-2xl mx-auto px-6 py-20 border-t border-white/10">
   <div class="max-w-2xl mb-12 reveal">
-    <div class="eyebrow mb-3">CHAPTER II — AREAS OF FOCUS</div>
-    <h2 class="sh serif">What I do.</h2><div class="aline mt-5"></div>
+    <div class="eyebrow mb-3" data-cms="services.eyebrow">CHAPTER II — AREAS OF FOCUS</div>
+    <h2 class="sh serif" data-cms="services.heading">What I do.</h2><div class="aline mt-5"></div>
   </div>
-  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div id="servicesGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
     <a href="#about" aria-label="Clinical Psychiatry — read the full profile" class="card glass p-8 rounded-3xl reveal d1 block group">
       <div class="icon-chip"><i class="fa-solid fa-brain"></i></div>
       <h3 class="font-semibold text-2xl my-3">Clinical Psychiatry</h3>
@@ -425,11 +425,11 @@ body.cursor-on #cursorGlow{opacity:1}
 <!-- MEDIA -->
 <section id="media" class="max-w-screen-2xl mx-auto px-6 py-20 border-t border-white/10">
   <div class="max-w-2xl mb-12 reveal">
-    <div class="eyebrow mb-3">CHAPTER III — TALKS & MEDIA</div>
-    <h2 class="sh serif">Ideas worth sharing.</h2><div class="aline mt-5"></div>
-    <p class="text-slate-400 mt-4 text-sm">Videos play right here on the page — just press play. If your network blocks the player, each card also has a direct YouTube link.</p>
+    <div class="eyebrow mb-3" data-cms="media.eyebrow">CHAPTER III — TALKS & MEDIA</div>
+    <h2 class="sh serif" data-cms="media.heading">Ideas worth sharing.</h2><div class="aline mt-5"></div>
+    <p class="text-slate-400 mt-4 text-sm" data-cms="media.note">Videos play right here on the page — just press play. If your network blocks the player, each card also has a direct YouTube link.</p>
   </div>
-  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+  <div id="mediaGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
     <div class="glass rounded-3xl p-5 reveal card">
       <button onclick="openVideo('BmqVsCx2qVQ')" class="video-thumb relative w-full aspect-video rounded-2xl overflow-hidden block bg-gradient-to-br from-blue-900 to-slate-900 group" aria-label="Play TED Talk video">
         <img src="https://i.ytimg.com/vi/BmqVsCx2qVQ/hqdefault.jpg" alt="Rick Wolthusen TED Talk" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" onerror="this.style.display='none'">
@@ -471,11 +471,11 @@ body.cursor-on #cursorGlow{opacity:1}
 <!-- PUBLICATIONS -->
 <section id="publications" class="max-w-screen-2xl mx-auto px-6 py-20 border-t border-white/10">
   <div class="max-w-2xl mb-12 reveal">
-    <div class="eyebrow mb-3">CHAPTER IV — SELECTED PUBLICATIONS</div>
-    <h2 class="sh serif">Contributions to science.</h2><div class="aline mt-5"></div>
-    <p class="text-slate-400 mt-4 text-sm">Click any title to preview a summary — click it again to open the full publication.</p>
+    <div class="eyebrow mb-3" data-cms="publications.eyebrow">CHAPTER IV — SELECTED PUBLICATIONS</div>
+    <h2 class="sh serif" data-cms="publications.heading">Contributions to science.</h2><div class="aline mt-5"></div>
+    <p class="text-slate-400 mt-4 text-sm" data-cms="publications.note">Click any title to preview a summary — click it again to open the full publication.</p>
   </div>
-  <div class="space-y-4">
+  <div id="pubList" class="space-y-4">
 
     <div class="pub card glass p-6 rounded-3xl flex flex-col md:flex-row md:items-start gap-4 reveal" data-url="https://www.sciencedirect.com/science/article/abs/pii/S0920996426002823" role="button" tabindex="0" aria-expanded="false" title="Click to preview summary — click again to open">
       <div class="pub-cover c-blue"><span class="pub-abbr">CAT</span><i class="fa-solid fa-heart-pulse"></i></div>
@@ -575,11 +575,11 @@ body.cursor-on #cursorGlow{opacity:1}
 <!-- RECOGNITION -->
 <section id="recognition" class="max-w-screen-2xl mx-auto px-6 py-20 border-t border-white/10">
   <div class="max-w-2xl mb-12 reveal">
-    <div class="eyebrow mb-3">CHAPTER V — RECOGNITION</div>
-    <h2 class="sh serif">Honours and awards.</h2><div class="aline mt-5"></div>
-    <p class="text-slate-400 mt-4 text-sm">Selected recognition for clinical, research, teaching, and global mental health work.</p>
+    <div class="eyebrow mb-3" data-cms="recognition.eyebrow">CHAPTER V — RECOGNITION</div>
+    <h2 class="sh serif" data-cms="recognition.heading">Honours and awards.</h2><div class="aline mt-5"></div>
+    <p class="text-slate-400 mt-4 text-sm" data-cms="recognition.note">Selected recognition for clinical, research, teaching, and global mental health work.</p>
   </div>
-  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div id="recogGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
     <div class="card glass p-8 rounded-3xl reveal d1">
       <div class="flex items-start justify-between gap-3">
         <i class="fa-solid fa-award text-3xl text-blue-400"></i>
@@ -646,10 +646,10 @@ body.cursor-on #cursorGlow{opacity:1}
 <!-- GALLERY -->
 <section id="gallery" class="max-w-screen-2xl mx-auto px-6 py-20 border-t border-white/10">
   <div class="max-w-2xl mb-12 reveal">
-    <div class="eyebrow mb-3">CHAPTER VI — GALLERY</div>
-    <h2 class="sh serif">Moments across three continents.</h2><div class="aline mt-5"></div>
+    <div class="eyebrow mb-3" data-cms="gallery.eyebrow">CHAPTER VI — GALLERY</div>
+    <h2 class="sh serif" data-cms="gallery.heading">Moments across three continents.</h2><div class="aline mt-5"></div>
   </div>
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-[16rem] gap-5">
+  <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-[16rem] gap-5">
     <div class="gitem rounded-3xl glass reveal sm:col-span-2 sm:row-span-2" onclick="openLB(this)">
       <img src="images/gallery-1.jpg" alt="Dr. Rick Wolthusen — international collaboration and community mental health work" class="w-full h-full object-cover rounded-3xl" loading="lazy" decoding="async">
     </div>
@@ -678,15 +678,15 @@ body.cursor-on #cursorGlow{opacity:1}
       <img src="images/gallery-9.jpg" alt="Convenings, lectures, and community engagement" class="w-full h-full object-cover rounded-3xl" loading="lazy" decoding="async">
     </div>
   </div>
-  <p class="text-sm text-slate-500 mt-6">More moments on <a href="https://web.facebook.com/rick.wolthusen" target="_blank" rel="noopener" class="text-blue-400 hover:underline">Facebook</a>.</p>
+  <p class="text-sm text-slate-500 mt-6" data-cms="gallery.note" data-cms-html>More moments on <a href="https://web.facebook.com/rick.wolthusen" target="_blank" rel="noopener" class="text-blue-400 hover:underline">Facebook</a>.</p>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="max-w-screen-2xl mx-auto px-6 py-24 border-t border-white/10">
   <div class="glass rounded-3xl p-10 md:p-20 text-center reveal">
     <div class="max-w-lg mx-auto">
-      <h2 class="serif text-4xl md:text-5xl tracking-tighter mb-4">Let's collaborate.</h2>
-      <p class="text-slate-300 mb-8">Whether you're interested in clinical consultation, research collaboration, speaking engagements, or global mental health initiatives — the door is open.</p>
+      <h2 class="serif text-4xl md:text-5xl tracking-tighter mb-4" data-cms="contact.heading">Let's collaborate.</h2>
+      <p class="text-slate-300 mb-8" data-cms="contact.text">Whether you're interested in clinical consultation, research collaboration, speaking engagements, or global mental health initiatives — the door is open.</p>
       <div class="flex flex-wrap justify-center gap-4">
         <button onclick="showModal()" class="btn btn-primary text-base px-7 py-4">Schedule a conversation <i class="fa-solid fa-arrow-right"></i></button>
         <a href="https://www.linkedin.com/in/rick-wolthusen-md-mpp-33101359/" target="_blank" rel="noopener" class="btn btn-ghost text-base px-7 py-4"><i class="fa-brands fa-linkedin text-lg text-blue-400"></i> Connect on LinkedIn</a>
@@ -704,7 +704,7 @@ body.cursor-on #cursorGlow{opacity:1}
           <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-blue-400 to-emerald-400 flex items-center justify-center shadow-lg shadow-blue-500/30"><span class="text-slate-950 font-extrabold text-xl">RW</span></div>
           <div><div class="font-semibold leading-tight">Rick Wolthusen</div><div class="text-[10px] text-slate-400 tracking-wider">MD, MPP</div></div>
         </a>
-        <p class="text-sm text-slate-400 max-w-xs">Psychiatrist, clinician-educator, and global mental health researcher working to improve care for people with severe mental illness.</p>
+        <p class="text-sm text-slate-400 max-w-xs" data-cms="footer.tagline">Psychiatrist, clinician-educator, and global mental health researcher working to improve care for people with severe mental illness.</p>
       </div>
       <div class="md:col-span-2">
         <div class="eyebrow mb-4">Explore</div>
@@ -736,8 +736,8 @@ body.cursor-on #cursorGlow{opacity:1}
       </div>
     </div>
     <div class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
-      <div class="text-xs text-slate-500">© 2026 Dr. Rick Peter Fritz Wolthusen, MD, MPP. All rights reserved.</div>
-      <div class="text-xs text-slate-500">McLean Hospital · Harvard Medical School</div>
+      <div class="text-xs text-slate-500" data-cms="footer.copyright">© 2026 Dr. Rick Peter Fritz Wolthusen, MD, MPP. All rights reserved.</div>
+      <div class="text-xs text-slate-500" data-cms="footer.location">McLean Hospital · Harvard Medical School</div>
     </div>
   </div>
 </footer>
@@ -805,6 +805,7 @@ body.cursor-on #cursorGlow{opacity:1}
 </div>
 
 <script>
+window.__siteBoot = function () {
   // Preloader
   const loader = document.getElementById('loader');
   const hideLoader = () => { loader.classList.add('opacity-0', 'pointer-events-none'); setTimeout(() => loader.remove(), 550); };
@@ -1059,6 +1060,28 @@ body.cursor-on #cursorGlow{opacity:1}
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') { hideModal(); closeLB(); closeVideo(); }
   });
+
+  // Inline handlers in the markup reference these by name.
+  Object.assign(window, { toggleMenu, showModal, hideModal, openLB, closeLB, openVideo, closeVideo, openLink, sGo, sTogglePause });
+};
+</script>
+<script src="cms.js"></script>
+<script>
+  // Apply saved content first, then wire the page up, so replaced markup keeps its behaviour.
+  (async function () {
+    try {
+      if (window.__cmsHydrate) await window.__cmsHydrate();
+    } catch (error) {
+      console.warn('[cms] hydration failed', error);
+    }
+    if (typeof window.__siteBoot === 'function') {
+      try {
+        window.__siteBoot();
+      } catch (error) {
+        console.error('[site] boot failed', error);
+      }
+    }
+  })();
 </script>
 </body>
 </html>

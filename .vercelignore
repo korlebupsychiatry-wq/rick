@@ -5,8 +5,15 @@ README.md
 *.zip
 *.txt
 _*.py
+_tools/
 __pycache__/
 images/WhatsApp*
 WhatsApp*.jpeg
 rick*.jpg
 rick*.jpeg
+
+# Secrets and the encrypted admin store live outside the deployment.
+# The API reads them from storage at request time.
+.env
+.env.*
+.cms
