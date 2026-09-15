@@ -23,7 +23,8 @@
 
   var ENDPOINT = '/api/track';
   var SESSION_TTL = 30 * 60 * 1000;
-  var FLUSH_EVERY = 20000;
+  var FLUSH_EVERY = 20000;   // how soon clicks and section reads are sent
+  var ENGAGE_EVERY = 60000;  // how often a reading visitor is reported as engaged
 
   /* ------------------------------------------------------------- session id */
 
@@ -214,17 +215,23 @@
 
   // Engagement is sent as the time elapsed since the last report, so a visitor
   // who keeps the tab open is still counted as engaged without waiting for them
-  // to leave — otherwise every long read would look like a bounce.
-  function reportEngagement() {
+  // to leave — otherwise every long read would look like a bounce. A reader at
+  // rest only needs reporting once a minute; leaving always reports the
+  // remainder exactly, so the cadence never costs accuracy.
+  var lastEngageAt = 0;
+  function reportEngagement(force) {
     tick();
+    var now = Date.now();
+    if (!force && now - lastEngageAt < ENGAGE_EVERY) return;
     var delta = Math.round((engaged - reportedEngaged) * 10) / 10;
     if (delta <= 0) return;
     reportedEngaged = engaged;
+    lastEngageAt = now;
     push({ t: 'en', d: delta, sc: maxScroll });
   }
 
   function finalise(beacon) {
-    reportEngagement();
+    reportEngagement(true);
     flush(beacon);
   }
 
@@ -234,7 +241,7 @@
   });
 
   setInterval(function () {
-    reportEngagement();
+    reportEngagement(false);
     if (pending.length) flush(false);
   }, FLUSH_EVERY);
 })();
