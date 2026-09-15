@@ -218,7 +218,7 @@
   // to leave — otherwise every long read would look like a bounce. A reader at
   // rest only needs reporting once a minute; leaving always reports the
   // remainder exactly, so the cadence never costs accuracy.
-  var lastEngageAt = 0;
+  var lastEngageAt = Date.now();
   function reportEngagement(force) {
     tick();
     var now = Date.now();
@@ -230,7 +230,13 @@
     push({ t: 'en', d: delta, sc: maxScroll });
   }
 
+  // Hiding the tab and unloading both end the visible stretch, and the browser
+  // fires both, so only the first one may report — otherwise every departure
+  // sends a duplicate beacon carrying a fraction of a second.
+  var finalised = false;
   function finalise(beacon) {
+    if (finalised) return;
+    finalised = true;
     reportEngagement(true);
     flush(beacon);
   }
@@ -238,6 +244,7 @@
   window.addEventListener('pagehide', function () { finalise(true); });
   document.addEventListener('visibilitychange', function () {
     if (document.visibilityState === 'hidden') finalise(true);
+    else finalised = false;
   });
 
   setInterval(function () {
