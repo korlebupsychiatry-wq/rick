@@ -10,5 +10,8 @@
       "source": "/admin.html",
       "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
     }
+  ],
+  "crons": [
+    { "path": "/api/compact", "schedule": "0 4 * * *" }
   ]
 }

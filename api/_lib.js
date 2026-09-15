@@ -326,9 +326,9 @@ async function requireUser(req) {
   return user;
 }
 
-async function requireSuper(req) {
+async function requireSuper(req, message) {
   const user = await requireUser(req);
-  if (user.role !== 'super') throw httpError(403, 'Only super admins can manage accounts.');
+  if (user.role !== 'super') throw httpError(403, message || 'Only super admins can manage accounts.');
   return user;
 }
 

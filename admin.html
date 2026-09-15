@@ -198,12 +198,65 @@
   .kv dd{margin:0}
   .row{display:flex;gap:10px;flex-wrap:wrap}
   .split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+  /* ---------------------------------------------------------------- analytics */
+  .an-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:18px}
+  .an-ranges{display:inline-flex;gap:3px;padding:3px;border:1px solid var(--line);border-radius:12px;background:rgba(6,10,19,.6)}
+  .an-range{padding:7px 13px;border:0;border-radius:9px;background:transparent;color:var(--muted);font-size:12.5px;font-weight:600;cursor:pointer;transition:background .15s,color .15s;white-space:nowrap}
+  .an-range:hover{color:var(--text)}
+  .an-range.on{background:rgba(91,155,255,.18);color:#cfe2ff}
+  .an-live{display:inline-flex;align-items:center;gap:9px;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(6,10,19,.5);font-size:12.5px;color:var(--muted)}
+  .an-live .beat{width:8px;height:8px;border-radius:50%;background:var(--emerald);box-shadow:0 0 0 0 rgba(52,211,153,.6);animation:beat 2s infinite}
+  .an-live.idle .beat{background:var(--dim);animation:none;box-shadow:none}
+  @keyframes beat{70%{box-shadow:0 0 0 9px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+  .an-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(166px,1fr));gap:12px;margin-bottom:18px}
+  .an-kpi{background:linear-gradient(180deg,rgba(20,29,47,.7),rgba(13,19,33,.7));border:1px solid var(--line);border-radius:14px;padding:15px 16px}
+  .an-kpi .k{font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--dim);font-weight:700;display:flex;align-items:center;gap:7px}
+  .an-kpi .v{font-size:25px;font-weight:700;letter-spacing:-.02em;margin-top:7px;line-height:1.15}
+  .an-kpi .s{font-size:11.5px;color:var(--muted);margin-top:4px}
+  .an-kpi .s b{color:#a9caff;font-weight:600}
+  .an-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+  .an-grid.three{grid-template-columns:repeat(3,1fr)}
+  .an-card{background:linear-gradient(180deg,rgba(20,29,47,.7),rgba(13,19,33,.7));border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:18px}
+  .an-card h4{margin:0 0 2px;font-size:14px;display:flex;align-items:center;gap:8px}
+  .an-card h4 i{color:var(--blue);font-size:12.5px}
+  .an-card .sub{font-size:12px;color:var(--dim);margin-bottom:14px}
+  .an-chart{position:relative;width:100%}
+  .an-chart svg{display:block;width:100%;height:auto;overflow:visible}
+  .an-tip{position:absolute;pointer-events:none;opacity:0;transform:translate(-50%,0);transition:opacity .12s;background:rgba(9,14,25,.97);border:1px solid var(--line-2);border-radius:10px;padding:8px 11px;font-size:12px;white-space:nowrap;box-shadow:var(--shadow);z-index:5}
+  .an-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:10px}
+  .an-legend span{display:inline-flex;align-items:center;gap:7px}
+  .an-legend i{width:9px;height:9px;border-radius:3px;display:inline-block}
+  .an-list{display:flex;flex-direction:column;gap:10px}
+  .an-line{display:grid;grid-template-columns:1fr auto;gap:5px 10px;align-items:center;font-size:12.5px}
+  .an-line .lb{color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .an-line .nm{color:var(--muted);font-variant-numeric:tabular-nums;font-size:12px}
+  .an-track{grid-column:1/-1;height:6px;border-radius:999px;background:rgba(255,255,255,.06);overflow:hidden;display:block}
+  .an-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,rgba(91,155,255,.85),rgba(52,211,153,.8));display:block}
+  .an-empty{font-size:12.5px;color:var(--dim);padding:8px 0}
+  .an-donut{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+  .an-donut .ring{flex:none}
+  .an-scroll{display:flex;flex-direction:column;gap:9px}
+  .an-scroll .st{display:grid;grid-template-columns:46px 1fr 42px;gap:10px;align-items:center;font-size:12.5px}
+  .an-scroll .st .lb{color:var(--muted)}
+  .an-scroll .st .nm{color:var(--muted);text-align:right;font-variant-numeric:tabular-nums;font-size:12px}
+  .an-scroll .an-track{grid-column:auto}
+  .an-sub{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);font-weight:700;margin:16px 0 9px}
+  .an-sub:first-child{margin-top:0}
+  .an-notes{font-size:12.5px;color:var(--muted);line-height:1.7;margin:0;padding-left:18px}
+  .an-notes li{margin-bottom:7px}
+  .an-notes code{background:rgba(255,255,255,.06);padding:1px 6px;border-radius:5px;font-size:11.5px}
+  .an-skel{height:260px;border-radius:14px;background:linear-gradient(90deg,rgba(255,255,255,.04),rgba(255,255,255,.09),rgba(255,255,255,.04));background-size:200% 100%;animation:shimmer 1.3s infinite}
+  @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
   @media(max-width:900px){
     #app{grid-template-columns:1fr}
     .sidebar{position:static;max-height:none;border-right:0;border-bottom:1px solid var(--line);padding-bottom:14px}
     .savebar{left:0;padding:11px 16px}
     .main{padding:20px 16px 150px}
     .split{grid-template-columns:1fr}
+    .an-grid,.an-grid.three{grid-template-columns:1fr}
+    .an-kpis{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
   }
 </style>
 </head>
@@ -1055,10 +1108,14 @@
     adminLabel.textContent = 'Administration';
     nav.appendChild(adminLabel);
 
-    [
-      { id: 'admins', label: 'Team access', icon: 'fa-solid fa-user-shield' },
-      { id: 'settings', label: 'Settings', icon: 'fa-solid fa-gear' }
-    ].forEach(function (entry) {
+    var adminEntries = [];
+    if (state.user && state.user.role === 'super') {
+      adminEntries.push({ id: 'analytics', label: 'Analytics', icon: 'fa-solid fa-chart-line' });
+    }
+    adminEntries.push({ id: 'admins', label: 'Team access', icon: 'fa-solid fa-user-shield' });
+    adminEntries.push({ id: 'settings', label: 'Settings', icon: 'fa-solid fa-gear' });
+
+    adminEntries.forEach(function (entry) {
       var button = document.createElement('button');
       button.type = 'button';
       button.className = 'navbtn' + (state.section === entry.id ? ' on' : '');
@@ -1070,9 +1127,10 @@
 
   function go(id) {
     state.section = id;
+    if (anState.timer) { clearInterval(anState.timer); anState.timer = null; }
     renderNav();
     renderPanel();
-    $('#savebar').classList.toggle('hidden', id === 'admins' || id === 'settings');
+    $('#savebar').classList.toggle('hidden', id === 'admins' || id === 'settings' || id === 'analytics');
     window.scrollTo({ top: 0 });
   }
 
@@ -1082,6 +1140,7 @@
     var conflict = $('#conflict');
     if (conflict) main.appendChild(conflict);
 
+    if (state.section === 'analytics' && state.user && state.user.role === 'super') return renderAnalytics(main);
     if (state.section === 'admins') return renderAdmins(main);
     if (state.section === 'settings') return renderSettings(main);
 
@@ -1340,6 +1399,541 @@
     main.appendChild(safety);
   }
 
+  /* =============================== analytics panel =============================== */
+
+  var AN_RANGES = [
+    { days: 1, label: '24 hours' },
+    { days: 7, label: '7 days' },
+    { days: 30, label: '30 days' },
+    { days: 90, label: '90 days' },
+    { days: 365, label: '12 months' }
+  ];
+
+  var AN_COLORS = ['#5b9bff', '#34d399', '#fbbf24', '#fb7185', '#a78bfa', '#22d3ee', '#f472b6', '#84cc16'];
+
+  var AN_EVENT_LABELS = {
+    pv: 'Page view', sec: 'Section read', en: 'Engaged visit', out: 'Outbound link',
+    vid: 'Video opened', pub: 'Publication opened', ctc: 'Contact click', cta: 'Button click'
+  };
+
+  var anState = { days: 30, data: null, loading: false, timer: null, at: 0 };
+
+  function anNum(value) { return (Number(value) || 0).toLocaleString('en-US'); }
+
+  function anDuration(seconds) {
+    var s = Math.max(0, Math.round(Number(seconds) || 0));
+    if (s < 60) return s + 's';
+    var m = Math.floor(s / 60);
+    if (m < 60) return m + 'm' + (s % 60 ? ' ' + (s % 60) + 's' : '');
+    return Math.floor(m / 60) + 'h ' + (m % 60) + 'm';
+  }
+
+  function anPlural(count, single, plural) {
+    return anNum(count) + ' ' + (Number(count) === 1 ? single : plural);
+  }
+
+  function anShare(part, whole) {
+    if (!whole) return '0%';
+    return (Math.round(((Number(part) || 0) / whole) * 1000) / 10) + '%';
+  }
+
+  function anShortDate(key) {
+    var parts = String(key || '').split('-');
+    if (parts.length !== 3) return String(key || '');
+    var d = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  }
+
+  function anCountry(code) {
+    var c = String(code || '').toUpperCase();
+    if (!c || c === 'XX' || c === 'T1') return 'Unknown';
+    try {
+      if (typeof Intl !== 'undefined' && Intl.DisplayNames) {
+        var name = new Intl.DisplayNames(['en'], { type: 'region' }).of(c);
+        if (name && name !== c) return name;
+      }
+    } catch (_) { /* fall back to the code */ }
+    return c;
+  }
+
+  function anLanguage(code) {
+    var c = String(code || '').toLowerCase();
+    if (!c) return 'Unknown';
+    var base = c.split('-')[0];
+    try {
+      if (typeof Intl !== 'undefined' && Intl.DisplayNames) {
+        var name = new Intl.DisplayNames(['en'], { type: 'language' }).of(base);
+        if (name && name !== base) return name.charAt(0).toUpperCase() + name.slice(1);
+      }
+    } catch (_) { /* fall back to the code */ }
+    return base;
+  }
+
+  function anPodLabel(key) {
+    return key === '/' ? 'Home' : String(key || '').replace(/^#/, '');
+  }
+
+  /** Round the axis up to a whole number of readable steps (4 gridlines). */
+  function anNiceScale(maxValue) {
+    var v = Math.max(1, Number(maxValue) || 1);
+    var raw = v / 4;
+    var mag = Math.pow(10, Math.floor(Math.log10(raw)));
+    var norm = raw / mag;
+    var step = (norm <= 1 ? 1 : norm <= 2 ? 2 : norm <= 2.5 ? 2.5 : norm <= 5 ? 5 : 10) * mag;
+    return { max: step * 4, step: step };
+  }
+
+  function anTick(value) {
+    var n = Math.round((Number(value) || 0) * 10) / 10;
+    return n % 1 === 0 ? anNum(n) : n.toFixed(1);
+  }
+
+  /** Area + line chart with a hover readout. Geometry is returned so the tooltip stays in step. */
+  function anChartGeometry(labels, series) {
+    var W = 720, H = 250, L = 46, R = 14, T = 16, B = 30;
+    var iw = W - L - R, ih = H - T - B;
+    var peak = 0;
+    series.forEach(function (s) { s.values.forEach(function (v) { if (v > peak) peak = v; }); });
+    var scale = anNiceScale(peak);
+    var max = scale.max;
+    var X = function (i) { return labels.length <= 1 ? L + iw / 2 : L + (i / (labels.length - 1)) * iw; };
+    var Y = function (v) { return T + ih - (max ? (v / max) * ih : 0); };
+
+    var svg = '';
+    for (var g = 0; g <= 4; g += 1) {
+      var y = T + (ih * g) / 4;
+      svg += '<line x1="' + L + '" y1="' + y.toFixed(1) + '" x2="' + (W - R) + '" y2="' + y.toFixed(1) + '" stroke="rgba(255,255,255,.07)" stroke-width="1"/>' +
+        '<text x="' + (L - 9) + '" y="' + (y + 4).toFixed(1) + '" text-anchor="end" fill="#66748c" font-size="10.5">' + anTick(max - scale.step * g) + '</text>';
+    }
+
+    var every = Math.max(1, Math.ceil(labels.length / 8));
+    labels.forEach(function (label, i) {
+      if (i % every !== 0 && i !== labels.length - 1) return;
+      svg += '<text x="' + X(i).toFixed(1) + '" y="' + (H - 9) + '" text-anchor="middle" fill="#66748c" font-size="10.5">' + esc(label) + '</text>';
+    });
+
+    var guides = '';
+    series.forEach(function (s, si) {
+      var path = '';
+      s.values.forEach(function (v, i) { path += (i ? ' L' : 'M') + X(i).toFixed(1) + ' ' + Y(v).toFixed(1); });
+      if (si === 0 && s.values.length > 1) {
+        var base = (T + ih).toFixed(1);
+        var area = path + ' L' + X(s.values.length - 1).toFixed(1) + ' ' + base + ' L' + X(0).toFixed(1) + ' ' + base + ' Z';
+        svg += '<defs><linearGradient id="anFill' + si + '" x1="0" y1="0" x2="0" y2="1">' +
+          '<stop offset="0%" stop-color="' + s.color + '" stop-opacity=".32"/><stop offset="100%" stop-color="' + s.color + '" stop-opacity="0"/></linearGradient></defs>' +
+          '<path d="' + area + '" fill="url(#anFill' + si + ')"/>';
+      }
+      svg += '<path d="' + path + '" fill="none" stroke="' + s.color + '" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>';
+      guides += '<circle cx="' + X(0) + '" cy="' + Y(0) + '" r="0" fill="' + s.color + '"/>';
+    });
+
+    var hits = '';
+    var slot = labels.length > 1 ? iw / (labels.length - 1) : iw;
+    labels.forEach(function (_, i) {
+      hits += '<rect x="' + (X(i) - slot / 2).toFixed(1) + '" y="' + T + '" width="' + slot.toFixed(1) + '" height="' + ih + '" fill="transparent"/>';
+    });
+
+    return { W: W, H: H, T: T, ih: ih, X: X, Y: Y, hits: hits, svg: svg };
+  }
+
+  function anChart(box, labels, series) {
+    var geo = anChartGeometry(labels, series);
+    box.innerHTML = '<svg viewBox="0 0 ' + geo.W + ' ' + geo.H + '" role="img" aria-label="Traffic over time">' +
+      geo.svg + '<g class="an-hits">' + geo.hits + '</g></svg><div class="an-tip"></div>';
+    if (labels.length < 2) return;
+
+    var svg = box.querySelector('svg');
+    var tip = box.querySelector('.an-tip');
+    var guide = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    guide.setAttribute('stroke', 'rgba(255,255,255,.28)');
+    guide.setAttribute('stroke-width', '1');
+    guide.setAttribute('stroke-dasharray', '3 3');
+    guide.setAttribute('opacity', '0');
+    svg.appendChild(guide);
+
+    function at(event) {
+      var rect = svg.getBoundingClientRect();
+      var px = ((event.clientX - rect.left) / rect.width) * geo.W;
+      var best = 0, dist = Infinity;
+      for (var i = 0; i < labels.length; i += 1) {
+        var d = Math.abs(geo.X(i) - px);
+        if (d < dist) { dist = d; best = i; }
+      }
+      return { i: best, rect: rect };
+    }
+
+    svg.addEventListener('mousemove', function (event) {
+      var hit = at(event);
+      var rows = '<strong>' + esc(labels[hit.i]) + '</strong>';
+      series.forEach(function (s) {
+        rows += '<div style="display:flex;gap:10px;align-items:center;margin-top:4px">' +
+          '<i style="width:8px;height:8px;border-radius:2px;background:' + s.color + ';display:inline-block"></i>' +
+          '<span>' + esc(s.name) + '</span><b style="margin-left:auto;padding-left:14px">' + anNum(s.values[hit.i]) + '</b></div>';
+      });
+      tip.innerHTML = rows;
+      tip.style.opacity = '1';
+      tip.style.top = '2px';
+      tip.style.left = Math.min(Math.max((geo.X(hit.i) / geo.W) * hit.rect.width, 70), Math.max(70, hit.rect.width - 70)) + 'px';
+      guide.setAttribute('x1', geo.X(hit.i)); guide.setAttribute('x2', geo.X(hit.i));
+      guide.setAttribute('y1', geo.T); guide.setAttribute('y2', geo.T + geo.ih);
+      guide.setAttribute('opacity', '1');
+    });
+
+    svg.addEventListener('mouseleave', function () {
+      tip.style.opacity = '0';
+      guide.setAttribute('opacity', '0');
+    });
+  }
+
+  function anLegend(series) {
+    return '<div class="an-legend">' + series.map(function (s) {
+      return '<span><i style="background:' + s.color + '"></i>' + esc(s.name) + '</span>';
+    }).join('') + '</div>';
+  }
+
+  function anList(entries, opts) {
+    opts = opts || {};
+    if (!entries || !entries.length) return '<div class="an-empty">' + esc(opts.empty || 'Nothing recorded yet.') + '</div>';
+    var max = entries.reduce(function (a, e) { return Math.max(a, e.value); }, 0);
+    return '<div class="an-list">' + entries.map(function (e, i) {
+      var label = opts.format ? opts.format(e.label) : e.label;
+      var pct = max ? Math.max(3, (e.value / max) * 100) : 0;
+      var color = opts.mono === false
+        ? 'background:' + AN_COLORS[i % AN_COLORS.length]
+        : 'background:linear-gradient(90deg,rgba(91,155,255,.85),rgba(52,211,153,.8))';
+      return '<div class="an-line">' +
+        '<span class="lb" title="' + esc(label) + '">' + esc(label) + '</span>' +
+        '<span class="nm">' + anNum(e.value) + esc(opts.suffix || '') + '</span>' +
+        '<span class="an-track"><span class="an-fill" style="width:' + pct.toFixed(1) + '%;' + color + '"></span></span></div>';
+    }).join('') + '</div>';
+  }
+
+  function anDonut(entries) {
+    if (!entries || !entries.length) return '<div class="an-empty">Nothing recorded yet.</div>';
+    var total = entries.reduce(function (a, e) { return a + e.value; }, 0) || 1;
+    var R = 46, C = 2 * Math.PI * R, offset = 0;
+    var segs = entries.map(function (e, i) {
+      var frac = e.value / total;
+      var seg = '<circle cx="60" cy="60" r="' + R + '" fill="none" stroke="' + AN_COLORS[i % AN_COLORS.length] + '" stroke-width="16" ' +
+        'stroke-dasharray="' + (frac * C).toFixed(2) + ' ' + C.toFixed(2) + '" stroke-dashoffset="' + (-offset).toFixed(2) + '" transform="rotate(-90 60 60)"/>';
+      offset += frac * C;
+      return seg;
+    }).join('');
+    var legend = '<div class="an-list" style="flex:1;min-width:170px">' + entries.map(function (e, i) {
+      return '<div class="an-line" style="grid-template-columns:auto 1fr auto">' +
+        '<i style="width:9px;height:9px;border-radius:3px;background:' + AN_COLORS[i % AN_COLORS.length] + ';display:inline-block"></i>' +
+        '<span class="lb">' + esc(e.label) + '</span>' +
+        '<span class="nm">' + anShare(e.value, total) + ' · ' + anNum(e.value) + '</span></div>';
+    }).join('') + '</div>';
+    return '<div class="an-donut"><svg class="ring" width="120" height="120" viewBox="0 0 120 120">' +
+      '<circle cx="60" cy="60" r="46" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="16"/>' + segs +
+      '<text x="60" y="59" text-anchor="middle" fill="#e8edf7" font-size="20" font-weight="700">' + anNum(total) + '</text>' +
+      '<text x="60" y="75" text-anchor="middle" fill="#66748c" font-size="10.5">sessions</text></svg>' + legend + '</div>';
+  }
+
+  function anScrollFunnel(scroll, sessions) {
+    var rows = [25, 50, 75, 100].map(function (depth) {
+      var value = (scroll && scroll[depth]) || 0;
+      var pct = sessions ? Math.min(100, Math.round((value / sessions) * 100)) : 0;
+      return '<div class="st"><span class="lb">' + depth + '%</span>' +
+        '<span class="an-track"><span class="an-fill" style="width:' + pct + '%"></span></span>' +
+        '<span class="nm">' + pct + '%</span></div>';
+    });
+    return '<div class="an-scroll">' + rows.join('') + '</div>' +
+      '<div class="sub" style="margin:12px 0 0;font-size:11.5px">Share of sessions that scrolled at least this far down a page.</div>';
+  }
+
+  function anHourly(hourly) {
+    var max = Math.max.apply(null, hourly.concat([1]));
+    var bars = hourly.map(function (value, hour) {
+      var pct = Math.round((value / max) * 100);
+      var bg = value ? 'linear-gradient(180deg,rgba(91,155,255,.95),rgba(91,155,255,.4))' : 'rgba(255,255,255,.06)';
+      return '<div title="' + (hour < 10 ? '0' : '') + hour + ':00 UTC · ' + anNum(value) + '" ' +
+        'style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;height:100%">' +
+        '<div style="height:' + Math.max(value ? 5 : 1, pct) + '%;border-radius:3px 3px 0 0;background:' + bg + '"></div></div>';
+    }).join('');
+    return '<div style="display:flex;gap:3px;align-items:flex-end;height:78px;margin-top:4px">' + bars + '</div>' +
+      '<div style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--dim);margin-top:6px">' +
+      '<span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>23:00</span></div>';
+  }
+
+  function anNotes() {
+    return '<div class="an-card"><h4><i class="fa-solid fa-shield-halved"></i> How this is measured</h4>' +
+      '<div class="sub">What is collected, what is deliberately not, and how to read the figures.</div>' +
+      '<ul class="an-notes">' +
+      '<li><strong>Cookieless.</strong> Nothing is stored on a visitor\'s device, so there is no consent banner to manage. A visitor is recognised for the day by a one-way hash that cannot be reversed and is re-keyed every month, which is enough to count repeat visits without identifying anyone.</li>' +
+      '<li><strong>No personal data.</strong> IP addresses, full user-agent strings and query strings are never written to storage. Only coarse geography (country and region, taken from the request) and parsed device, operating system and browser names are kept.</li>' +
+      '<li><strong>Privacy signals are honoured.</strong> Visitors with Global Privacy Control or Do Not Track switched on are not measured at all, known bots are discarded before anything is stored, and visits to <code>/admin</code> are never recorded.</li>' +
+      '<li><strong>Definitions.</strong> A <em>session</em> ends after 30 minutes of inactivity. <em>Bounce rate</em> counts sessions with a single page view and under 10 seconds of engagement. <em>Engaged time</em> counts only time with the tab visible.</li>' +
+      '<li><strong>Reading the range.</strong> <em>New vs returning</em> is judged inside the selected range — a visitor counts as returning when they appear on more than one day. Times of day are UTC.</li>' +
+      '</ul></div>';
+  }
+
+  function anEmptyState() {
+    return '<div class="an-card"><h4><i class="fa-solid fa-satellite-dish"></i> Collection is live — the first numbers are on their way</h4>' +
+      '<div class="sub">Nothing has been recorded in this range yet.</div>' +
+      '<div class="an-notes">Measurement is switched on for the public site. As soon as people visit, this page fills in: who came, where they arrived from, which parts of the page they read, how long they stayed and what they clicked. ' +
+      'Open <a href="/" target="_blank" rel="noopener">the live site</a> in a normal window to see a visit appear within about a minute. Your own visit is not recorded while you are signed in to the studio, and visitors who send a Do Not Track signal are never counted.</div></div>';
+  }
+
+  function anExportCsv() {
+    var data = anState.data;
+    if (!data || !data.report) return;
+    var report = data.report;
+    var rows = [['section', 'key', 'value']];
+    var summary = report.summary || {};
+    Object.keys(summary).forEach(function (key) { rows.push(['summary', key, summary[key]]); });
+    rows.push(['range', 'from', report.range.from]);
+    rows.push(['range', 'to', report.range.to]);
+    rows.push(['range', 'days', report.range.days]);
+    (report.daily || []).forEach(function (day) {
+      ['views', 'visitors', 'sessions', 'bounce', 'avgTime'].forEach(function (key) { rows.push(['daily:' + day.date, key, day[key]]); });
+    });
+    function dump(section, list) {
+      (list || []).forEach(function (entry) { rows.push([section, entry.label, entry.value]); });
+    }
+    dump('page', report.pages);
+    dump('section', report.sections);
+    dump('channel', report.acquisition.channels);
+    dump('referrer', report.acquisition.referrers);
+    dump('campaign', report.acquisition.campaigns);
+    dump('country', report.audience.countries);
+    dump('region', report.audience.regions);
+    dump('device', report.audience.devices);
+    dump('browser', report.audience.browsers);
+    dump('os', report.audience.os);
+    dump('language', report.audience.languages);
+    dump('event', report.engagement.events);
+    dump('entry', report.engagement.entry);
+    dump('exit', report.engagement.exit);
+    [25, 50, 75, 100].forEach(function (depth) { rows.push(['scroll', depth + '%', (report.scroll || {})[depth] || 0]); });
+    (report.hourly || []).forEach(function (value, hour) { rows.push(['hourly_utc', hour + ':00', value]); });
+
+    var csv = rows.map(function (row) {
+      return row.map(function (cell) {
+        var text = String(cell == null ? '' : cell);
+        return /[",\r\n]/.test(text) ? '"' + text.replace(/"/g, '""') + '"' : text;
+      }).join(',');
+    }).join('\r\n');
+
+    var url = URL.createObjectURL(new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8' }));
+    var link = document.createElement('a');
+    link.href = url;
+    link.download = 'site-analytics-' + report.range.from + '_' + report.range.to + '.csv';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+    toast('Report exported');
+  }
+
+  function renderAnalytics(main) {
+    main.innerHTML = '';
+
+    var head = document.createElement('div');
+    head.className = 'panel-head';
+    head.innerHTML = '<h2>Analytics</h2><p>Every visit to the public site — how many people came, where they arrived from, what they read and how far they went. Cookieless and anonymous by design.</p>';
+    main.appendChild(head);
+
+    var bar = document.createElement('div');
+    bar.className = 'an-bar';
+
+    var ranges = document.createElement('div');
+    ranges.className = 'an-ranges';
+    AN_RANGES.forEach(function (range) {
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'an-range' + (anState.days === range.days ? ' on' : '');
+      button.textContent = range.label;
+      button.addEventListener('click', function () {
+        if (anState.days === range.days) return;
+        anState.days = range.days;
+        anState.data = null;
+        renderAnalytics($('#main'));
+      });
+      ranges.appendChild(button);
+    });
+    bar.appendChild(ranges);
+
+    bar.appendChild(h('<span class="an-live idle"><span class="beat"></span><span id="anLiveText">Checking who is on the site…</span></span>'));
+
+    var grow = document.createElement('span');
+    grow.style.flex = '1';
+    bar.appendChild(grow);
+
+    var refresh = h('<button class="btn btn-sm" type="button" id="anRefresh"><i class="fa-solid fa-rotate"></i> Refresh</button>');
+    refresh.addEventListener('click', function () { loadAnalytics(true); });
+    bar.appendChild(refresh);
+
+    var csv = h('<button class="btn btn-sm" type="button" id="anCsv"><i class="fa-solid fa-file-arrow-down"></i> Export CSV</button>');
+    csv.addEventListener('click', function () {
+      if (!anState.data) return toast('There is nothing to export yet', 'err');
+      anExportCsv();
+    });
+    bar.appendChild(csv);
+    main.appendChild(bar);
+
+    var body = document.createElement('div');
+    body.id = 'anBody';
+    body.innerHTML = '<div class="an-skel"></div>';
+    main.appendChild(body);
+
+    loadAnalytics(false);
+  }
+
+  async function loadAnalytics(force) {
+    var body = $('#anBody');
+    if (!body || anState.loading) return;
+    if (anState.data && !force) return anPaint();
+    anState.loading = true;
+    if (!anState.data) body.innerHTML = '<div class="an-skel"></div>';
+    try {
+      var data = await api('/api/report?days=' + anState.days);
+      anState.data = data;
+      anState.at = Date.now();
+      anPaint();
+    } catch (error) {
+      if (state.section === 'analytics') {
+        body.innerHTML = '<div class="banner err"><i class="fa-solid fa-triangle-exclamation"></i><div class="grow">' +
+          esc(error.message || 'Could not load the analytics.') + '</div></div>' + anNotes();
+      }
+    } finally {
+      anState.loading = false;
+      anStartLiveTimer();
+    }
+  }
+
+  function anStartLiveTimer() {
+    if (anState.timer) clearInterval(anState.timer);
+    anState.timer = setInterval(function () {
+      if (state.section !== 'analytics') return;
+      if ($('#app').classList.contains('hidden')) return;
+      loadAnalytics(true);
+    }, 60000);
+  }
+
+  function anPaint() {
+    var body = $('#anBody');
+    if (!body || !anState.data) return;
+    var report = anState.data.report;
+    var summary = report.summary || {};
+    var live = anState.data.realtime || { minutes: 30, visitors: 0, pageviews: 0, sessions: 0 };
+
+    var liveText = $('#anLiveText');
+    if (liveText) {
+      liveText.textContent = live.visitors
+        ? live.visitors + (live.visitors === 1 ? ' person' : ' people') + ' on the site now · ' + anNum(live.pageviews) + ' page view' + (live.pageviews === 1 ? '' : 's') + ' in the last ' + live.minutes + ' min'
+        : 'No one on the site in the last ' + live.minutes + ' minutes';
+      liveText.parentNode.className = 'an-live' + (live.visitors ? '' : ' idle');
+    }
+
+    if (!summary.pageviews && !summary.visitors) {
+      body.innerHTML = anEmptyState() + anNotes();
+      return;
+    }
+
+    var html = '';
+
+    var kpis = [
+      { k: 'Visitors', v: anNum(summary.visitors), s: '<b>' + anNum(summary.newVisitors) + '</b> new · <b>' + anNum(summary.returningVisitors) + '</b> returning', i: 'fa-users' },
+      { k: 'Page views', v: anNum(summary.pageviews), s: '<b>' + summary.viewsPerVisitor + '</b> per visitor', i: 'fa-file-lines' },
+      { k: 'Sessions', v: anNum(summary.sessions), s: summary.visitors ? '<b>' + (Math.round((summary.sessions / summary.visitors) * 100) / 100) + '</b> per visitor' : '—', i: 'fa-clock' },
+      { k: 'Avg. time on site', v: anDuration(summary.avgSessionSeconds), s: '<b>' + anDuration(summary.avgEngagedSeconds) + '</b> engaged', i: 'fa-hourglass-half' },
+      { k: 'Pages per session', v: summary.pagesPerSession, s: 'depth of each visit', i: 'fa-layer-group' },
+      { k: 'Bounce rate', v: summary.bounceRate + '%', s: 'single-page visits', i: 'fa-arrow-right-from-bracket' },
+      { k: 'Returning visitors', v: anShare(summary.returningVisitors, summary.visitors), s: 'of ' + anPlural(summary.visitors, 'visitor', 'visitors'), i: 'fa-repeat' },
+      { k: 'Views per session', v: summary.sessions ? Math.round((summary.pageviews / summary.sessions) * 100) / 100 : 0, s: anNum(summary.pageviews) + ' across ' + anPlural(summary.sessions, 'session', 'sessions'), i: 'fa-chart-simple' }
+    ];
+    html += '<div class="an-kpis">' + kpis.map(function (kpi) {
+      return '<div class="an-kpi"><div class="k"><i class="fa-solid ' + kpi.i + '"></i>' + esc(kpi.k) + '</div>' +
+        '<div class="v">' + kpi.v + '</div><div class="s">' + kpi.s + '</div></div>';
+    }).join('') + '</div>';
+
+    html += '<div class="an-card" id="anChartCard"><h4><i class="fa-solid fa-chart-area"></i> Traffic over time</h4>' +
+      '<div class="sub">' + (anState.days === 1 ? 'Page views by hour (UTC), today.' : 'Visitors and page views per day across the selected range.') + '</div>' +
+      '<div class="an-chart" id="anChart"></div><div id="anLegend"></div></div>';
+
+    html += '<div class="an-card"><h4><i class="fa-solid fa-clock-rotate-left"></i> Time of day</h4>' +
+      '<div class="sub">Page views by hour of the day, UTC, totalled across the range. Useful for timing a post or an announcement.</div>' +
+      anHourly(report.hourly || new Array(24).fill(0)) + '</div>';
+
+    html += '<div class="an-grid">';
+
+    html += '<div class="an-card"><h4><i class="fa-solid fa-arrow-trend-up"></i> How people arrive</h4>' +
+      '<div class="sub">Grouped by the kind of source that sent the visit.</div>' +
+      '<div class="an-sub">Channels</div>' + anList(report.acquisition.channels, { format: function (l) { return l.charAt(0).toUpperCase() + l.slice(1); } }) +
+      '<div class="an-sub">Sites that referred them</div>' + anList(report.acquisition.referrers, { empty: 'No referring sites yet — most visits so far went straight to the site.' }) +
+      (report.acquisition.campaigns.length ? '<div class="an-sub">Campaigns</div>' + anList(report.acquisition.campaigns) : '') +
+      '</div>';
+
+    html += '<div class="an-card"><h4><i class="fa-solid fa-earth-americas"></i> Where they are</h4>' +
+      '<div class="sub">Coarse location only — country and region, never a city or address.</div>' +
+      '<div class="an-sub">Countries</div>' + anList(report.audience.countries, { format: anCountry }) +
+      '<div class="an-sub">Regions</div>' + anList(report.audience.regions, { empty: 'No regional detail yet.' }) +
+      '</div>';
+
+    html += '</div>';
+
+    html += '<div class="an-grid">';
+
+    html += '<div class="an-card"><h4><i class="fa-solid fa-mobile-screen"></i> Devices and software</h4>' +
+      '<div class="sub">Sessions by device, then the browsers and systems behind them.</div>' +
+      anDonut(report.audience.devices) +
+      '<div class="an-sub">Browsers</div>' + anList(report.audience.browsers, { mono: false }) +
+      '<div class="an-sub">Operating systems</div>' + anList(report.audience.os, { mono: false }) +
+      '<div class="an-sub">Languages</div>' + anList(report.audience.languages, { format: anLanguage, empty: 'No language data yet.' }) +
+      '</div>';
+
+    html += '<div class="an-card"><h4><i class="fa-solid fa-hand-pointer"></i> Engagement</h4>' +
+      '<div class="sub">How far people read, and everything they chose to click.</div>' +
+      '<div class="an-sub">Scroll depth</div>' + anScrollFunnel(report.scroll, summary.sessions) +
+      '<div class="an-sub">Actions taken</div>' +
+      anList((report.engagement.events || []).map(function (e) {
+        return { label: AN_EVENT_LABELS[e.label] || e.label, value: e.value };
+      }), { format: function (l) { return l; } }) +
+      '</div>';
+
+    html += '</div>';
+
+    html += '<div class="an-grid">';
+
+    html += '<div class="an-card"><h4><i class="fa-solid fa-file-lines"></i> Pages people read</h4>' +
+      '<div class="sub">The public site is a single page, so these are the parts of it people spent time in.</div>' +
+      '<div class="an-sub">Top sections</div>' + anList(report.sections, { format: anPodLabel }) +
+      '<div class="an-sub">Pages</div>' + anList(report.pages, { format: function (l) { return l === '/' ? 'Home' : l; } }) +
+      '</div>';
+
+    html += '<div class="an-card"><h4><i class="fa-solid fa-right-to-bracket"></i> Arrivals and departures</h4>' +
+      '<div class="sub">Where a visit started and where it ended.</div>' +
+      '<div class="an-sub">Entry</div>' + anList(report.engagement.entry, { format: anPodLabel }) +
+      '<div class="an-sub">Exit</div>' + anList(report.engagement.exit, { format: anPodLabel }) +
+      '</div>';
+
+    html += '</div>';
+
+    html += anNotes();
+
+    body.innerHTML = html;
+
+    var labels, series;
+    if (anState.days === 1) {
+      labels = (report.hourly || []).map(function (_, hour) { return (hour < 10 ? '0' : '') + hour + ':00'; });
+      series = [{ name: 'Page views', color: AN_COLORS[0], values: report.hourly || [] }];
+    } else {
+      var days = report.daily && report.daily.length ? report.daily : report.timeseries;
+      labels = days.map(function (day) { return anShortDate(day.date); });
+      series = [
+        { name: 'Visitors', color: AN_COLORS[0], values: days.map(function (day) { return day.visitors; }) },
+        { name: 'Page views', color: AN_COLORS[1], values: days.map(function (day) { return day.views; }) }
+      ];
+    }
+
+    var chartBox = $('#anChart');
+    if (chartBox) anChart(chartBox, labels, series);
+    var legendBox = $('#anLegend');
+    if (legendBox) legendBox.innerHTML = anLegend(series);
+  }
+
   /* =============================== session =============================== */
 
   function showLogin(message) {
@@ -1436,7 +2030,8 @@
   document.addEventListener('keydown', function (event) {
     if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 's') {
       event.preventDefault();
-      if (!$('#app').classList.contains('hidden') && state.section !== 'admins' && state.section !== 'settings') save();
+      var panel = state.section;
+      if (!$('#app').classList.contains('hidden') && panel !== 'admins' && panel !== 'settings' && panel !== 'analytics') save();
     }
   });
 
