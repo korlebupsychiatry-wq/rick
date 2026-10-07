@@ -754,6 +754,9 @@
     input.type = 'text';
     input.spellcheck = false;
     input.placeholder = 'Paste the YouTube link, e.g. https://youtu.be/…';
+    input.id = uid();
+    var label = row.querySelector('label');
+    if (label) label.setAttribute('for', input.id);
 
     var status = document.createElement('div');
     status.className = 'hint';
@@ -1018,6 +1021,9 @@
     input.placeholder = 'images/… or upload a new file';
     input.value = String(value);
     input.spellcheck = false;
+    input.id = uid();
+    var imgLabel = row.querySelector('label');
+    if (imgLabel) imgLabel.setAttribute('for', input.id);
 
     var actions = document.createElement('div');
     actions.className = 'imgactions';
@@ -1225,7 +1231,7 @@
       adminEntries.push({ id: 'analytics', label: 'Analytics', icon: 'fa-solid fa-chart-line' });
       adminEntries.push({ id: 'admins', label: 'Team access', icon: 'fa-solid fa-user-shield' });
     }
-    adminEntries.push({ id: 'media', label: 'Media library', icon: 'fa-solid fa-photo-film' });
+    adminEntries.push({ id: 'library', label: 'Media library', icon: 'fa-solid fa-photo-film' });
     adminEntries.push({ id: 'settings', label: 'Settings', icon: 'fa-solid fa-gear' });
 
     adminEntries.forEach(function (entry) {
@@ -1247,7 +1253,9 @@
     if (anState.timer) { clearInterval(anState.timer); anState.timer = null; }
     renderNav();
     renderPanel();
-    var plain = state.section === 'admins' || state.section === 'settings' || state.section === 'analytics' || state.section === 'media';
+    // 'library' rather than 'media': the content schema already uses 'media' for
+    // the Talks & media section, and the two panels must stay distinct.
+    var plain = state.section === 'admins' || state.section === 'settings' || state.section === 'analytics' || state.section === 'library';
     $('#savebar').classList.toggle('hidden', plain);
     window.scrollTo({ top: 0 });
   }
@@ -1260,7 +1268,7 @@
 
     if (state.section === 'analytics' && state.user && state.user.role === 'super') return renderAnalytics(main);
     if (state.section === 'admins' && state.user && state.user.role === 'super') return renderAdmins(main);
-    if (state.section === 'media') return renderMediaLibrary(main);
+    if (state.section === 'library') return renderMediaLibrary(main);
     if (state.section === 'settings') return renderSettings(main);
 
     var section = SCHEMA.filter(function (s) { return s.id === state.section; })[0] || SCHEMA[0];
@@ -2437,7 +2445,7 @@
     if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 's') {
       event.preventDefault();
       var panel = state.section;
-      if (!$('#app').classList.contains('hidden') && panel !== 'admins' && panel !== 'settings' && panel !== 'analytics') save();
+      if (!$('#app').classList.contains('hidden') && panel !== 'admins' && panel !== 'settings' && panel !== 'analytics' && panel !== 'library') save();
     }
   });
 
