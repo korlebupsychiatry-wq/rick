@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-14T23:23:33.590Z",
-  "updatedBy": "admin",
+  "updatedAt": "2026-10-07T21:58:09.939Z",
+  "updatedBy": "rickw",
   "hero": {
     "kicker": "McLEAN HOSPITAL • HARVARD MEDICAL SCHOOL",
     "titleLine1": "Rick Peter Fritz",
@@ -497,6 +497,26 @@
       {
         "src": "images/gallery-9.jpg",
         "alt": "Convenings, lectures, and community engagement",
+        "large": false
+      },
+      {
+        "src": "uploads/whatsapp-image-2026-09-28-at-19-08-09-1-5493e8548e0b.jpg",
+        "alt": "World Congress of Psychiatry 2026 Poster Presentation",
+        "large": false
+      },
+      {
+        "src": "uploads/whatsapp-image-2026-09-28-at-19-09-17-1-7da336d92ed9.jpg",
+        "alt": "World Congress of Psychiatry 2026 - Rick with sponsored participants ",
+        "large": false
+      },
+      {
+        "src": "uploads/whatsapp-image-2026-09-29-at-20-47-59-defd30bbb831.jpg",
+        "alt": "World Congress of Psychiatry 2026 - Rick (WPA Zone 2 Representative) with Dr. Delali Fiagbe (WPA Zone 13 Representative)",
+        "large": false
+      },
+      {
+        "src": "uploads/whatsapp-image-2026-09-29-at-20-47-59-1-a876a42f6893.jpg",
+        "alt": "Rick with WPA President Prof. Thomas Schulze and Secretary General Dr. Radwa Said Abdelazim Elfeqi",
         "large": false
       }
     ]
