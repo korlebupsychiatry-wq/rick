@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-07T22:01:40.403Z",
+  "updatedAt": "2026-10-07T22:02:59.862Z",
   "updatedBy": "rickw",
   "hero": {
     "kicker": "McLEAN HOSPITAL • HARVARD MEDICAL SCHOOL",
@@ -394,13 +394,13 @@
       },
       {
         "title": "Transferable Design Principles for Scalable Mental Health Systems - A Conceptual Framework Informed by Innovations Across African Contexts",
-        "authors": "Wolthusen, R. P. F., Jaguga, F., Ongeri, L., Adorjan, K., Schulze, T. G., Atwoli, L., & Fiagbe, D. K. JAMA Psychiatry ",
+        "authors": "Wolthusen, R. P. F., Jaguga, F., Ongeri, L., Adorjan, K., Schulze, T. G., Atwoli, L., & Fiagbe, D. K. • JAMA Psychiatry • 2026",
         "summary": "Mental health conditions are a growing cause of disability across Africa, yet many people still lack access to care. This article identifies four approaches for building stronger mental health systems: expanding the mental health workforce, providing more care in communities, integrating mental health into other health services, and ensuring care is culturally responsive. Across Africa, community health workers, peer supporters, primary care providers, and other nonspecialists are already helping expand access to mental health care. However, implementation remains uneven, and more locally led and long-term research is needed. Innovations developed across Africa can help create more accessible, equitable, and culturally responsive mental health systems both within Africa and globally.",
         "url": "https://jamanetwork.com/journals/jamapsychiatry/article-abstract/2854487",
         "tag": "",
         "color": "blue",
-        "abbr": "",
-        "icon": ""
+        "abbr": "Innovation",
+        "icon": "fa-solid fa-globe"
       }
     ]
   },
