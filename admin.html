@@ -154,6 +154,27 @@
   .imgactions{display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap}
   .upstatus{font-size:11.5px;color:var(--muted)}
 
+  /* ------------------------------------------------------------ media library */
+  .ml-bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
+  .ml-bar .grow{flex:1;min-width:180px}
+  .ml-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}
+  .ml-card{
+    border:1px solid var(--line);border-radius:14px;overflow:hidden;background:rgba(9,14,26,.6);
+    display:flex;flex-direction:column;
+  }
+  .ml-card .thumb{
+    aspect-ratio:4/3;background:rgba(6,10,19,.85) center/cover no-repeat;display:flex;align-items:center;
+    justify-content:center;color:var(--dim);font-size:11px;border-bottom:1px solid var(--line);
+  }
+  .ml-card .meta{padding:10px 11px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .ml-card .nm{font-size:11.5px;color:var(--muted);word-break:break-all;line-height:1.35}
+  .ml-card .row2{display:flex;gap:6px;align-items:center;margin-top:auto}
+  .ml-card .use{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;letter-spacing:.03em}
+  .ml-card .use.in{background:rgba(52,211,153,.14);color:#5eead4;border:1px solid rgba(52,211,153,.3)}
+  .ml-card .use.free{background:rgba(148,163,184,.12);color:#cbd5e1;border:1px solid rgba(148,163,184,.25)}
+  .ml-sub{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);font-weight:700;margin:26px 0 12px}
+  .ml-sub:first-of-type{margin-top:6px}
+
   /* ---------------------------------------------------------------- table */
   table{width:100%;border-collapse:collapse;font-size:13.5px}
   th{text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);font-weight:700;padding:0 12px 10px}
@@ -508,7 +529,7 @@
         { path: 'media.heading', label: 'Heading', type: 'text' },
         { path: 'media.note', label: 'Intro note', type: 'textarea' },
         { path: 'media.items', label: 'Videos', type: 'list', item: 'Video', titleField: 'title', hint: 'The thumbnail is fetched from YouTube automatically.', fields: [
-          { path: 'id', label: 'YouTube video ID', type: 'text', hint: 'The part after v= in the video link.' },
+          { path: 'id', label: 'Video link', type: 'youtube', hint: 'Paste the YouTube link, or just the video ID. Both are accepted.' },
           { path: 'badge', label: 'Corner badge', type: 'text', hint: 'e.g. TEDx TALK' },
           { path: 'title', label: 'Title', type: 'text' },
           { path: 'text', label: 'Description', type: 'textarea' },
@@ -616,6 +637,7 @@
     if (field.type === 'list') return makeList(field, obj, onChange);
     if (field.type === 'stringlist') return makeStringList(field, obj, onChange);
     if (field.type === 'image') return makeImageField(field, obj, onChange);
+    if (field.type === 'youtube') return makeYouTubeField(field, obj, onChange);
 
     var row = fieldShell(field.label, null);
     var id = uid();
@@ -687,6 +709,96 @@
     }
     input.addEventListener('input', commit);
     input.addEventListener('change', commit);
+    addHint(row, field.hint);
+    return row;
+  }
+
+  /**
+   * Pulls the video ID out of whatever the editor pasted. Every link YouTube
+   * hands out is accepted — the watch page, the share link, the embed code, a
+   * Shorts or live link, with or without the surrounding query string — because
+   * asking someone to isolate an eleven-character ID by hand invites mistakes.
+   */
+  function youTubeId(value) {
+    var raw = String(value == null ? '' : value).trim();
+    if (!raw) return '';
+    if (/^[A-Za-z0-9_-]{11}$/.test(raw)) return raw;
+    var patterns = [
+      /youtube\.com\/watch\?[^#]*\bv=([A-Za-z0-9_-]{11})/i,
+      /youtu\.be\/([A-Za-z0-9_-]{11})/i,
+      /youtube\.com\/embed\/([A-Za-z0-9_-]{11})/i,
+      /youtube\.com\/shorts\/([A-Za-z0-9_-]{11})/i,
+      /youtube\.com\/live\/([A-Za-z0-9_-]{11})/i,
+      /youtube-nocookie\.com\/embed\/([A-Za-z0-9_-]{11})/i,
+      /[?&]v=([A-Za-z0-9_-]{11})/i
+    ];
+    for (var i = 0; i < patterns.length; i += 1) {
+      var match = raw.match(patterns[i]);
+      if (match) return match[1];
+    }
+    return '';
+  }
+
+  function makeYouTubeField(field, obj, onChange) {
+    var row = fieldShell(field.label, null);
+
+    var box = document.createElement('div');
+    box.className = 'imgfield';
+    var preview = document.createElement('div');
+    preview.className = 'imgprev';
+    var body = document.createElement('div');
+    body.className = 'imgbody';
+
+    var input = document.createElement('input');
+    input.className = 'inp';
+    input.type = 'text';
+    input.spellcheck = false;
+    input.placeholder = 'Paste the YouTube link, e.g. https://youtu.be/…';
+
+    var status = document.createElement('div');
+    status.className = 'hint';
+    status.style.marginTop = '6px';
+
+    body.appendChild(input);
+    body.appendChild(status);
+    box.appendChild(preview);
+    box.appendChild(body);
+    row.appendChild(box);
+
+    function idNow() { return youTubeId(getIn(obj, field.path)); }
+
+    function paint() {
+      var id = idNow();
+      if (id) {
+        preview.style.backgroundImage = 'url("https://i.ytimg.com/vi/' + id + '/mqdefault.jpg")';
+        preview.textContent = '';
+        status.textContent = 'Video ID: ' + id;
+      } else {
+        preview.style.backgroundImage = '';
+        preview.textContent = 'No video';
+        status.textContent = input.value.trim()
+          ? 'That does not look like a YouTube link. Paste the full link, or the 11-character ID on its own.'
+          : '';
+      }
+    }
+
+    input.value = String(getIn(obj, field.path) || '');
+
+    function commit(rewrite) {
+      var raw = input.value.trim();
+      var id = youTubeId(raw);
+      if (rewrite && raw && id && raw !== id) input.value = id;
+      setIn(obj, field.path, id || raw);
+      paint();
+      markDirty();
+      if (onChange) onChange();
+    }
+
+    input.addEventListener('input', function () { commit(false); });
+    // Rewriting on blur keeps the stored value unambiguous without fighting the
+    // editor while they are still pasting.
+    input.addEventListener('blur', function () { commit(true); });
+    paint();
     addHint(row, field.hint);
     return row;
   }
@@ -1111,8 +1223,9 @@
     var adminEntries = [];
     if (state.user && state.user.role === 'super') {
       adminEntries.push({ id: 'analytics', label: 'Analytics', icon: 'fa-solid fa-chart-line' });
+      adminEntries.push({ id: 'admins', label: 'Team access', icon: 'fa-solid fa-user-shield' });
     }
-    adminEntries.push({ id: 'admins', label: 'Team access', icon: 'fa-solid fa-user-shield' });
+    adminEntries.push({ id: 'media', label: 'Media library', icon: 'fa-solid fa-photo-film' });
     adminEntries.push({ id: 'settings', label: 'Settings', icon: 'fa-solid fa-gear' });
 
     adminEntries.forEach(function (entry) {
@@ -1126,11 +1239,16 @@
   }
 
   function go(id) {
-    state.section = id;
+    // Administration panels are opened from the sidebar only when the signed-in
+    // account is allowed to see them; fall back to the first content section
+    // rather than rendering a panel the account cannot use.
+    var allowed = id !== 'analytics' && id !== 'admins' ? true : !!(state.user && state.user.role === 'super');
+    state.section = allowed ? id : SCHEMA[0].id;
     if (anState.timer) { clearInterval(anState.timer); anState.timer = null; }
     renderNav();
     renderPanel();
-    $('#savebar').classList.toggle('hidden', id === 'admins' || id === 'settings' || id === 'analytics');
+    var plain = state.section === 'admins' || state.section === 'settings' || state.section === 'analytics' || state.section === 'media';
+    $('#savebar').classList.toggle('hidden', plain);
     window.scrollTo({ top: 0 });
   }
 
@@ -1141,7 +1259,8 @@
     if (conflict) main.appendChild(conflict);
 
     if (state.section === 'analytics' && state.user && state.user.role === 'super') return renderAnalytics(main);
-    if (state.section === 'admins') return renderAdmins(main);
+    if (state.section === 'admins' && state.user && state.user.role === 'super') return renderAdmins(main);
+    if (state.section === 'media') return renderMediaLibrary(main);
     if (state.section === 'settings') return renderSettings(main);
 
     var section = SCHEMA.filter(function (s) { return s.id === state.section; })[0] || SCHEMA[0];
@@ -1246,21 +1365,6 @@
       form.appendChild(submit);
       main.appendChild(form);
     }
-
-    var note = document.createElement('div');
-    note.className = 'card';
-    note.innerHTML = '<h3>Your own password</h3><div class="hint">Change the password you sign in with.</div>';
-    var selfSplit = document.createElement('div');
-    selfSplit.className = 'split';
-    selfSplit.appendChild(textRow('Current password', 'selfCurrent', '', 'password'));
-    selfSplit.appendChild(textRow('New password', 'selfNew', 'at least 8 characters', 'password'));
-    note.appendChild(selfSplit);
-    var selfBtn = document.createElement('button');
-    selfBtn.className = 'btn';
-    selfBtn.innerHTML = '<i class="fa-solid fa-key"></i> Update password';
-    selfBtn.addEventListener('click', changeOwnPassword);
-    note.appendChild(selfBtn);
-    main.appendChild(note);
   }
 
   function textRow(label, id, placeholder, type) {
@@ -1352,6 +1456,286 @@
     }
   }
 
+  /* =============================== media library =============================== */
+
+  var mediaState = { curated: [], uploaded: [], loading: false, filter: '' };
+
+  /**
+   * Where each picture is used, worked out from the content already in memory so
+   * the library can say which section a photo belongs to before anyone deletes it.
+   */
+  function mediaUsage() {
+    var usage = {};
+    var pattern = /(?:uploads|images)\/[A-Za-z0-9][A-Za-z0-9._-]{0,120}/g;
+    SCHEMA.forEach(function (section) {
+      var blob = JSON.stringify((state.content && state.content[section.id]) || '');
+      var match;
+      while ((match = pattern.exec(blob)) !== null) {
+        var key = match[0];
+        if (!usage[key]) usage[key] = [];
+        if (usage[key].indexOf(section.label) === -1) usage[key].push(section.label);
+      }
+    });
+    return usage;
+  }
+
+  async function loadMediaLibrary(force) {
+    if (mediaState.loading) return;
+    if (!force && (mediaState.curated.length || mediaState.uploaded.length)) return;
+    mediaState.loading = true;
+    try {
+      var data = await api('/api/media?list=1');
+      mediaState.curated = data.curated || [];
+      mediaState.uploaded = data.uploaded || [];
+    } catch (error) {
+      toast(error.message || 'Could not load the media library', 'err');
+    } finally {
+      mediaState.loading = false;
+    }
+  }
+
+  function humanSize(bytes) {
+    var n = Number(bytes) || 0;
+    if (n < 1024) return n + ' B';
+    if (n < 1024 * 1024) return Math.round(n / 1024) + ' KB';
+    return (Math.round((n / (1024 * 1024)) * 10) / 10) + ' MB';
+  }
+
+  function renderMediaLibrary(main) {
+    var head = document.createElement('div');
+    head.className = 'panel-head';
+    head.innerHTML = '<h2>Media library</h2><p>Every photo the site can use. Copy a path into any image field, or upload something new.</p>';
+    main.appendChild(head);
+
+    var uploadCard = document.createElement('div');
+    uploadCard.className = 'card';
+    uploadCard.innerHTML = '<h3>Add photos</h3><div class="hint">Drag files in, or choose them. Large photos are resized automatically before they are uploaded.</div>';
+    var drop = document.createElement('div');
+    drop.className = 'ml-bar';
+    var fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = 'image/*';
+    fileInput.multiple = true;
+    fileInput.className = 'hidden';
+    var choose = document.createElement('button');
+    choose.type = 'button';
+    choose.className = 'btn btn-primary';
+    choose.innerHTML = '<i class="fa-solid fa-arrow-up-from-bracket"></i> Choose photos';
+    var uploadStatus = document.createElement('span');
+    uploadStatus.className = 'upstatus';
+    drop.appendChild(choose);
+    drop.appendChild(fileInput);
+    drop.appendChild(uploadStatus);
+    uploadCard.appendChild(drop);
+    main.appendChild(uploadCard);
+
+    var listCard = document.createElement('div');
+    listCard.className = 'card';
+    var bar = document.createElement('div');
+    bar.className = 'ml-bar';
+    var filter = document.createElement('input');
+    filter.className = 'inp grow';
+    filter.type = 'search';
+    filter.placeholder = 'Filter by file name…';
+    filter.value = mediaState.filter;
+    bar.appendChild(filter);
+    listCard.appendChild(bar);
+    var results = document.createElement('div');
+    listCard.appendChild(results);
+    main.appendChild(listCard);
+
+    function uploadFiles(files) {
+      if (!files || !files.length) return;
+      var list = Array.prototype.slice.call(files);
+      var done = 0;
+      var failed = 0;
+      uploadStatus.textContent = 'Uploading 0 of ' + list.length + '…';
+      choose.disabled = true;
+      return list.reduce(function (chain, file) {
+        return chain.then(function () {
+          return shrink(file)
+            .then(function (prepared) {
+              return fetch('/api/upload?name=' + encodeURIComponent(prepared.name) + '&type=' + encodeURIComponent(prepared.type || 'image/jpeg'), {
+                method: 'POST',
+                credentials: 'same-origin',
+                headers: { 'Content-Type': 'application/octet-stream' },
+                body: prepared
+              });
+            })
+            .then(function (res) {
+              return res.json().catch(function () { return null; }).then(function (data) {
+                if (!res.ok || !data || data.ok === false) throw new Error((data && data.error) || 'Upload failed');
+              });
+            })
+            .then(function () { done += 1; })
+            .catch(function (error) {
+              failed += 1;
+              toast((file.name || 'File') + ': ' + (error.message || 'upload failed'), 'err');
+            })
+            .then(function () {
+              uploadStatus.textContent = 'Uploading ' + (done + failed) + ' of ' + list.length + '…';
+            });
+        });
+      }, Promise.resolve()).then(function () {
+        choose.disabled = false;
+        uploadStatus.textContent = '';
+        if (done) toast(done + (done === 1 ? ' photo uploaded' : ' photos uploaded'));
+        return loadMediaLibrary(true).then(function () { paint(); });
+      });
+    }
+
+    choose.addEventListener('click', function () { fileInput.click(); });
+    fileInput.addEventListener('change', function () {
+      var files = fileInput.files;
+      fileInput.value = '';
+      uploadFiles(files);
+    });
+
+    ['dragenter', 'dragover'].forEach(function (type) {
+      uploadCard.addEventListener(type, function (event) {
+        event.preventDefault();
+        uploadCard.style.borderColor = 'rgba(91,155,255,.7)';
+      });
+    });
+    ['dragleave', 'drop'].forEach(function (type) {
+      uploadCard.addEventListener(type, function (event) {
+        event.preventDefault();
+        uploadCard.style.borderColor = '';
+      });
+    });
+    uploadCard.addEventListener('drop', function (event) {
+      var dt = event.dataTransfer;
+      if (dt && dt.files && dt.files.length) uploadFiles(dt.files);
+    });
+
+    filter.addEventListener('input', function () {
+      mediaState.filter = filter.value;
+      paint();
+    });
+
+    function paintCard(file, usage) {
+      var inUse = usage[file.path];
+      var card = document.createElement('div');
+      card.className = 'ml-card';
+      var thumb = document.createElement('div');
+      thumb.className = 'thumb';
+      thumb.style.backgroundImage = 'url("' + file.url.replace(/"/g, '%22') + '")';
+      card.appendChild(thumb);
+
+      var meta = document.createElement('div');
+      meta.className = 'meta';
+      var nm = document.createElement('div');
+      nm.className = 'nm';
+      nm.textContent = file.name;
+      meta.appendChild(nm);
+
+      var tag = document.createElement('span');
+      tag.className = 'use ' + (inUse ? 'in' : 'free');
+      tag.textContent = inUse ? 'Used in ' + inUse.join(', ') : 'Not used yet';
+      meta.appendChild(tag);
+
+      var row = document.createElement('div');
+      row.className = 'row2';
+      var copy = document.createElement('button');
+      copy.type = 'button';
+      copy.className = 'btn btn-sm';
+      copy.innerHTML = '<i class="fa-solid fa-copy"></i> Copy path';
+      copy.addEventListener('click', function () {
+        var value = file.path;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(value).then(function () { toast('Copied ' + value); }, function () { window.prompt('Copy this path:', value); });
+        } else {
+          window.prompt('Copy this path:', value);
+        }
+      });
+      row.appendChild(copy);
+
+      var size = document.createElement('span');
+      size.className = 'upstatus';
+      size.textContent = humanSize(file.size);
+      row.appendChild(size);
+      meta.appendChild(row);
+
+      card.appendChild(meta);
+
+      if (file.kind === 'uploaded') {
+        var isSuper = !!(state.user && state.user.role === 'super');
+        var del = document.createElement('button');
+        del.type = 'button';
+        del.className = 'iconbtn danger';
+        del.title = inUse && !isSuper ? 'In use — remove it from the site first' : 'Delete this file';
+        del.setAttribute('aria-label', 'Delete');
+        del.innerHTML = '<i class="fa-solid fa-trash"></i>';
+        del.disabled = !!(inUse && !isSuper);
+        if (del.disabled) del.style.opacity = '.4';
+        del.addEventListener('click', function () { deleteMedia(file, !!inUse); });
+        var holder = document.createElement('div');
+        holder.style.padding = '0 11px 11px';
+        holder.appendChild(del);
+        card.appendChild(holder);
+      }
+
+      return card;
+    }
+
+    function paint() {
+      var usage = mediaUsage();
+      var query = mediaState.filter.trim().toLowerCase();
+      results.innerHTML = '';
+
+      function grid(files) {
+        var box = document.createElement('div');
+        box.className = 'ml-grid';
+        files.forEach(function (file) { box.appendChild(paintCard(file, usage)); });
+        return box;
+      }
+
+      var uploaded = mediaState.uploaded.filter(function (f) { return !query || f.name.toLowerCase().indexOf(query) !== -1; });
+      var curated = mediaState.curated.filter(function (f) { return !query || f.name.toLowerCase().indexOf(query) !== -1; });
+
+      if (mediaState.loading && !mediaState.curated.length && !mediaState.uploaded.length) {
+        results.appendChild(h('<div class="an-skel" style="height:120px"></div>'));
+        return;
+      }
+
+      if (!uploaded.length && !curated.length) {
+        results.appendChild(h('<div class="empty">' + (query ? 'No photos match that name.' : 'Nothing here yet — upload a photo above.') + '</div>'));
+        return;
+      }
+
+      if (uploaded.length) {
+        results.appendChild(h('<div class="ml-sub">Uploaded · ' + uploaded.length + '</div>'));
+        results.appendChild(grid(uploaded));
+      }
+      if (curated.length) {
+        results.appendChild(h('<div class="ml-sub">Site photos · ' + curated.length + '</div>'));
+        results.appendChild(grid(curated));
+      }
+    }
+
+    paint();
+    loadMediaLibrary(false).then(paint);
+  }
+
+  async function deleteMedia(file, inUse) {
+    var warning = inUse
+      ? 'This photo is still used on the site, so the page will lose it. Delete ' + file.name + ' anyway?'
+      : 'Delete ' + file.name + '? This cannot be undone.';
+    if (!window.confirm(warning)) return;
+    try {
+      await api('/api/media', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'delete', path: file.path })
+      });
+      toast('Deleted ' + file.name);
+      await loadMediaLibrary(true);
+      renderPanel();
+    } catch (error) {
+      toast(error.message, 'err');
+    }
+  }
+
   /* =============================== settings panel =============================== */
 
   function renderSettings(main) {
@@ -1370,7 +1754,29 @@
       '<dt>Access</dt><dd>' + (state.user.role === 'super' ? 'Super admin' : 'Editor') + '</dd>' +
       '<dt>Contact email</dt><dd>' + (state.user.email ? esc(state.user.email) : '<span class="dim">not set</span>') + '</dd>';
     account.appendChild(kv);
+    var can = document.createElement('div');
+    can.className = 'hint';
+    can.style.marginTop = '12px';
+    can.textContent = state.user.role === 'super'
+      ? 'You can edit every section of the site, upload photos, manage the media library, and add or remove other administrators.'
+      : 'You can edit every section of the site, upload photos and manage the media library. Accounts and analytics are handled by a super admin.';
+    account.appendChild(can);
     main.appendChild(account);
+
+    var note = document.createElement('div');
+    note.className = 'card';
+    note.innerHTML = '<h3>Your password</h3><div class="hint">Change the password you sign in with.</div>';
+    var selfSplit = document.createElement('div');
+    selfSplit.className = 'split';
+    selfSplit.appendChild(textRow('Current password', 'selfCurrent', '', 'password'));
+    selfSplit.appendChild(textRow('New password', 'selfNew', 'at least 8 characters', 'password'));
+    note.appendChild(selfSplit);
+    var selfBtn = document.createElement('button');
+    selfBtn.className = 'btn';
+    selfBtn.innerHTML = '<i class="fa-solid fa-key"></i> Update password';
+    selfBtn.addEventListener('click', changeOwnPassword);
+    note.appendChild(selfBtn);
+    main.appendChild(note);
 
     var site = document.createElement('div');
     site.className = 'card';

@@ -2,6 +2,8 @@
 .git
 README.md
 MONETIZATION.md
+result-image*.jpg
+result-image*.png
 *.pdf
 *.zip
 *.txt

@@ -109,6 +109,44 @@ function rawUrl(path) {
   return `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/${encoded}`;
 }
 
+/**
+ * List the direct children of a repository directory. Returns an empty array
+ * when the directory does not exist yet, so callers can treat "nothing
+ * uploaded so far" and "no folder" the same way.
+ */
+async function ghListDir(path) {
+  const res = await fetch(`${ghUrl(path)}?ref=${encodeURIComponent(BRANCH)}`, {
+    headers: ghHeaders(),
+    cache: 'no-store',
+  });
+  if (res.status === 404) return [];
+  if (!res.ok) {
+    const body = await res.text();
+    throw httpError(502, `GitHub listing failed (${res.status}) ${body.slice(0, 200)}`);
+  }
+  const json = await res.json();
+  if (!Array.isArray(json)) return [];
+  return json
+    .filter((entry) => entry.type === 'file')
+    .map((entry) => ({ path: entry.path, name: entry.name, size: entry.size, sha: entry.sha }));
+}
+
+/** Delete a file. The caller must supply the sha of the revision being removed. */
+async function ghDeleteFile(path, message, sha) {
+  const res = await fetch(ghUrl(path), {
+    method: 'DELETE',
+    headers: ghHeaders({ 'Content-Type': 'application/json' }),
+    body: JSON.stringify({ message, sha, branch: BRANCH }),
+  });
+  if (res.status === 404) throw httpError(404, 'That file no longer exists.');
+  if (res.status === 409) throw httpError(409, 'That file changed while you were working — reload and try again.');
+  if (!res.ok) {
+    const text = await res.text();
+    throw httpError(502, `GitHub delete failed (${res.status}) ${text.slice(0, 300)}`);
+  }
+  return res.json();
+}
+
 /* ------------------------------------------------------------------ *
  * Passwords
  * ------------------------------------------------------------------ */
@@ -462,4 +500,6 @@ module.exports = {
   methodNotAllowed,
   normaliseUsername,
   publicAdmin,
+  ghListDir,
+  ghDeleteFile,
 };

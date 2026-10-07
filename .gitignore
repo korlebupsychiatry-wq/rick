@@ -17,6 +17,10 @@ cv_extracted.txt
 # Commercial strategy — personal, never published
 MONETIZATION.md
 
+# Screenshots and other tooling artefacts (not site assets)
+result-image*.jpg
+result-image*.png
+
 # OS cruft
 .DS_Store
 Thumbs.db
