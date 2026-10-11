@@ -887,6 +887,9 @@ window.__siteBoot = function () {
 
   // Publications: click = summary, click again = open paper
   function openLink(url) {
+    // Only http(s) leaves the page — a javascript: URL pasted into a content
+    // field would otherwise run in this origin, where the studio also lives.
+    if (!/^https?:\/\//i.test(String(url || '').trim())) return;
     const a = document.createElement('a');
     a.href = url;
     a.target = '_blank';

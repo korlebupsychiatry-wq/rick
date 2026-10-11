@@ -32,6 +32,68 @@
     return typeof value === 'string' && value.trim() !== '' ? value : null;
   }
 
+  /*
+   * The rich-text fields are the one place content is written as HTML rather
+   * than escaped text, so they are the one place a script could be smuggled in.
+   * That matters more than it looks: the studio lives on this same origin, so a
+   * script running here could reach the admin API with a signed-in admin's
+   * cookie. Editors may not edit accounts, so an editor must not be able to run
+   * script on the super admin's behalf. Everything not needed for the site's
+   * formatting is stripped before it reaches the page.
+   */
+  var BLOCKED_TAGS = {
+    SCRIPT: 1, STYLE: 1, IFRAME: 1, OBJECT: 1, EMBED: 1, LINK: 1, META: 1, BASE: 1,
+    FORM: 1, INPUT: 1, BUTTON: 1, TEXTAREA: 1, SELECT: 1, OPTION: 1,
+    SVG: 1, MATH: 1, TEMPLATE: 1, NOSCRIPT: 1, FRAME: 1, FRAMESET: 1
+  };
+  var BAD_SCHEME = /^(javascript|vbscript|data:text\/html)/;
+
+  /*
+   * Browsers ignore control characters and whitespace inside a URL scheme, so
+   * "java\tscript:" still runs. Strip those before deciding whether a value is
+   * a real link.
+   */
+  function isBadUrl(value) {
+    return BAD_SCHEME.test(String(value == null ? '' : value).replace(/[\u0000-\u0020\u007f]/g, '').toLowerCase());
+  }
+
+  function sanitizeHtml(html) {
+    var template = document.createElement('template');
+    template.innerHTML = String(html == null ? '' : html);
+    var walker = document.createTreeWalker(template.content, NodeFilter.SHOW_ELEMENT);
+    var doomed = [];
+    var node;
+    while ((node = walker.nextNode())) {
+      // SVG and MathML elements report their tag name in lower case, so the
+      // comparison is case-folded rather than assuming HTML's upper case.
+      if (BLOCKED_TAGS[String(node.tagName || '').toUpperCase()]) {
+        doomed.push(node);
+        continue;
+      }
+      Array.prototype.slice.call(node.attributes).forEach(function (attr) {
+        var name = attr.name.toLowerCase();
+        var value = String(attr.value == null ? '' : attr.value);
+        if (name.indexOf('on') === 0) node.removeAttribute(attr.name);
+        else if (name === 'href' || name === 'src' || name === 'xlink:href' || name === 'formaction') {
+          if (isBadUrl(value)) node.removeAttribute(attr.name);
+        } else if (name === 'style' && /(expression|javascript:|behaviou?r\s*:)/i.test(value)) {
+          node.removeAttribute(attr.name);
+        }
+      });
+    }
+    doomed.forEach(function (node) {
+      if (node.parentNode) node.parentNode.removeChild(node);
+    });
+    return template.innerHTML;
+  }
+
+  /** Links a visitor can click: anything that is not a real URL is dropped. */
+  function safeHref(value) {
+    var url = str(value);
+    if (!url) return '';
+    return isBadUrl(url) ? '' : url;
+  }
+
   function list(value, min) {
     return Array.isArray(value) && value.length >= (min || 1) ? value : null;
   }
@@ -69,7 +131,7 @@
     document.querySelectorAll('[data-cms]').forEach(function (node) {
       var value = resolvePath(content, node.getAttribute('data-cms'));
       if (typeof value !== 'string' || value === '') return;
-      if (node.hasAttribute('data-cms-html')) node.innerHTML = value;
+      if (node.hasAttribute('data-cms-html')) node.innerHTML = sanitizeHtml(value);
       else node.textContent = value;
     });
   }
@@ -144,7 +206,7 @@
         .map(function (item) {
           var c = STAT_COLORS[item && item.color] || STAT_COLORS.blue;
           return (
-            '<a href="' + esc(item.href || '#') + '" title="' + esc(item.title || '') + '" class="bg-slate-900 p-8 group hover:bg-slate-800/70 transition-colors duration-300 block cursor-pointer">' +
+            '<a href="' + esc(safeHref(item.href) || '#') + '" title="' + esc(item.title || '') + '" class="bg-slate-900 p-8 group hover:bg-slate-800/70 transition-colors duration-300 block cursor-pointer">' +
             '<i class="' + esc(item.icon || 'fa-solid fa-circle') + ' text-2xl ' + c.icon + ' mb-3 block ' + c.hov + ' group-hover:scale-110 transition-all duration-300"></i>' +
             '<div class="text-5xl md:text-6xl font-semibold tracking-tighter ' + c.num + (item.pop ? ' inf-pop' : '') + '" data-count="' + (Number(item.count) || 0) + '">0</div>' +
             '<div class="text-sm text-slate-400 mt-1">' + esc(item.label || '') + '</div>' +
@@ -195,7 +257,7 @@
     if (paragraphs && paragraphBox) {
       paragraphBox.innerHTML = paragraphs
         .map(function (html) {
-          return '<p>' + String(html == null ? '' : html) + '</p>';
+          return '<p>' + sanitizeHtml(html) + '</p>';
         })
         .join('');
     }
@@ -206,7 +268,7 @@
       tagBox.innerHTML = tags
         .map(function (tag) {
           return (
-            '<a href="' + esc(tag.href || '#') + '" class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-pointer">' + esc(tag.label || '') + '</a>'
+            '<a href="' + esc(safeHref(tag.href) || '#') + '" class="px-4 py-1.5 text-sm rounded-full border border-blue-400/40 text-blue-300 hover:bg-blue-400/10 hover:border-blue-400/70 hover:shadow-[0_0_16px_rgba(96,165,250,.4)] transition-all duration-300 cursor-pointer">' + esc(tag.label || '') + '</a>'
           );
         })
         .join('');
@@ -240,7 +302,7 @@
     grid.innerHTML = items
       .map(function (item, i) {
         return (
-          '<a href="' + esc(item.href || '#') + '" aria-label="' + esc(item.aria || item.title || '') + '" class="card glass p-8 rounded-3xl reveal d' + ((i % 6) + 1) + ' block group">' +
+          '<a href="' + esc(safeHref(item.href) || '#') + '" aria-label="' + esc(item.aria || item.title || '') + '" class="card glass p-8 rounded-3xl reveal d' + ((i % 6) + 1) + ' block group">' +
           '<div class="icon-chip"><i class="' + esc(item.icon || 'fa-solid fa-circle') + '"></i></div>' +
           '<h3 class="font-semibold text-2xl my-3">' + esc(item.title || '') + '</h3>' +
           '<p class="text-slate-300">' + esc(item.text || '') + '</p>' +
@@ -296,7 +358,7 @@
         var color = PUB_COLORS.indexOf(item.color) === -1 ? 'blue' : item.color;
         var tag = str(item.tag);
         return (
-          '<div class="pub card glass p-6 rounded-3xl flex flex-col md:flex-row md:items-start gap-4 reveal" data-url="' + esc(item.url || '') + '" role="button" tabindex="0" aria-expanded="false" title="Click to preview summary — click again to open">' +
+          '<div class="pub card glass p-6 rounded-3xl flex flex-col md:flex-row md:items-start gap-4 reveal" data-url="' + esc(safeHref(item.url)) + '" role="button" tabindex="0" aria-expanded="false" title="Click to preview summary — click again to open">' +
           '<div class="pub-cover ' + esc(item.cover || 'c-' + color) + '"><span class="pub-abbr">' + esc(item.abbr || '') + '</span><i class="' + esc(item.icon || 'fa-solid fa-file-lines') + '"></i></div>' +
           '<div class="flex-1">' +
           '<div class="font-semibold text-lg">' + esc(item.title || '') + '</div>' +

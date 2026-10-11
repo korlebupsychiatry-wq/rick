@@ -237,16 +237,39 @@ function normaliseUsername(value) {
 }
 
 /**
+ * Compare two strings without leaking how much of them matched. The lengths
+ * are hashed to a fixed size first so unequal inputs still take the same path.
+ */
+function safeEqual(a, b) {
+  const left = crypto.createHash('sha256').update(String(a)).digest();
+  const right = crypto.createHash('sha256').update(String(b)).digest();
+  return crypto.timingSafeEqual(left, right);
+}
+
+/**
  * When no admin file exists yet, the first matching bootstrap credential creates
  * one. This lets the very first sign-in work without committing anything secret.
+ *
+ * The bootstrap password is a break-glass credential: if it were short, anyone
+ * who could clear the admin file could claim the site with a guess. A minimum
+ * length is required before it is allowed to create the first account.
  */
+const BOOTSTRAP_MIN_PASSWORD = 12;
+
 async function bootstrapAdmins(username, password) {
   const existing = await loadAdmins();
   if (existing) return existing;
   const boot = bootstrapCredentials();
   if (!boot.password) return null;
+  if (String(boot.password).length < BOOTSTRAP_MIN_PASSWORD) {
+    console.error(
+      `[cms] BOOTSTRAP_ADMIN_PASSWORD is shorter than ${BOOTSTRAP_MIN_PASSWORD} characters; ` +
+        'the break-glass account will not be created. Set a longer password to sign in.'
+    );
+    return null;
+  }
   if (normaliseUsername(username) !== normaliseUsername(boot.username)) return null;
-  if (String(password) !== boot.password) return null;
+  if (!safeEqual(password, boot.password)) return null;
 
   const data = {
     v: 1,
@@ -441,6 +464,11 @@ async function readJSON(req, limit) {
 
 /** Blocks cross-site form posts; browsers send Origin on state-changing requests. */
 function assertSameOrigin(req) {
+  // Fetch metadata is sent by every current browser and cannot be forged from a
+  // page, so a cross-site caller is refused even if Origin is stripped.
+  if (String(req.headers['sec-fetch-site'] || '').toLowerCase() === 'cross-site') {
+    throw httpError(403, 'Bad request origin.');
+  }
   const origin = req.headers.origin;
   if (!origin) return;
   let host;
