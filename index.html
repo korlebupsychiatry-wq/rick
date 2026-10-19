@@ -746,9 +746,17 @@ body.cursor-on #cursorGlow{opacity:1}
 <button id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="hidden fixed bottom-6 right-6 z-40 w-12 h-12 rounded-2xl btn-grad text-slate-950 shadow-xl shadow-blue-500/30 hover:scale-110 active:scale-95 transition-all" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
 
 <!-- LIGHTBOX -->
-<div id="lightbox" onclick="closeLB()" class="hidden fixed inset-0 bg-black/90 backdrop-blur-sm z-[999] items-center justify-center p-6 cursor-zoom-out">
-  <img id="lbImg" src="" alt="" class="max-h-full max-w-full rounded-2xl shadow-2xl">
-  <button onclick="closeLB()" class="absolute top-6 right-8 text-4xl text-white/70 hover:text-white" aria-label="Close">&times;</button>
+<div id="lightbox" onclick="closeLB()" class="hidden fixed inset-0 bg-black/90 backdrop-blur-sm z-[999] items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true" aria-label="Gallery image viewer">
+  <div onclick="event.stopPropagation()" class="relative flex max-h-full max-w-full flex-col items-center">
+    <img id="lbImg" src="" alt="" class="max-h-[82vh] max-w-full rounded-2xl object-contain shadow-2xl ring-1 ring-white/10">
+    <div class="mt-3 flex w-full items-center justify-between gap-4 px-1 text-sm">
+      <span id="lbCaption" class="truncate text-slate-300"></span>
+      <span id="lbCounter" class="shrink-0 font-medium tracking-wider text-slate-400"></span>
+    </div>
+  </div>
+  <button id="lbPrev" onclick="event.stopPropagation();moveLB(-1)" class="absolute left-3 sm:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass bg-slate-950/65 text-white hover:bg-blue-500/30 hover:border-blue-400/60 transition-all" aria-label="Previous gallery image"><i class="fa-solid fa-chevron-left"></i></button>
+  <button id="lbNext" onclick="event.stopPropagation();moveLB(1)" class="absolute right-3 sm:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass bg-slate-950/65 text-white hover:bg-blue-500/30 hover:border-blue-400/60 transition-all" aria-label="Next gallery image"><i class="fa-solid fa-chevron-right"></i></button>
+  <button id="lbClose" onclick="event.stopPropagation();closeLB()" class="absolute top-5 right-5 sm:top-6 sm:right-8 w-11 h-11 rounded-full glass bg-slate-950/65 text-3xl leading-none text-white/80 hover:text-white hover:bg-white/10 transition-all" aria-label="Close gallery">&times;</button>
 </div>
 
 <!-- VIDEO MODAL (in-app player) -->
@@ -839,18 +847,50 @@ window.__siteBoot = function () {
     m.classList.remove('flex'); m.classList.add('hidden');
   }
 
-  // Lightbox
+  // Gallery lightbox with continuous previous/next navigation
+  const lbItems = Array.from(document.querySelectorAll('#galleryGrid .gitem img'));
+  let lbIndex = 0;
+  let lbReturnFocus = null;
+
+  function renderLB() {
+    const img = lbItems[lbIndex];
+    if (!img) return;
+    document.getElementById('lbImg').src = img.currentSrc || img.src;
+    document.getElementById('lbImg').alt = img.alt;
+    document.getElementById('lbCaption').textContent = img.alt;
+    document.getElementById('lbCounter').textContent = `${lbIndex + 1} / ${lbItems.length}`;
+  }
   function openLB(el) {
     const img = el.querySelector('img');
-    document.getElementById('lbImg').src = img.src;
-    document.getElementById('lbImg').alt = img.alt;
+    const nextIndex = lbItems.indexOf(img);
+    lbIndex = nextIndex >= 0 ? nextIndex : 0;
+    lbReturnFocus = el;
+    renderLB();
     const lb = document.getElementById('lightbox');
     lb.classList.remove('hidden'); lb.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('lbClose').focus();
+  }
+  function moveLB(step) {
+    lbIndex = (lbIndex + step + lbItems.length) % lbItems.length;
+    renderLB();
   }
   function closeLB() {
     const lb = document.getElementById('lightbox');
+    const wasOpen = lb.classList.contains('flex');
     lb.classList.remove('flex'); lb.classList.add('hidden');
+    document.body.style.overflow = '';
+    if (wasOpen && lbReturnFocus) lbReturnFocus.focus();
+    lbReturnFocus = null;
   }
+  document.querySelectorAll('#galleryGrid .gitem').forEach(item => {
+    item.tabIndex = 0;
+    item.setAttribute('role', 'button');
+    item.setAttribute('aria-label', `Open gallery image: ${item.querySelector('img')?.alt || 'Gallery image'}`);
+    item.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLB(item); }
+    });
+  });
 
   // In-app video player (standard YouTube embed + graceful fallback)
   let vidTimer = null;
@@ -1061,6 +1101,9 @@ window.__siteBoot = function () {
 
   // Escape closes everything
   document.addEventListener('keydown', (e) => {
+    const lbOpen = document.getElementById('lightbox').classList.contains('flex');
+    if (lbOpen && e.key === 'ArrowLeft') { e.preventDefault(); moveLB(-1); return; }
+    if (lbOpen && e.key === 'ArrowRight') { e.preventDefault(); moveLB(1); return; }
     if (e.key === 'Escape') { hideModal(); closeLB(); closeVideo(); }
   });
 
