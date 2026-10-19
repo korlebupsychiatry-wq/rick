@@ -20,6 +20,8 @@ MONETIZATION.md
 # Screenshots and other tooling artefacts (not site assets)
 result-image*.jpg
 result-image*.png
+admin-dashboard.png
+.zcodeignore
 
 # OS cruft
 .DS_Store
